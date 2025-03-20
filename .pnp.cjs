@@ -42,6 +42,7 @@ const RAW_RUNTIME_STATE =
           ["lucide-react", "virtual:2d95c3c4c6fd6bb41f5c091033d38a206c62c9cd7002aa8b7f88583dcb6dfe5b0a5152dda8091bb0083fd64d2aaf579056dcbf0a4f273b562f4cd7d6b1d3188c#npm:0.483.0"],\
           ["react", "npm:19.0.0"],\
           ["react-dom", "virtual:2d95c3c4c6fd6bb41f5c091033d38a206c62c9cd7002aa8b7f88583dcb6dfe5b0a5152dda8091bb0083fd64d2aaf579056dcbf0a4f273b562f4cd7d6b1d3188c#npm:19.0.0"],\
+          ["react-router", "virtual:2d95c3c4c6fd6bb41f5c091033d38a206c62c9cd7002aa8b7f88583dcb6dfe5b0a5152dda8091bb0083fd64d2aaf579056dcbf0a4f273b562f4cd7d6b1d3188c#npm:7.4.0"],\
           ["tailwind-merge", "npm:3.0.2"],\
           ["tailwindcss", "npm:4.0.14"],\
           ["tw-animate-css", "npm:1.2.4"],\
@@ -1001,6 +1002,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@types/cookie", [\
+      ["npm:0.6.0", {\
+        "packageLocation": "../../.yarn/berry/cache/@types-cookie-npm-0.6.0-1f4c3f48f0-10c0.zip/node_modules/@types/cookie/",\
+        "packageDependencies": [\
+          ["@types/cookie", "npm:0.6.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@types/estree", [\
       ["npm:1.0.6", {\
         "packageLocation": "../../.yarn/berry/cache/@types-estree-npm-1.0.6-b5e23f2ea2-10c0.zip/node_modules/@types/estree/",\
@@ -1508,6 +1518,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../.yarn/berry/cache/concat-map-npm-0.0.1-85a921b7ee-10c0.zip/node_modules/concat-map/",\
         "packageDependencies": [\
           ["concat-map", "npm:0.0.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["cookie", [\
+      ["npm:1.0.2", {\
+        "packageLocation": "../../.yarn/berry/cache/cookie-npm-1.0.2-7a4273d897-10c0.zip/node_modules/cookie/",\
+        "packageDependencies": [\
+          ["cookie", "npm:1.0.2"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -2691,6 +2710,7 @@ const RAW_RUNTIME_STATE =
           ["lucide-react", "virtual:2d95c3c4c6fd6bb41f5c091033d38a206c62c9cd7002aa8b7f88583dcb6dfe5b0a5152dda8091bb0083fd64d2aaf579056dcbf0a4f273b562f4cd7d6b1d3188c#npm:0.483.0"],\
           ["react", "npm:19.0.0"],\
           ["react-dom", "virtual:2d95c3c4c6fd6bb41f5c091033d38a206c62c9cd7002aa8b7f88583dcb6dfe5b0a5152dda8091bb0083fd64d2aaf579056dcbf0a4f273b562f4cd7d6b1d3188c#npm:19.0.0"],\
+          ["react-router", "virtual:2d95c3c4c6fd6bb41f5c091033d38a206c62c9cd7002aa8b7f88583dcb6dfe5b0a5152dda8091bb0083fd64d2aaf579056dcbf0a4f273b562f4cd7d6b1d3188c#npm:7.4.0"],\
           ["tailwind-merge", "npm:3.0.2"],\
           ["tailwindcss", "npm:4.0.14"],\
           ["tw-animate-css", "npm:1.2.4"],\
@@ -2902,6 +2922,36 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["react-router", [\
+      ["npm:7.4.0", {\
+        "packageLocation": "../../.yarn/berry/cache/react-router-npm-7.4.0-09cfa7ab5e-10c0.zip/node_modules/react-router/",\
+        "packageDependencies": [\
+          ["react-router", "npm:7.4.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:2d95c3c4c6fd6bb41f5c091033d38a206c62c9cd7002aa8b7f88583dcb6dfe5b0a5152dda8091bb0083fd64d2aaf579056dcbf0a4f273b562f4cd7d6b1d3188c#npm:7.4.0", {\
+        "packageLocation": "./.yarn/__virtual__/react-router-virtual-77f877907b/3/.yarn/berry/cache/react-router-npm-7.4.0-09cfa7ab5e-10c0.zip/node_modules/react-router/",\
+        "packageDependencies": [\
+          ["react-router", "virtual:2d95c3c4c6fd6bb41f5c091033d38a206c62c9cd7002aa8b7f88583dcb6dfe5b0a5152dda8091bb0083fd64d2aaf579056dcbf0a4f273b562f4cd7d6b1d3188c#npm:7.4.0"],\
+          ["@types/cookie", "npm:0.6.0"],\
+          ["@types/react", "npm:19.0.12"],\
+          ["@types/react-dom", "virtual:2d95c3c4c6fd6bb41f5c091033d38a206c62c9cd7002aa8b7f88583dcb6dfe5b0a5152dda8091bb0083fd64d2aaf579056dcbf0a4f273b562f4cd7d6b1d3188c#npm:19.0.4"],\
+          ["cookie", "npm:1.0.2"],\
+          ["react", "npm:19.0.0"],\
+          ["react-dom", "virtual:2d95c3c4c6fd6bb41f5c091033d38a206c62c9cd7002aa8b7f88583dcb6dfe5b0a5152dda8091bb0083fd64d2aaf579056dcbf0a4f273b562f4cd7d6b1d3188c#npm:19.0.0"],\
+          ["set-cookie-parser", "npm:2.7.1"],\
+          ["turbo-stream", "npm:2.4.0"]\
+        ],\
+        "packagePeers": [\
+          "@types/react-dom",\
+          "@types/react",\
+          "react-dom",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["resolve-from", [\
       ["npm:4.0.0", {\
         "packageLocation": "../../.yarn/berry/cache/resolve-from-npm-4.0.0-f758ec21bf-10c0.zip/node_modules/resolve-from/",\
@@ -3002,6 +3052,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../.yarn/berry/cache/semver-npm-7.7.1-4572475307-10c0.zip/node_modules/semver/",\
         "packageDependencies": [\
           ["semver", "npm:7.7.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["set-cookie-parser", [\
+      ["npm:2.7.1", {\
+        "packageLocation": "../../.yarn/berry/cache/set-cookie-parser-npm-2.7.1-0e92d9e679-10c0.zip/node_modules/set-cookie-parser/",\
+        "packageDependencies": [\
+          ["set-cookie-parser", "npm:2.7.1"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -3223,6 +3282,15 @@ const RAW_RUNTIME_STATE =
         "packagePeers": [\
           "@types/typescript",\
           "typescript"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["turbo-stream", [\
+      ["npm:2.4.0", {\
+        "packageLocation": "../../.yarn/berry/cache/turbo-stream-npm-2.4.0-e0cec53097-10c0.zip/node_modules/turbo-stream/",\
+        "packageDependencies": [\
+          ["turbo-stream", "npm:2.4.0"]\
         ],\
         "linkType": "HARD"\
       }]\

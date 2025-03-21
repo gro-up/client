@@ -1,4 +1,5 @@
 import { ChevronDown } from 'lucide-react';
+import { Link } from 'react-router';
 
 import {
   SidebarMenuItem,
@@ -15,15 +16,11 @@ import {
 
 import { DROPDOWN_PATHS } from './paths';
 import { useLogout } from '@/hooks/auth/use-logout';
-import { Link } from 'react-router';
+import { useProfile } from '@/hooks/auth/use-profile';
 
-interface UserMenuProps {
-  photoURL: string;
-  displayName: string;
-}
-
-export const UserMenu = ({ photoURL, displayName }: UserMenuProps) => {
+export const UserMenu = () => {
   const { logoutHandler } = useLogout();
+  const { photo, displayName } = useProfile();
 
   return (
     <SidebarMenuItem>
@@ -31,9 +28,9 @@ export const UserMenu = ({ photoURL, displayName }: UserMenuProps) => {
         <DropdownMenuTrigger asChild>
           <SidebarMenuButton>
             <Avatar>
-              <AvatarImage src={photoURL} />
+              <AvatarImage src={photo || undefined} />
             </Avatar>
-            <span>{displayName}</span>
+            <span>{displayName || '사용자'}</span>
 
             <ChevronDown className="ml-auto" />
           </SidebarMenuButton>

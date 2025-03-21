@@ -42,6 +42,7 @@ const RAW_RUNTIME_STATE =
           ["@vitejs/plugin-react-swc", "virtual:2d95c3c4c6fd6bb41f5c091033d38a206c62c9cd7002aa8b7f88583dcb6dfe5b0a5152dda8091bb0083fd64d2aaf579056dcbf0a4f273b562f4cd7d6b1d3188c#npm:3.8.1"],\
           ["class-variance-authority", "npm:0.7.1"],\
           ["clsx", "npm:2.1.1"],\
+          ["date-fns", "npm:4.1.0"],\
           ["eslint", "virtual:2d95c3c4c6fd6bb41f5c091033d38a206c62c9cd7002aa8b7f88583dcb6dfe5b0a5152dda8091bb0083fd64d2aaf579056dcbf0a4f273b562f4cd7d6b1d3188c#npm:9.22.0"],\
           ["eslint-plugin-react-hooks", "virtual:2d95c3c4c6fd6bb41f5c091033d38a206c62c9cd7002aa8b7f88583dcb6dfe5b0a5152dda8091bb0083fd64d2aaf579056dcbf0a4f273b562f4cd7d6b1d3188c#npm:5.2.0"],\
           ["eslint-plugin-react-refresh", "virtual:2d95c3c4c6fd6bb41f5c091033d38a206c62c9cd7002aa8b7f88583dcb6dfe5b0a5152dda8091bb0083fd64d2aaf579056dcbf0a4f273b562f4cd7d6b1d3188c#npm:0.4.19"],\
@@ -3678,6 +3679,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["date-fns", [\
+      ["npm:4.1.0", {\
+        "packageLocation": "../../.yarn/berry/cache/date-fns-npm-4.1.0-764604ee0f-10c0.zip/node_modules/date-fns/",\
+        "packageDependencies": [\
+          ["date-fns", "npm:4.1.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["debug", [\
       ["npm:4.4.0", {\
         "packageLocation": "../../.yarn/berry/cache/debug-npm-4.4.0-f6efe76023-10c0.zip/node_modules/debug/",\
@@ -4991,6 +5001,7 @@ const RAW_RUNTIME_STATE =
           ["@vitejs/plugin-react-swc", "virtual:2d95c3c4c6fd6bb41f5c091033d38a206c62c9cd7002aa8b7f88583dcb6dfe5b0a5152dda8091bb0083fd64d2aaf579056dcbf0a4f273b562f4cd7d6b1d3188c#npm:3.8.1"],\
           ["class-variance-authority", "npm:0.7.1"],\
           ["clsx", "npm:2.1.1"],\
+          ["date-fns", "npm:4.1.0"],\
           ["eslint", "virtual:2d95c3c4c6fd6bb41f5c091033d38a206c62c9cd7002aa8b7f88583dcb6dfe5b0a5152dda8091bb0083fd64d2aaf579056dcbf0a4f273b562f4cd7d6b1d3188c#npm:9.22.0"],\
           ["eslint-plugin-react-hooks", "virtual:2d95c3c4c6fd6bb41f5c091033d38a206c62c9cd7002aa8b7f88583dcb6dfe5b0a5152dda8091bb0083fd64d2aaf579056dcbf0a4f273b562f4cd7d6b1d3188c#npm:5.2.0"],\
           ["eslint-plugin-react-refresh", "virtual:2d95c3c4c6fd6bb41f5c091033d38a206c62c9cd7002aa8b7f88583dcb6dfe5b0a5152dda8091bb0083fd64d2aaf579056dcbf0a4f273b562f4cd7d6b1d3188c#npm:0.4.19"],\

@@ -14,7 +14,7 @@ export const PrivateLayout = () => {
   return (
     <SidebarProvider>
       <SideMenubar />
-      <main>
+      <main className="flex flex-col gap-4 bg-gray-200 w-full">
         <SidebarTrigger />
         <Outlet />
       </main>

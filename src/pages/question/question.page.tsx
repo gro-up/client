@@ -1,5 +1,13 @@
+import { QuestionList } from '@/components/question';
+
 const QuizPage = () => {
-  return <div>QuizPage</div>;
+  return (
+    <div>
+      <main>
+        <QuestionList />
+      </main>
+    </div>
+  );
 };
 
 export default QuizPage;

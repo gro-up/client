@@ -8,3 +8,4 @@ export * from './sheet';
 export * from './skeleton';
 export * from './tooltip';
 export * from './dropdown-menu';
+export * from './label';

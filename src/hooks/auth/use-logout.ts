@@ -10,7 +10,7 @@ export const useLogout = () => {
   const { removeCookie } = useCookies();
   const navigate = useNavigate();
 
-  const logout = async () => {
+  const logoutHandler = async () => {
     try {
       await signOut(firebaseAuth);
       removeCookie(ON_STEP_TOKEN_NAME);
@@ -24,5 +24,5 @@ export const useLogout = () => {
     }
   };
 
-  return { logout };
+  return { logoutHandler };
 };

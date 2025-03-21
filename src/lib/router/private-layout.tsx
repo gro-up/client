@@ -1,5 +1,8 @@
-import { ON_STEP_TOKEN_NAME, useCookies } from '@/hooks/auth/use-cookies';
 import { Navigate, Outlet } from 'react-router';
+import { ON_STEP_TOKEN_NAME, useCookies } from '@/hooks/auth/use-cookies';
+
+import { SidebarProvider, SidebarTrigger } from '@/components/shadcn-ui';
+import { SideMenubar } from '@/components/ui';
 
 export const PrivateLayout = () => {
   const { cookies } = useCookies();
@@ -8,5 +11,13 @@ export const PrivateLayout = () => {
     return <Navigate to="/" />;
   }
 
-  return <Outlet />;
+  return (
+    <SidebarProvider>
+      <SideMenubar />
+      <main>
+        <SidebarTrigger />
+        <Outlet />
+      </main>
+    </SidebarProvider>
+  );
 };

@@ -56,7 +56,7 @@ const Content = () => {
                     <SidebarMenuItem key={child.title} className="list-none">
                       <SidebarMenuButton className="flex items-center gap-2 text-gray-500">
                         {child.icon && <child.icon />}
-                        {child.title === '로그아웃' ? (
+                        {child.type === 'event' ? (
                           <span onClick={logoutHandler}>{child.title}</span>
                         ) : (
                           <Link to={child.url ?? ''}>{child.title}</Link>

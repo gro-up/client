@@ -2,9 +2,11 @@ import { createBrowserRouter, Navigate, RouterProvider } from 'react-router';
 import { PublicLayout } from './public-layout';
 import { PrivateLayout } from './private-layout';
 import { ROUTER_PATH } from './constants';
-import LandingPage from '@/pages/landing/landing.page';
 
+import LandingPage from '@/pages/landing/landing.page';
 import DashboardPage from '@/pages/dashboard/dashboard.page';
+import QuestionPage from '@/pages/question/question';
+import SchedulePage from '@/pages/schedule/schedule.page';
 
 const browserRouter = createBrowserRouter([
   {
@@ -20,7 +22,11 @@ const browserRouter = createBrowserRouter([
   {
     path: '/on-step',
     element: <PrivateLayout />,
-    children: [{ path: ROUTER_PATH.PRIVATE.DASHBOARD, element: <DashboardPage /> }],
+    children: [
+      { path: ROUTER_PATH.PRIVATE.DASHBOARD, element: <DashboardPage /> },
+      { path: ROUTER_PATH.PRIVATE.QUESTION, element: <QuestionPage /> },
+      { path: ROUTER_PATH.PRIVATE.SCHEDULE, element: <SchedulePage /> },
+    ],
   },
   {
     path: '*',

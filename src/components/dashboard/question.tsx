@@ -1,5 +1,5 @@
+import { Puzzle } from 'lucide-react';
 import { ShadowContainer } from '../ui/shadow-container';
-import { PuzzleIcon } from '@/components/icons';
 import { Header } from '../ui/header';
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../shadcn-ui';
@@ -7,7 +7,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '..
 export const Question = () => {
   return (
     <ShadowContainer className="flex flex-col gap-2  w-80 min-w-[350px] min-h-[100px] p-4">
-      <Header headerTitle="오늘의 문제" IconComponent={PuzzleIcon} />
+      <Header headerTitle="오늘의 문제" IconComponent={Puzzle} />
 
       <Accordion type="single" collapsible>
         <AccordionItem value="item-1">

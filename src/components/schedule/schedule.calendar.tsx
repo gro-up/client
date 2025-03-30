@@ -1,5 +1,5 @@
 import { Calendar } from '@/components/shadcn-ui';
-import { useSchedule } from '@/hooks/ui';
+import { useSchedule } from '@/hooks/schedule';
 
 export const ScheduleCalendar = () => {
   const { date, handleDate } = useSchedule();

@@ -6,7 +6,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '..
 
 export const Question = () => {
   return (
-    <ShadowContainer className="flex flex-col gap-2 w-[350px] min-h-[100px] p-4">
+    <ShadowContainer className="flex flex-col gap-2  w-80 min-w-[350px] min-h-[100px] p-4">
       <Header headerTitle="오늘의 문제" IconComponent={PuzzleIcon} />
 
       <Accordion type="single" collapsible>

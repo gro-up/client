@@ -14,3 +14,6 @@ export * from './table';
 export * from './calendar';
 export * from './accordion';
 export * from './dialog';
+export * from './popover';
+export * from './scroll-area';
+export * from './textarea';

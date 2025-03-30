@@ -18,7 +18,7 @@ export const PrivateLayout = () => {
 
   return (
     <main className="flex flex-col gap-4 bg-gray-200 w-full h-screen pt-10">
-      <nav className="fixed bottom-0 w-[350px] h-[50px] grid grid-cols-3  left-1/2 -translate-x-1/2 bg-gray-100 rounded-t-md z-50 overflow-hidden">
+      <nav className="fixed bottom-0  w-80 min-w-[350px] h-[50px] grid grid-cols-3  left-1/2 -translate-x-1/2 bg-gray-100 rounded-t-md z-50 overflow-hidden">
         <NavLink className={linkHandler} to={ROUTER_PATH.PRIVATE.DASHBOARD}>
           대시보드
         </NavLink>

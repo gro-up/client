@@ -1,13 +1,7 @@
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-  TableCaption,
-} from '@/components/shadcn-ui';
-import { useSchedule } from '@/hooks/ui';
+import { Table, TableBody, TableCell, TableRow } from '@/components/shadcn-ui';
+import { useSchedule } from '@/hooks/schedule';
+
+import { ScheduleForm } from './schedule.form';
 import { format } from 'date-fns';
 
 export const mockData = [
@@ -41,7 +35,7 @@ export const ScheduleTable = () => {
   const { date } = useSchedule();
 
   return (
-    <>
+    <div className="flex flex-col gap-2">
       <div className="flex justify-center items-center border-t border-gray-200" />
       {mockData.filter(item => item.time.getDate() === date.getDate()).length > 0 ? (
         <Table>
@@ -59,10 +53,12 @@ export const ScheduleTable = () => {
           </TableBody>
         </Table>
       ) : (
-        <TableCaption className="text-center">
+        <div className="text-center text-gray-500 w-full h-[50px] flex justify-center items-center">
           <p>일정이 없습니다.</p>
-        </TableCaption>
+        </div>
       )}
-    </>
+
+      <ScheduleForm />
+    </div>
   );
 };

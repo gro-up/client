@@ -18,7 +18,7 @@ export const UserMenu = () => {
   const { photo, displayName } = useProfile();
 
   return (
-    <div className="flex w-[350px] justify-end ">
+    <div className="flex w-80 min-w-[350px] justify-end ">
       <DropdownMenu>
         <DropdownMenuTrigger
           asChild

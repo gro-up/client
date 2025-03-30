@@ -15,7 +15,7 @@ export const DDay = () => {
   const dDay = differenceInDays(filteredDate[0].time, today);
 
   return (
-    <ShadowContainer className="flex flex-col gap-2 w-[350px] min-h-[50px]">
+    <ShadowContainer className="flex flex-col gap-2 w-80 min-w-[350px]  min-h-[50px]">
       <div className="flex gap-2 w-full justify-between items-center">
         <Badge className="p-4 h-full bg-red-500 rounded-br-none rounded-tr-full">
           <HourglassNotDone className="w-5 h-5" />

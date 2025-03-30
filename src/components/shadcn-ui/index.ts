@@ -12,3 +12,5 @@ export * from './label';
 export * from './badge';
 export * from './table';
 export * from './calendar';
+export * from './accordion';
+export * from './dialog';

@@ -4,14 +4,12 @@ import { Schedule } from '@/components/dashboard/schedule';
 
 const DashboardPage = () => {
   return (
-    <div className="flex">
-      <div className="flex flex-col gap-4 w-full h-full justify-center items-center">
-        <Question />
+    <div className="flex flex-col gap-4 w-full h-full justify-start items-center">
+      <Question />
 
-        <DDay />
+      <DDay />
 
-        <Schedule />
-      </div>
+      <Schedule />
     </div>
   );
 };

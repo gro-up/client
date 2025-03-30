@@ -6,7 +6,7 @@ import { ScheduleProvider } from '@/lib/context';
 export const Schedule = () => {
   return (
     <>
-      <ShadowContainer className="flex flex-col gap-2 min-w-[450px] min-h-[100px] p-4">
+      <ShadowContainer className="flex flex-col gap-2 w-[350px] min-h-[500px] p-4">
         <ScheduleProvider>
           <ScheduleComponents.Calendar />
           <ScheduleComponents.Table />

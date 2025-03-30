@@ -24,6 +24,12 @@ export const mockData = [
     location: '서울 성동구',
   },
   {
+    time: new Date(2025, 2, 30, 23, 0),
+    company: 'K 컴퍼니',
+    status: '면접',
+    location: '서울 성동구',
+  },
+  {
     time: new Date(2025, 3, 1, 10, 0),
     company: 'C 컴퍼니',
     status: '면접',
@@ -36,16 +42,9 @@ export const ScheduleTable = () => {
 
   return (
     <>
+      <div className="flex justify-center items-center border-t border-gray-200" />
       {mockData.filter(item => item.time.getDate() === date.getDate()).length > 0 ? (
         <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead className="w-[100px]">시간</TableHead>
-              <TableHead>회사</TableHead>
-              <TableHead>상태</TableHead>
-              <TableHead className="text-right">장소</TableHead>
-            </TableRow>
-          </TableHeader>
           <TableBody>
             {mockData
               .filter(item => item.time.getDate() === date.getDate())
@@ -60,11 +59,9 @@ export const ScheduleTable = () => {
           </TableBody>
         </Table>
       ) : (
-        <Table>
-          <TableCaption className="text-center">
-            <p>일정이 없습니다.</p>
-          </TableCaption>
-        </Table>
+        <TableCaption className="text-center">
+          <p>일정이 없습니다.</p>
+        </TableCaption>
       )}
     </>
   );

@@ -6,10 +6,10 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '..
 
 export const Question = () => {
   return (
-    <ShadowContainer className="flex flex-col gap-2  w-80 min-w-[350px] min-h-[100px] p-4">
-      <Header headerTitle="오늘의 문제" IconComponent={Puzzle} />
+    <ShadowContainer className="flex flex-col gap-2  w-80 min-w-[350px] min-h-[100px] p-4 py-2">
+      <Header headerTitle="오늘의 문제" IconComponent={Puzzle} className="text-gray-500" />
 
-      <Accordion type="single" collapsible>
+      <Accordion type="single" collapsible className="flex justify-center items-center">
         <AccordionItem value="item-1">
           <AccordionTrigger>this는 JavaScript에서 어떻게 작동하는지 설명해주세요.</AccordionTrigger>
           <AccordionContent>Yes. It adheres to the WAI-ARIA design pattern.</AccordionContent>

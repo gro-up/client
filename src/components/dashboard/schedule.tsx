@@ -8,7 +8,7 @@ export const Schedule = () => {
   return (
     <>
       <ShadowContainer className="flex flex-col gap-2 w-80 min-w-[350px] min-h-[500px] p-4">
-        <Header headerTitle="일정" IconComponent={Calendar} />
+        <Header headerTitle="일정" IconComponent={Calendar} className="text-gray-500" />
         <ScheduleProvider>
           <ScheduleComponents.Calendar />
           <ScheduleComponents.Table />

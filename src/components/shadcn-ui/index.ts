@@ -11,3 +11,4 @@ export * from './dropdown-menu';
 export * from './label';
 export * from './badge';
 export * from './table';
+export * from './calendar';

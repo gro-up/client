@@ -3696,6 +3696,7 @@ __metadata:
     next-themes: "npm:^0.4.6"
     react: "npm:^19.0.0"
     react-cookie: "npm:^8.0.1"
+    react-day-picker: "npm:8.10.1"
     react-dom: "npm:^19.0.0"
     react-router: "npm:^7.4.0"
     sonner: "npm:^2.0.1"
@@ -3880,6 +3881,16 @@ __metadata:
   peerDependencies:
     react: ">= 16.3.0"
   checksum: 10c0/af6136c79129d7ffd78a399b169b814c5ea1f05324bfd5ca65e5361e7bdf66de7699fc6d2303641cd7d6c5cc3364b3682510a7a1bdc7f59a721afa01bf13b79f
+  languageName: node
+  linkType: hard
+
+"react-day-picker@npm:8.10.1":
+  version: 8.10.1
+  resolution: "react-day-picker@npm:8.10.1"
+  peerDependencies:
+    date-fns: ^2.28.0 || ^3.0.0
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: 10c0/a0ff28c4b61b3882e6a825b19e5679e2fdf3256cf1be8eb0a0c028949815c1ae5a6561474c2c19d231c010c8e0e0b654d3a322610881e0655abca05a2e03d9df
   languageName: node
   linkType: hard
 

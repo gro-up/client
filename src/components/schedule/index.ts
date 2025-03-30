@@ -1,7 +1,7 @@
+import { ScheduleCalendar } from './schedule.calendar';
 import { ScheduleTable } from './schedule.table';
-import { Switcher } from './schedule.switcher';
 
 export const ScheduleComponents = {
-  Switcher: Switcher,
+  Calendar: ScheduleCalendar,
   Table: ScheduleTable,
 };

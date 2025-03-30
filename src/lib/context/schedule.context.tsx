@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 
 export const ScheduleContext = createContext<{
-  isSelected: 'calendar' | 'list';
-  handleSelect: (type: 'calendar' | 'list') => void;
+  date: Date;
+  handleDate: (date: Date) => void;
 } | null>(null);

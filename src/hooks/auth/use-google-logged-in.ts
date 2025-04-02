@@ -22,7 +22,7 @@ export const useGoogleLoggedIn = () => {
 
       const token = credential.accessToken;
       setCookie(ON_STEP_TOKEN_NAME, token);
-      navigate(`/on-step/${ROUTER_PATH.PRIVATE.SCHEDULE}`);
+      navigate(`${ROUTER_PATH.PRIVATE.PARENT.APP}/${ROUTER_PATH.PRIVATE.CHILD.SCHEDULE}`);
     } catch (error) {
       toast.error('구글 로그인에 실패했습니다.');
 

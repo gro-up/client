@@ -1,6 +1,6 @@
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router';
-import { PublicLayout } from './public-layout';
-import { PrivateLayout } from './private-layout';
+import { PublicLayout } from '../../components/layouts/public-layout';
+import { PrivateLayout } from '../../components/layouts/private-layout';
 import { ROUTER_PATH } from './constants';
 
 import LandingPage from '@/pages/landing/landing.page';

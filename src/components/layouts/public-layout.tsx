@@ -1,6 +1,6 @@
 import { ON_STEP_TOKEN_NAME, useCookies } from '@/hooks/auth/use-cookies';
 import { Navigate, Outlet } from 'react-router';
-import { ROUTER_PATH } from './constants';
+import { ROUTER_PATH } from '../../lib/router/constants';
 
 export const PublicLayout = () => {
   const { cookies } = useCookies();

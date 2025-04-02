@@ -1,6 +1,6 @@
 import { Navigate, NavLink, Outlet } from 'react-router';
 import { ON_STEP_TOKEN_NAME, useCookies } from '@/hooks/auth/use-cookies';
-import { ROUTER_PATH } from './constants';
+import { ROUTER_PATH } from '../../lib/router/constants';
 
 const defaultCSS =
   'p-4 flex justify-center items-center  duration-300 ease-in-out cursor-pointer font-medium';

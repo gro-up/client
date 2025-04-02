@@ -21,7 +21,7 @@ const SIDEBAR_NAVIGATION_LIST = [
 
 export const Sidebar = () => {
   return (
-    <aside className="flex flex-col gap-4 w-[350px] ">
+    <aside className="flex flex-col gap-4 w-[350px] max-h-[776px] h-full p-4">
       <UserNavigation />
 
       <nav className="flex flex-col gap-6 pl-4">

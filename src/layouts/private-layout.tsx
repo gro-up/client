@@ -11,7 +11,7 @@ export const PrivateLayout = () => {
   }
 
   return (
-    <main className="flex gap-4 bg-gray-200 w-full h-screen pt-10">
+    <main className="flex items-center gap-4 bg-gray-200 w-full h-screen">
       <Sidebar />
 
       <Outlet />

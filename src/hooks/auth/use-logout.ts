@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router';
 import { toast } from 'sonner';
 
 import { useCookies, ON_STEP_TOKEN_NAME } from '@/hooks/auth/use-cookies';
-import { ROUTER_PATH } from '@/lib/router';
-import { firebaseAuth } from '@/lib/firebase/auth';
+import { ROUTER_PATH } from '@/router';
+import { firebaseAuth } from '@/firebase/auth';
 
 export const useLogout = () => {
   const { removeCookie } = useCookies();

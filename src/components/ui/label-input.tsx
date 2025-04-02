@@ -1,5 +1,5 @@
-import { Label, Input } from '@/components/shadcn-ui';
-import { cn } from '@/lib/shadcn-ui';
+import { Label, Input } from '@/components/shadcn';
+import { cn } from '@/utils/shadcn';
 
 interface LabelInputProps extends React.ComponentProps<'input'> {
   label: string;

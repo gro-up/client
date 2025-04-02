@@ -1,4 +1,4 @@
-import { cn } from '@/lib/shadcn-ui';
+import { cn } from '@/utils/shadcn';
 
 export const ShadowContainer = ({
   children,

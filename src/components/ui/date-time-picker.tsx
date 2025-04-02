@@ -1,6 +1,6 @@
 import { DayPicker } from 'react-day-picker';
 import { ko } from 'date-fns/locale';
-import { Input } from '../shadcn-ui';
+import { Input } from '../shadcn';
 import { format } from 'date-fns';
 
 interface DateTimePickerProps {

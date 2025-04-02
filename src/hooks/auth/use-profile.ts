@@ -3,23 +3,30 @@ import { onAuthStateChanged } from 'firebase/auth';
 
 import { useState, useEffect } from 'react';
 
+const defaultProfile = {
+  photo: '',
+  displayName: '',
+  email: '',
+};
+
 export const useProfile = () => {
-  const [photo, setPhoto] = useState<string | null>(null);
-  const [displayName, setDisplayName] = useState<string | null>(null);
+  const [profile, setProfile] = useState<typeof defaultProfile>(defaultProfile);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(firebaseAuth, user => {
-      if (user) {
-        setPhoto(user.photoURL);
-        setDisplayName(user.displayName);
+    const unsubscribe = onAuthStateChanged(firebaseAuth, profile => {
+      if (profile) {
+        setProfile({
+          photo: profile.photoURL || '',
+          displayName: profile.displayName || '',
+          email: profile.email || '',
+        });
       } else {
-        setPhoto(null);
-        setDisplayName(null);
+        setProfile(defaultProfile);
       }
     });
 
     return () => unsubscribe();
   }, []);
 
-  return { photo, displayName };
+  return { profile };
 };

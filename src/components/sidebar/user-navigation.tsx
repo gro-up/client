@@ -14,22 +14,28 @@ import { DROPDOWN_PATHS } from '@/utils/navigation/paths';
 import { useLogout, useProfile } from '@/hooks/auth';
 
 export const UserNavigation = () => {
-  const { photo, displayName } = useProfile();
+  const { profile } = useProfile();
 
   return (
-    <div className="flex w-80 min-w-[350px] justify-end ">
+    <div className="w-full ">
       <DropdownMenu>
         <DropdownMenuTrigger
           asChild
           className="cursor-pointer hover:bg-transparent focus:border-transparent focus:focus:ring-0"
         >
-          <Button variant="ghost">
-            <Avatar>
-              <AvatarImage src={photo || undefined} />
+          <Button variant="ghost" className="w-full">
+            <Avatar className="w-12 h-12 mr-3">
+              <AvatarImage src={profile.photo || undefined} />
             </Avatar>
-            <span>{displayName || '사용자'}</span>
 
-            <ChevronDown className="ml-auto" />
+            <div className="flex justify-between items-center w-full">
+              <div className="flex flex-col gap-1 text-left">
+                <span className="text-sm">{profile.displayName || '사용자'}</span>
+                <span className="text-xs text-gray-500">{profile.email}</span>
+              </div>
+
+              <ChevronDown />
+            </div>
           </Button>
         </DropdownMenuTrigger>
         <UserNavigation.Content />

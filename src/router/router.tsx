@@ -4,7 +4,10 @@ import { PrivateLayout } from '@/layouts/private-layout';
 import { ROUTER_PATH } from './paths';
 
 import LandingPage from '@/pages/landing-page';
+
 import SchedulePage from '@/pages/schedule-page';
+import ScheduleDetail from '@/pages/schedule-detail';
+
 import CompanyPage from '@/pages/company-page';
 import RetrospectivePage from '@/pages/retrospective-page';
 
@@ -24,11 +27,17 @@ const browserRouter = createBrowserRouter([
     element: <PrivateLayout />,
     children: [
       {
-        path: ROUTER_PATH.PRIVATE.CHILD.SCHEDULE,
+        path: `${ROUTER_PATH.PRIVATE.CHILD.SCHEDULE}`,
         element: <SchedulePage />,
+        children: [
+          {
+            path: ':id',
+            element: <ScheduleDetail />,
+          },
+        ],
       },
       {
-        path: ROUTER_PATH.PRIVATE.CHILD.COMPANY,
+        path: `${ROUTER_PATH.PRIVATE.CHILD.COMPANY}/:id`,
         element: <CompanyPage />,
       },
       {

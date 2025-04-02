@@ -32,7 +32,7 @@ export const Sidebar = () => {
             className={({ isActive }) =>
               linkHandler({
                 isActive,
-                activeCSS: 'border-l-2 border-blue-400 pl-2',
+                activeCSS: 'border-l-2 border-blue-400 pl-2  ',
                 defaultCSS: 'font-semibold transition-all duration-300',
               })
             }

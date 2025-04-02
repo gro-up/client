@@ -1,9 +1,8 @@
 interface LinkHandlerProps {
   isActive: boolean;
+  activeCSS: string;
+  defaultCSS: string;
 }
 
-export const linkHandler = (
-  { isActive }: LinkHandlerProps,
-  activeCSS: string = '',
-  defaultCSS: string = ''
-) => (isActive ? `${activeCSS} ${defaultCSS}` : defaultCSS);
+export const linkHandler = ({ isActive, activeCSS, defaultCSS }: LinkHandlerProps) =>
+  isActive ? `${activeCSS} ${defaultCSS}` : defaultCSS;

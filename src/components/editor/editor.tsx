@@ -21,8 +21,6 @@ function Placeholder() {
 }
 
 export default function Editor() {
-  console.log(EDITOR_TRANSFORMERS);
-
   return (
     <LexicalComposer initialConfig={editorConfig}>
       <div className="editor-container">

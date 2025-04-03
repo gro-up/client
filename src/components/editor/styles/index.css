@@ -262,29 +262,25 @@ h1 {
 
 .editor-quote {
   margin: 0;
-  margin-left: 20px;
   font-size: 15px;
   color: rgb(101, 103, 107);
   border-left-color: rgb(206, 208, 212);
   border-left-width: 4px;
   border-left-style: solid;
-  padding-left: 16px;
 }
 
 .editor-list-ol {
   padding: 0;
   margin: 0;
-  margin-left: 16px;
 }
 
 .editor-list-ul {
   padding: 0;
   margin: 0;
-  margin-left: 16px;
 }
 
 .editor-listitem {
-  margin: 8px 32px 8px 32px;
+  margin: 8px 32px 8px 16px;
 }
 
 .editor-nested-listitem {
@@ -626,86 +622,7 @@ i.chevron-down {
   vertical-align: -0.25em;
 }
 
-i.undo {
-  background-image: url(images/icons/arrow-counterclockwise.svg);
-}
-
-i.redo {
-  background-image: url(images/icons/arrow-clockwise.svg);
-}
-
-.icon.paragraph {
-  background-image: url(images/icons/text-paragraph.svg);
-}
-
-.icon.large-heading,
-.icon.h1 {
-  background-image: url(images/icons/type-h1.svg);
-}
-
-.icon.small-heading,
-.icon.h2 {
-  background-image: url(images/icons/type-h2.svg);
-}
-
-.icon.bullet-list,
-.icon.ul {
-  background-image: url(images/icons/list-ul.svg);
-}
-
-.icon.numbered-list,
-.icon.ol {
-  background-image: url(images/icons/list-ol.svg);
-}
-
-.icon.quote {
-  background-image: url(images/icons/chat-square-quote.svg);
-}
-
-.icon.code {
-  background-image: url(images/icons/code.svg);
-}
-
-i.bold {
-  background-image: url(images/icons/type-bold.svg);
-}
-
-i.italic {
-  background-image: url(images/icons/type-italic.svg);
-}
-
-i.underline {
-  background-image: url(images/icons/type-underline.svg);
-}
-
-i.strikethrough {
-  background-image: url(images/icons/type-strikethrough.svg);
-}
-
-i.code {
-  background-image: url(images/icons/code.svg);
-}
-
-i.link {
-  background-image: url(images/icons/link.svg);
-}
-
-i.left-align {
-  background-image: url(images/icons/text-left.svg);
-}
-
-i.center-align {
-  background-image: url(images/icons/text-center.svg);
-}
-
-i.right-align {
-  background-image: url(images/icons/text-right.svg);
-}
-
-i.justify-align {
-  background-image: url(images/icons/justify.svg);
-}
-
-i.markdown {
-  background-image: url(images/icons/markdown.svg);
+.editor-input ul,
+.editor-input ol {
+  list-style: revert;
 }

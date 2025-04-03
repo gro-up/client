@@ -26,6 +26,8 @@ import {
 } from 'lucide-react';
 import { blockTypeToBlockName } from '@/utils/editor/utils';
 
+import './styles/index.css';
+
 interface BlockOptionsDropdownListProps {
   editor: LexicalEditor;
   blockType: keyof typeof blockTypeToBlockName;

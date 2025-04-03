@@ -1,3 +1,4 @@
+import { HeadingNode } from '@lexical/rich-text';
 import type { ElementTransformer, Transformer } from '@lexical/markdown';
 import type { LexicalNode } from 'lexical';
 
@@ -33,9 +34,18 @@ export const HR: ElementTransformer = {
   type: 'element',
 };
 
+const HEADING_TRANSFORMER = { ...ELEMENT_TRANSFORMERS[0], regExp: /^(#{1,3})\s/ };
+
+const FILTERED_ELEMENT_TRANSFORMERS = ELEMENT_TRANSFORMERS.filter(transformer => {
+  return !transformer.dependencies.some(dependency => {
+    return dependency === HeadingNode;
+  });
+});
+
 export const EDITOR_TRANSFORMERS: Array<Transformer> = [
   HR,
-  ...ELEMENT_TRANSFORMERS,
+  HEADING_TRANSFORMER,
+  ...FILTERED_ELEMENT_TRANSFORMERS,
   ...TEXT_FORMAT_TRANSFORMERS,
   ...TEXT_MATCH_TRANSFORMERS,
 ];

@@ -6,10 +6,9 @@ import { AutoFocusPlugin } from '@lexical/react/LexicalAutoFocusPlugin';
 import { LinkPlugin } from '@lexical/react/LexicalLinkPlugin';
 import { ListPlugin } from '@lexical/react/LexicalListPlugin';
 import { MarkdownShortcutPlugin } from '@lexical/react/LexicalMarkdownShortcutPlugin';
-import { TRANSFORMERS } from '@lexical/markdown';
 import { LexicalErrorBoundary } from '@lexical/react/LexicalErrorBoundary';
 
-import { CodeHighlightPlugin } from '@/utils/editor/plugins';
+import { CodeHighlightPlugin, EDITOR_TRANSFORMERS } from '@/utils/editor/plugins';
 import { editorConfig } from '@/utils/editor/utils';
 
 import ToolbarPlugin from './toolbar';
@@ -22,6 +21,8 @@ function Placeholder() {
 }
 
 export default function Editor() {
+  console.log(EDITOR_TRANSFORMERS);
+
   return (
     <LexicalComposer initialConfig={editorConfig}>
       <div className="editor-container">
@@ -35,7 +36,7 @@ export default function Editor() {
           <AutoFocusPlugin />
           <ListPlugin />
           <LinkPlugin />
-          <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
+          <MarkdownShortcutPlugin transformers={EDITOR_TRANSFORMERS} />
           <CodeHighlightPlugin />
         </div>
         <ActionsPlugin />

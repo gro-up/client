@@ -4,6 +4,7 @@ import { ListItemNode, ListNode } from '@lexical/list';
 import { CodeHighlightNode, CodeNode } from '@lexical/code';
 import { AutoLinkNode, LinkNode } from '@lexical/link';
 import { EditorTheme } from '@/utils/editor/theme';
+import { HorizontalRuleNode } from '@lexical/react/LexicalHorizontalRuleNode';
 
 export const editorConfig = {
   namespace: 'Editor',
@@ -14,6 +15,7 @@ export const editorConfig = {
   },
   // Any custom nodes go here
   nodes: [
+    HorizontalRuleNode,
     HeadingNode,
     ListNode,
     ListItemNode,

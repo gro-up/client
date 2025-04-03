@@ -18,27 +18,15 @@ import { Bold, ChevronDown, Code, Italic, Link, Strikethrough, Underline } from 
 
 import './styles/index.css';
 
-import { getSelectedNode } from '@/utils/editor/utils';
+import {
+  blockTypeToBlockIcon,
+  blockTypeToBlockName,
+  getSelectedNode,
+  LOW_PRIORITY,
+  supportedBlockTypes,
+} from '@/utils/editor/utils';
+
 import { Select } from './select';
-
-const LowPriority = 1;
-
-const supportedBlockTypes = new Set(['paragraph', 'quote', 'code', 'h1', 'h2', 'ul', 'ol']);
-
-const blockTypeToBlockName = {
-  code: 'Code Block',
-  h1: 'Heading 1',
-  h2: 'Heading 2',
-  h3: 'Heading 3',
-  h4: 'Heading 4',
-  h5: 'Heading 5',
-  h6: 'Heading 6',
-  ol: 'Numbered List',
-  paragraph: 'Normal',
-  quote: 'Quote',
-  ul: 'Bulleted List',
-};
-
 import { Divider } from './divider';
 import { FloatingLinkEditor } from './floating-link-editor';
 import { BlockOptionsDropdownList } from './block-options-dropdown-list';
@@ -110,7 +98,7 @@ export default function ToolbarPlugin() {
           updateToolbar();
           return false;
         },
-        LowPriority
+        LOW_PRIORITY
       )
     );
   }, [editor, updateToolbar]);
@@ -138,17 +126,22 @@ export default function ToolbarPlugin() {
     }
   }, [editor, isLink]);
 
+  const BlockTypeIcon = blockTypeToBlockIcon[blockType];
+
   return (
     <div className="toolbar" ref={toolbarRef}>
       {supportedBlockTypes.has(blockType) && (
         <>
           <button
-            className="toolbar-item block-controls"
+            className="toolbar-item block-controls flex justify-center items-center "
             onClick={() => setShowBlockOptionsDropDown(!showBlockOptionsDropDown)}
             aria-label="Formatting Options"
           >
-            <span className={'icon block-type ' + blockType} />
-            <span className="text">{blockTypeToBlockName[blockType]}</span>
+            <div className="flex justify-center items-center gap-2">
+              <BlockTypeIcon className="w-4 h-4" />
+              <span className="text">{blockTypeToBlockName[blockType]}</span>
+            </div>
+
             <ChevronDown className="chevron-down w-4 h-4 text-gray-500" />
           </button>
           {showBlockOptionsDropDown &&

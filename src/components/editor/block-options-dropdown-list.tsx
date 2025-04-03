@@ -14,11 +14,21 @@ import {
 import { $createHeadingNode, $createQuoteNode } from '@lexical/rich-text';
 import { $createCodeNode } from '@lexical/code';
 
-import { Code, Heading1, Heading2, List, ListOrdered, Pilcrow, Quote } from 'lucide-react';
+import {
+  Code,
+  Heading1,
+  Heading2,
+  Heading3,
+  List,
+  ListOrdered,
+  Pilcrow,
+  Quote,
+} from 'lucide-react';
+import { blockTypeToBlockName } from '@/utils/editor/utils';
 
 interface BlockOptionsDropdownListProps {
   editor: LexicalEditor;
-  blockType: string;
+  blockType: keyof typeof blockTypeToBlockName;
   toolbarRef: React.RefObject<HTMLDivElement | null>;
   setShowBlockOptionsDropDown: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -88,8 +98,21 @@ export const BlockOptionsDropdownList = ({
     setShowBlockOptionsDropDown(false);
   };
 
-  const formatSmallHeading = () => {
+  const formatHeading2 = () => {
     if (blockType !== 'h2') {
+      editor.update(() => {
+        const selection = $getSelection();
+
+        if ($isRangeSelection(selection)) {
+          $wrapNodes(selection, () => $createHeadingNode('h2'));
+        }
+      });
+    }
+    setShowBlockOptionsDropDown(false);
+  };
+
+  const formatHeading3 = () => {
+    if (blockType !== 'h3') {
       editor.update(() => {
         const selection = $getSelection();
 
@@ -149,38 +172,44 @@ export const BlockOptionsDropdownList = ({
     <div className="dropdown" ref={dropDownRef}>
       <button className="item justify-center items-center gap-2" onClick={formatParagraph}>
         <Pilcrow className="w-4 h-4" />
-        <span className="text">Normal</span>
+        <span className="text">{blockTypeToBlockName.paragraph}</span>
         {blockType === 'paragraph' && <span className="active" />}
       </button>
       <button className="item justify-center items-center gap-2" onClick={formatLargeHeading}>
         <Heading1 className="w-4 h-4" />
-        <span className="text">Large Heading</span>
+        <span className="text">{blockTypeToBlockName.h1}</span>
         {blockType === 'h1' && <span className="active" />}
       </button>
-      <button className="item justify-center items-center gap-2" onClick={formatSmallHeading}>
+      <button className="item justify-center items-center gap-2" onClick={formatHeading2}>
         <Heading2 className="w-4 h-4" />
-        <span className="text">Small Heading</span>
+        <span className="text">{blockTypeToBlockName.h2}</span>
         {blockType === 'h2' && <span className="active" />}
+      </button>
+
+      <button className="item justify-center items-center gap-2" onClick={formatHeading3}>
+        <Heading3 className="w-4 h-4" />
+        <span className="text">{blockTypeToBlockName.h3}</span>
+        {blockType === 'h3' && <span className="active" />}
       </button>
 
       <button className="item justify-center items-center gap-2" onClick={formatBulletList}>
         <List className="w-4 h-4" />
-        <span className="text">Bullet List</span>
+        <span className="text">{blockTypeToBlockName.ul}</span>
         {blockType === 'ul' && <span className="active" />}
       </button>
       <button className="item justify-center items-center gap-2" onClick={formatNumberedList}>
         <ListOrdered className="w-4 h-4" />
-        <span className="text">Numbered List</span>
+        <span className="text">{blockTypeToBlockName.ol}</span>
         {blockType === 'ol' && <span className="active" />}
       </button>
       <button className="item justify-center items-center gap-2" onClick={formatQuote}>
         <Quote className="w-4 h-4" />
-        <span className="text">Quote</span>
+        <span className="text">{blockTypeToBlockName.quote}</span>
         {blockType === 'quote' && <span className="active" />}
       </button>
       <button className="item justify-center items-center gap-2" onClick={formatCode}>
         <Code className="w-4 h-4" />
-        <span className="text">Code Block</span>
+        <span className="text">{blockTypeToBlockName.code}</span>
         {blockType === 'code' && <span className="active" />}
       </button>
     </div>

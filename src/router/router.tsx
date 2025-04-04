@@ -37,7 +37,7 @@ const browserRouter = createBrowserRouter([
         ],
       },
       {
-        path: `${ROUTER_PATH.PRIVATE.CHILD.COMPANY}/:id`,
+        path: `${ROUTER_PATH.PRIVATE.CHILD.COMPANY}`,
         element: <CompanyPage />,
       },
       {

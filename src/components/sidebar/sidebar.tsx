@@ -11,7 +11,7 @@ const SIDEBAR_NAVIGATION_LIST = [
   },
   {
     path: ROUTER_PATH.PRIVATE.CHILD.COMPANY,
-    label: '회사',
+    label: '관심 기업',
   },
   {
     path: ROUTER_PATH.PRIVATE.CHILD.RETROSPECTIVE,

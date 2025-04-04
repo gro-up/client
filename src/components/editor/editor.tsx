@@ -12,7 +12,6 @@ import { CodeHighlightPlugin, EDITOR_TRANSFORMERS } from '@/utils/editor/plugins
 import { editorConfig } from '@/utils/editor/utils';
 
 import ToolbarPlugin from './toolbar';
-import ActionsPlugin from './actions';
 
 import './styles/index.css';
 
@@ -37,7 +36,6 @@ export default function Editor() {
           <MarkdownShortcutPlugin transformers={EDITOR_TRANSFORMERS} />
           <CodeHighlightPlugin />
         </div>
-        <ActionsPlugin />
       </div>
     </LexicalComposer>
   );

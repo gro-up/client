@@ -1,5 +1,9 @@
-import { ScheduleHeader, ScheduleList } from '@/components/schedule';
-import { Outlet } from 'react-router';
+import {
+  ScheduleHeader,
+  ScheduleList,
+  ScheduleDetailContent,
+  ScheduleDetailHeader,
+} from '@/components/schedule';
 
 export default function SchedulePage() {
   return (
@@ -9,7 +13,10 @@ export default function SchedulePage() {
         <ScheduleList />
       </div>
 
-      <Outlet />
+      <main className="bg-gray-50 w-[540px] rounded-md h-full max-h-[776px] p-3">
+        <ScheduleDetailHeader />
+        <ScheduleDetailContent />
+      </main>
     </>
   );
 }

@@ -7,7 +7,7 @@ export const PublicLayout = () => {
 
   if (cookies[ON_STEP_TOKEN_NAME]) {
     return (
-      <Navigate to={`${ROUTER_PATH.PRIVATE.PARENT.APP}/${ROUTER_PATH.PRIVATE.CHILD.SCHEDULE}`} />
+      <Navigate to={`${ROUTER_PATH.PRIVATE.PARENT.APP}/${ROUTER_PATH.PRIVATE.CHILD.SCHEDULE}/1`} />
     );
   }
 

@@ -11,10 +11,12 @@ export const PrivateLayout = () => {
   }
 
   return (
-    <main className="flex items-center gap-4 bg-gray-200 w-full h-screen">
+    <main className="flex justify-center items-center gap-4 bg-gray-200 w-full h-screen">
       <Sidebar />
 
-      <Outlet />
+      <div className="flex justify-center items-center w-[900px] h-full max-h-[776px] rounded-md gap-2 relative">
+        <Outlet />
+      </div>
     </main>
   );
 };

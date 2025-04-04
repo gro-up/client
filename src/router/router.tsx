@@ -1,4 +1,4 @@
-import { createBrowserRouter, Navigate, RouterProvider } from 'react-router';
+import { createBrowserRouter, RouterProvider } from 'react-router';
 import { PublicLayout } from '@/layouts/public-layout';
 import { PrivateLayout } from '@/layouts/private-layout';
 import { ROUTER_PATH } from './paths';
@@ -6,10 +6,10 @@ import { ROUTER_PATH } from './paths';
 import LandingPage from '@/pages/landing-page';
 
 import SchedulePage from '@/pages/schedule-page';
-import ScheduleDetail from '@/pages/schedule-detail';
 
 import CompanyPage from '@/pages/company-page';
 import RetrospectivePage from '@/pages/retrospective-page';
+import { RouterGuard } from '@/components/guard';
 
 const browserRouter = createBrowserRouter([
   {
@@ -27,14 +27,13 @@ const browserRouter = createBrowserRouter([
     element: <PrivateLayout />,
     children: [
       {
-        path: `${ROUTER_PATH.PRIVATE.CHILD.SCHEDULE}`,
+        index: true,
+        element: <RouterGuard />,
+      },
+
+      {
+        path: `${ROUTER_PATH.PRIVATE.CHILD.SCHEDULE}/:id`,
         element: <SchedulePage />,
-        children: [
-          {
-            path: ':id',
-            element: <ScheduleDetail />,
-          },
-        ],
       },
       {
         path: `${ROUTER_PATH.PRIVATE.CHILD.COMPANY}`,
@@ -44,11 +43,15 @@ const browserRouter = createBrowserRouter([
         path: ROUTER_PATH.PRIVATE.CHILD.RETROSPECTIVE,
         element: <RetrospectivePage />,
       },
+      {
+        path: '*',
+        element: <RouterGuard />,
+      },
     ],
   },
   {
     path: '*',
-    element: <Navigate to={ROUTER_PATH.PUBLIC.LANDING} />,
+    element: <RouterGuard />,
   },
 ]);
 

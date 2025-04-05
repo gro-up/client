@@ -1,6 +1,10 @@
 import { MoreActions } from '../ui';
 
-export const ScheduleItem = () => {
+interface ScheduleItemProps {
+  type?: 'schedule' | 'company';
+}
+
+export const ScheduleItem = ({ type = 'schedule' }: ScheduleItemProps) => {
   return (
     <li className="flex justify-between py-4">
       <div className="flex">
@@ -8,7 +12,7 @@ export const ScheduleItem = () => {
         <div className="w-1 h-full bg-red-400 mx-4 rounded-md" />
         <div className="flex flex-col justify-center ">
           <p className="text-sm">면접</p>
-          <p>A 컴퍼니- 프론트엔드 개발자</p>
+          <p>A 컴퍼니 - 프론트엔드 개발자</p>
           <p className="text-xs text-gray-500">서울 성동구</p>
         </div>
       </div>

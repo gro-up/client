@@ -8,7 +8,7 @@ export const ScheduleDetailMap = () => {
   const mapElement = useLoadNaverMap(geocode);
 
   return (
-    <div className="w-full">
+    <div className="w-full m-2">
       <div className="flex items-center gap-2 mb-5">
         <div className="flex relative">
           <Input

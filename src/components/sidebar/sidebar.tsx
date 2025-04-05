@@ -6,7 +6,7 @@ import { linkHandler } from '@/utils/navigation/link-handler';
 
 export const Sidebar = () => {
   return (
-    <aside className="flex flex-col gap-4 w-[350px] max-h-[776px] h-full p-4">
+    <aside className="flex flex-col gap-4 w-[350px] min-h-[776px] h-11/12 p-4 bg-white rounded-md">
       <UserNavigation />
 
       <nav className="flex flex-col gap-6 pl-4">

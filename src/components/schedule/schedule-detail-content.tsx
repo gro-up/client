@@ -3,9 +3,9 @@ import { ScheduleDetailMap } from './schedule-detail-map';
 
 export function ScheduleDetailContent() {
   return (
-    <>
-      <Editor />
+    <div className="flex flex-col gap-2">
       <ScheduleDetailMap />
-    </>
+      <Editor />
+    </div>
   );
 }

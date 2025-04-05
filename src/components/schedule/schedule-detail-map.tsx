@@ -28,7 +28,7 @@ export const ScheduleDetailMap = () => {
         </div>
       </div>
       {searchQuery && (
-        <div className="w-full h-[400px] rounded-lg overflow-hidden">
+        <div className="w-[350px] h-[350px] rounded-lg overflow-hidden">
           <div ref={mapElement} className="w-full h-full" id="map" />
         </div>
       )}

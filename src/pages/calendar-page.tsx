@@ -1,10 +1,12 @@
 import { ScheduleList } from '@/components/schedule';
+import { Button } from '@/components/shadcn';
 import { DateTimePicker } from '@/components/ui';
+import { Plus } from 'lucide-react';
 
 export default function CalendarPage() {
   return (
     <>
-      <div className="flex flex-col gap-2 min-w-[350px] w-full  h-full max-h-[850px] bg-white rounded-md">
+      <main className="flex flex-col gap-2 min-w-[350px] w-full  h-full max-h-[850px] bg-white rounded-md">
         <DateTimePicker
           date={new Date()}
           onDate={() => {}}
@@ -16,11 +18,16 @@ export default function CalendarPage() {
             cell: 'w-50 h-36',
           }}
         />
-      </div>
+      </main>
 
-      <div className="bg-gray-50 min-w-[350px] max-w-[400px] max-h-[850px] w-full rounded-md h-full p-3 overflow-hidden">
+      <section className="bg-gray-50 min-w-[350px] max-w-[400px] max-h-[850px] w-full rounded-md h-full p-3 overflow-hidden relative">
         <ScheduleList type="calendar" />
-      </div>
+
+        <Button className="absolute bottom-0 right-0 w-full h-10 z-10">
+          <span>일정 추가</span>
+          <Plus />
+        </Button>
+      </section>
     </>
   );
 }

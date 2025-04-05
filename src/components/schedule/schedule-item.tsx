@@ -1,10 +1,6 @@
 import { MoreActions } from '../ui';
 
-interface ScheduleItemProps {
-  type?: 'schedule' | 'company';
-}
-
-export const ScheduleItem = ({ type = 'schedule' }: ScheduleItemProps) => {
+export const ScheduleItem = () => {
   return (
     <li className="flex justify-between py-4">
       <div className="flex">

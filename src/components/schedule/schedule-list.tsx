@@ -6,7 +6,7 @@ interface ScheduleListProps {
 
 export const ScheduleList = ({ type = 'today' }: ScheduleListProps) => {
   return (
-    <div className="flex flex-col  gap-2 justify-center p-2">
+    <div className="flex flex-col h-full gap-2 justify-start p-2 relative">
       {type === 'today' && (
         <>
           <strong>현재 일정</strong>
@@ -43,7 +43,7 @@ export const ScheduleList = ({ type = 'today' }: ScheduleListProps) => {
 
           <strong>관심 기업</strong>
           <ul className="flex flex-col">
-            <ScheduleItem type="company" />
+            <ScheduleItem />
           </ul>
         </>
       )}

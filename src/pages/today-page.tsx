@@ -8,9 +8,9 @@ import {
 export default function TodayPage() {
   return (
     <>
-      <div className="flex flex-col gap-2 min-w-[540px] w-full  h-full">
+      <div className="flex flex-col gap-2 min-w-[350px] w-full  h-full">
         <ScheduleHeader />
-        <main className="bg-gray-50 rounded-md p-3">
+        <main className="bg-gray-50 rounded-md p-3 min-h-[776px] h-full">
           <ScheduleDetailHeader />
           <ScheduleDetailContent />
         </main>

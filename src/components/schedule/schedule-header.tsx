@@ -6,7 +6,7 @@ export const ScheduleHeader = () => {
 
   return (
     <header className="flex justify-between  items-center  w-full bg-white p-2 rounded-md">
-      <h3 className="text-sm font-semibold">{currentDate}</h3>
+      <h3 className="font-black pl-2">{currentDate}</h3>
     </header>
   );
 };

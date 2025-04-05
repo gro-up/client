@@ -11,7 +11,7 @@ export default function CompanyPage() {
   const { table, columns } = useCompanyTable();
 
   return (
-    <main className="flex flex-col gap-4 w-[900px] h-full max-h-[776px] bg-white rounded-md p-4 relative">
+    <main className="flex flex-col gap-4 w-full h-full max-h-[850px]   bg-white rounded-md p-4 relative">
       <CompanyTableFilter table={table} />
       <Table>
         <CompanyTableHeader table={table} />

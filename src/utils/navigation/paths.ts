@@ -1,5 +1,5 @@
 import { ROUTER_PATH } from '@/router';
-import { Bell, Calendar, LogOut, User, Mail, Building2, NotebookText } from 'lucide-react';
+import { Bell, Calendar, LogOut, User, Mail, Building2, NotebookText, Sun } from 'lucide-react';
 
 import { PathType, SidebarPaths, DropdownPathCategories, DropdownPathItems } from './constants';
 
@@ -15,7 +15,7 @@ export const SIDEBAR_PATHS: PathItem[] = [
   {
     title: SidebarPaths.TODAY,
     type: PathType.LINK,
-    icon: Calendar,
+    icon: Sun,
     to: ROUTER_PATH.PRIVATE.CHILD.TODAY,
   },
   {

@@ -14,7 +14,7 @@ export const PrivateLayout = () => {
     <main className="flex justify-center items-center gap-4 bg-gray-200 w-full h-screen">
       <Sidebar />
 
-      <div className="flex justify-center items-center w-[900px] h-full max-h-[776px] rounded-md gap-2 relative">
+      <div className="flex justify-center items-center w-full px-4 min-h-[776px] h-11/12 rounded-md gap-2 relative">
         <Outlet />
       </div>
     </main>

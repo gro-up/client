@@ -1,23 +1,8 @@
 import { NavLink } from 'react-router';
-import { ROUTER_PATH } from '@/router';
+import { SIDEBAR_PATHS } from '@/utils/navigation';
 import { UserNavigation } from './user-navigation';
 
 import { linkHandler } from '@/utils/navigation/link-handler';
-
-const SIDEBAR_NAVIGATION_LIST = [
-  {
-    path: ROUTER_PATH.PRIVATE.CHILD.SCHEDULE,
-    label: '일정',
-  },
-  {
-    path: ROUTER_PATH.PRIVATE.CHILD.COMPANY,
-    label: '관심 기업',
-  },
-  {
-    path: ROUTER_PATH.PRIVATE.CHILD.RETROSPECTIVE,
-    label: '회고',
-  },
-];
 
 export const Sidebar = () => {
   return (
@@ -25,10 +10,10 @@ export const Sidebar = () => {
       <UserNavigation />
 
       <nav className="flex flex-col gap-6 pl-4">
-        {SIDEBAR_NAVIGATION_LIST.map(navigation => (
+        {SIDEBAR_PATHS.map(navigation => (
           <NavLink
-            key={navigation.path}
-            to={navigation.path}
+            key={navigation.to}
+            to={navigation.to ?? ''}
             className={({ isActive }) =>
               linkHandler({
                 isActive,
@@ -37,7 +22,7 @@ export const Sidebar = () => {
               })
             }
           >
-            <span>{navigation.label}</span>
+            <span>{navigation.title}</span>
           </NavLink>
         ))}
       </nav>

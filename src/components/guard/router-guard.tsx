@@ -9,7 +9,7 @@ export const RouterGuard = () => {
     if (navigate(-1)) {
       navigate(-1);
     } else {
-      navigate(`${ROUTER_PATH.PRIVATE.PARENT.APP}/${ROUTER_PATH.PRIVATE.CHILD.SCHEDULE}/1`);
+      navigate(`${ROUTER_PATH.PRIVATE.PARENT.APP}/${ROUTER_PATH.PRIVATE.CHILD.TODAY}`);
     }
   }, [navigate]);
 

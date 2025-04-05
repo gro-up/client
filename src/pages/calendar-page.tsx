@@ -1,7 +1,6 @@
 import { ScheduleList } from '@/components/schedule';
-import { Button } from '@/components/shadcn';
+import { ScheduleForm } from '@/components/schedule/schedule-form';
 import { DateTimePicker } from '@/components/ui';
-import { Plus } from 'lucide-react';
 
 export default function CalendarPage() {
   return (
@@ -23,10 +22,7 @@ export default function CalendarPage() {
       <section className="bg-gray-50 min-w-[350px] max-w-[400px] max-h-[850px] w-full rounded-md h-full p-3 overflow-hidden relative">
         <ScheduleList type="calendar" />
 
-        <Button className="absolute bottom-0 right-0 w-full h-10 z-10">
-          <span>일정 추가</span>
-          <Plus />
-        </Button>
+        <ScheduleForm />
       </section>
     </>
   );

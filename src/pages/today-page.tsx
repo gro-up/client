@@ -4,6 +4,7 @@ import {
   ScheduleDetailContent,
   ScheduleDetailHeader,
 } from '@/components/schedule';
+import { ScheduleForm } from '@/components/schedule/schedule-form';
 import { DateTimePicker } from '@/components/ui';
 
 export default function TodayPage() {
@@ -17,10 +18,11 @@ export default function TodayPage() {
         </main>
       </div>
 
-      <div className="bg-gray-50 min-w-[350px] max-w-[400px] max-h-[850px] w-full rounded-md h-full p-3 overflow-hidden">
+      <div className="bg-gray-50 min-w-[350px] max-w-[400px] max-h-[850px] w-full rounded-md h-full p-3 overflow-hidden relative">
         <DateTimePicker date={new Date()} onDate={() => {}} type="viewer" />
         <hr />
         <ScheduleList />
+        <ScheduleForm />
       </div>
     </>
   );

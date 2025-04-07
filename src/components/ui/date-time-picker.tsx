@@ -19,14 +19,14 @@ interface DateTimePickerClassNames {
 interface DateTimePickerProps {
   date: Date;
   onDate: (day: Date) => void;
-  type?: 'viewer' | 'editor';
+  type?: 'today_viewer' | 'calendar_viewer' | 'editor';
   className?: DateTimePickerClassNames;
 }
 
 export const DateTimePicker = ({
   date,
   onDate,
-  type = 'viewer',
+  type = 'today_viewer',
   className,
 }: DateTimePickerProps) => {
   return (
@@ -41,16 +41,35 @@ export const DateTimePicker = ({
           caption: `relative h-10 flex items-center justify-start pl-5 ${className?.caption}`,
           nav_button_next: `absolute bg-transparent top-1/2 -translate-y-1/2 right-5 text-gray-400 ${className?.nav_button_next}`,
           nav_button_previous: `absolute bg-transparent top-1/2 -translate-y-1/2 right-15 text-gray-400 ${className?.nav_button_previous}`,
-          head: `w-full text-center ${className?.head}`,
-          cell: `w-15 text-center ${className?.cell}`,
-          day_selected: `text-blue-500 ${className?.day_selected}`,
-          day_today: `bg-blue-100 rounded-full ${className?.day_today}`,
-          day: `p-3 ${className?.day}`,
+          head: `w-full ${className?.head}`,
+          cell: `w-15 ${className?.cell} first:text-red-500 last:text-red-500`,
+          day_selected: `bg-gray-200 rounded-md ${className?.day_selected}`,
+          day_today: `bg-gray-900 rounded-md ${className?.day_today}  text-white `,
+          day: `w-full h-full flex flex-col items-center justify-start ${className?.day} border border-gray-100`,
         }}
         onSelect={day => {
           if (day) {
             onDate(day);
           }
+        }}
+        components={{
+          DayContent: props => {
+            return (
+              <>
+                <div {...props} className="text-sm p-2">
+                  {format(props.date, 'dd')}
+                </div>
+                {type === 'calendar_viewer' && props.date === date && (
+                  <ul className="text-sm text-white  w-full">
+                    <li className="flex items-center gap-2 bg-red-400 p-1">
+                      <p>면접</p>
+                      <strong>A 컴퍼니</strong>
+                    </li>
+                  </ul>
+                )}
+              </>
+            );
+          },
         }}
       />
 

@@ -9,7 +9,6 @@ import CompanyPage from '@/pages/company-page';
 import RetrospectivePage from '@/pages/retrospective-page';
 import { RouterGuard } from '@/components/guard';
 import TodayPage from '@/pages/today-page';
-import CalendarPage from '@/pages/calendar-page';
 
 const browserRouter = createBrowserRouter([
   {
@@ -35,10 +34,7 @@ const browserRouter = createBrowserRouter([
         path: `${ROUTER_PATH.PRIVATE.CHILD.TODAY}`,
         element: <TodayPage />,
       },
-      {
-        path: `${ROUTER_PATH.PRIVATE.CHILD.CALENDAR}`,
-        element: <CalendarPage />,
-      },
+
       {
         path: `${ROUTER_PATH.PRIVATE.CHILD.COMPANY}`,
         element: <CompanyPage />,

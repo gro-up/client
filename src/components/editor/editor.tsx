@@ -10,6 +10,7 @@ import { LexicalErrorBoundary } from '@lexical/react/LexicalErrorBoundary';
 
 import { CodeHighlightPlugin, EDITOR_TRANSFORMERS } from '@/utils/editor/plugins';
 import { editorConfig } from '@/utils/editor/utils';
+import { cn } from '@/utils/shadcn';
 
 import ToolbarPlugin from './toolbar';
 
@@ -19,14 +20,24 @@ function Placeholder() {
   return <div className="editor-placeholder">Play around with the Markdown plugin...</div>;
 }
 
-export default function Editor() {
+interface EditorProps {
+  containerClassName?: string;
+  innerClassName?: string;
+  inputClassName?: string;
+}
+
+export default function Editor({
+  containerClassName,
+  innerClassName,
+  inputClassName,
+}: EditorProps) {
   return (
     <LexicalComposer initialConfig={editorConfig}>
-      <div className="editor-container">
+      <div className={cn('editor-container', containerClassName)}>
         <ToolbarPlugin />
-        <div className="editor-inner">
+        <div className={cn('editor-inner', innerClassName)}>
           <RichTextPlugin
-            contentEditable={<ContentEditable className="editor-input" />}
+            contentEditable={<ContentEditable className={cn('editor-input', inputClassName)} />}
             placeholder={<Placeholder />}
             ErrorBoundary={LexicalErrorBoundary}
           />

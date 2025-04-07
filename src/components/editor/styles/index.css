@@ -309,17 +309,13 @@ pre::-webkit-scrollbar-thumb {
   display: flex;
   background: none;
   border-radius: 10px;
-  padding: 8px;
+  padding: 6px;
   cursor: pointer;
   vertical-align: middle;
 }
 
 .toolbar button.toolbar-item:disabled {
   cursor: not-allowed;
-}
-
-.toolbar button.toolbar-item.spaced {
-  margin-right: 2px;
 }
 
 .toolbar button.toolbar-item i.format {

@@ -30,6 +30,7 @@ import { Select } from './select';
 import { Divider } from './divider';
 import { FloatingLinkEditor } from './floating-link-editor';
 import { BlockOptionsDropdownList } from './block-options-dropdown-list';
+import { DropdownMenu, DropdownMenuTrigger } from '@/components/shadcn';
 
 export default function ToolbarPlugin() {
   const [editor] = useLexicalComposerContext();
@@ -132,28 +133,29 @@ export default function ToolbarPlugin() {
     <div className="toolbar" ref={toolbarRef}>
       {supportedBlockTypes.has(blockType) && (
         <>
-          <button
-            className="toolbar-item block-controls flex justify-center items-center "
-            onClick={() => setShowBlockOptionsDropDown(!showBlockOptionsDropDown)}
-            aria-label="Formatting Options"
-          >
-            <div className="flex justify-center items-center gap-2">
-              <BlockTypeIcon className="w-4 h-4" />
-              <span className="text">{blockTypeToBlockName[blockType]}</span>
-            </div>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button
+                className="toolbar-item block-controls flex justify-center items-center "
+                onClick={() => setShowBlockOptionsDropDown(!showBlockOptionsDropDown)}
+                aria-label="Formatting Options"
+              >
+                <div className="flex justify-center items-center gap-2">
+                  <BlockTypeIcon className="w-4 h-4" />
+                  <span className="text">{blockTypeToBlockName[blockType]}</span>
+                </div>
 
-            <ChevronDown className="chevron-down w-4 h-4 text-gray-500" />
-          </button>
-          {showBlockOptionsDropDown &&
-            createPortal(
-              <BlockOptionsDropdownList
-                editor={editor}
-                blockType={blockType}
-                toolbarRef={toolbarRef}
-                setShowBlockOptionsDropDown={setShowBlockOptionsDropDown}
-              />,
-              document.body
-            )}
+                <ChevronDown className="chevron-down w-4 h-4 text-gray-500" />
+              </button>
+            </DropdownMenuTrigger>
+            <BlockOptionsDropdownList
+              editor={editor}
+              blockType={blockType}
+              toolbarRef={toolbarRef}
+              setShowBlockOptionsDropDown={setShowBlockOptionsDropDown}
+            />
+          </DropdownMenu>
+
           <Divider />
         </>
       )}

@@ -17,6 +17,7 @@ import {
 } from '@/components/shadcn';
 import { Calendar, Plus, Send, X } from 'lucide-react';
 import { DateTimePicker } from '../ui';
+import Editor from '../editor/editor';
 
 export const ScheduleForm = () => {
   return (
@@ -27,7 +28,7 @@ export const ScheduleForm = () => {
           <span>일정 추가</span>
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[350px]">
         <DialogHeader>
           <DialogTitle>일정 추가</DialogTitle>
           <DialogDescription>일정을 추가해주세요.</DialogDescription>
@@ -66,6 +67,7 @@ export const ScheduleForm = () => {
               </AccordionItem>
             </Accordion>
           </div>
+          <Editor inputClassName="max-h-[150px] overflow-y-auto" />
         </div>
         <DialogFooter>
           <DialogClose asChild>

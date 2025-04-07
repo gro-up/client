@@ -27,6 +27,7 @@ import {
 import { blockTypeToBlockName } from '@/utils/editor/utils';
 
 import './styles/index.css';
+import { DropdownMenuContent, DropdownMenuCheckboxItem } from '@radix-ui/react-dropdown-menu';
 
 interface BlockOptionsDropdownListProps {
   editor: LexicalEditor;
@@ -171,49 +172,76 @@ export const BlockOptionsDropdownList = ({
   };
 
   return (
-    <div className="dropdown" ref={dropDownRef}>
-      <button className="item justify-center items-center gap-2" onClick={formatParagraph}>
+    <DropdownMenuContent
+      className="flex flex-col justify-center  gap-2 bg-white rounded-md p-4 w-[150px] z-5 absolute"
+      ref={dropDownRef}
+    >
+      <DropdownMenuCheckboxItem
+        className="flex justify-start items-center gap-2 p-1 cursor-pointer"
+        onClick={formatParagraph}
+      >
         <Pilcrow className="w-4 h-4" />
         <span className="text">{blockTypeToBlockName.paragraph}</span>
         {blockType === 'paragraph' && <span className="active" />}
-      </button>
-      <button className="item justify-center items-center gap-2" onClick={formatLargeHeading}>
+      </DropdownMenuCheckboxItem>
+      <DropdownMenuCheckboxItem
+        className="flex justify-start items-center gap-2 p-1 cursor-pointer"
+        onClick={formatLargeHeading}
+      >
         <Heading1 className="w-4 h-4" />
         <span className="text">{blockTypeToBlockName.h1}</span>
         {blockType === 'h1' && <span className="active" />}
-      </button>
-      <button className="item justify-center items-center gap-2" onClick={formatHeading2}>
+      </DropdownMenuCheckboxItem>
+      <DropdownMenuCheckboxItem
+        className="flex justify-start items-center gap-2 p-1 cursor-pointer"
+        onClick={formatHeading2}
+      >
         <Heading2 className="w-4 h-4" />
         <span className="text">{blockTypeToBlockName.h2}</span>
         {blockType === 'h2' && <span className="active" />}
-      </button>
+      </DropdownMenuCheckboxItem>
 
-      <button className="item justify-center items-center gap-2" onClick={formatHeading3}>
+      <DropdownMenuCheckboxItem
+        className="flex justify-start items-center gap-2 p-1 cursor-pointer"
+        onClick={formatHeading3}
+      >
         <Heading3 className="w-4 h-4" />
         <span className="text">{blockTypeToBlockName.h3}</span>
         {blockType === 'h3' && <span className="active" />}
-      </button>
+      </DropdownMenuCheckboxItem>
 
-      <button className="item justify-center items-center gap-2" onClick={formatBulletList}>
+      <DropdownMenuCheckboxItem
+        className="flex justify-start items-center gap-2 p-1 cursor-pointer"
+        onClick={formatBulletList}
+      >
         <List className="w-4 h-4" />
         <span className="text">{blockTypeToBlockName.ul}</span>
         {blockType === 'ul' && <span className="active" />}
-      </button>
-      <button className="item justify-center items-center gap-2" onClick={formatNumberedList}>
+      </DropdownMenuCheckboxItem>
+      <DropdownMenuCheckboxItem
+        className="flex justify-start items-center gap-2 p-1 cursor-pointer"
+        onClick={formatNumberedList}
+      >
         <ListOrdered className="w-4 h-4" />
         <span className="text">{blockTypeToBlockName.ol}</span>
         {blockType === 'ol' && <span className="active" />}
-      </button>
-      <button className="item justify-center items-center gap-2" onClick={formatQuote}>
+      </DropdownMenuCheckboxItem>
+      <DropdownMenuCheckboxItem
+        className="flex justify-start items-center gap-2 p-1 cursor-pointer"
+        onClick={formatQuote}
+      >
         <Quote className="w-4 h-4" />
         <span className="text">{blockTypeToBlockName.quote}</span>
         {blockType === 'quote' && <span className="active" />}
-      </button>
-      <button className="item justify-center items-center gap-2" onClick={formatCode}>
+      </DropdownMenuCheckboxItem>
+      <DropdownMenuCheckboxItem
+        className="flex justify-start items-center gap-2 p-1 cursor-pointer"
+        onClick={formatCode}
+      >
         <Code className="w-4 h-4" />
         <span className="text">{blockTypeToBlockName.code}</span>
         {blockType === 'code' && <span className="active" />}
-      </button>
-    </div>
+      </DropdownMenuCheckboxItem>
+    </DropdownMenuContent>
   );
 };

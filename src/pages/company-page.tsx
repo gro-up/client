@@ -11,13 +11,6 @@ export default function CompanyPage() {
   const { table, columns } = useCompanyTable();
 
   return (
-    <main className="flex flex-col gap-4 w-full h-full max-h-[850px]   bg-white rounded-md p-4 relative">
-      <CompanyTableFilter table={table} />
-      <Table>
-        <CompanyTableHeader table={table} />
-        <CompanyTableBody table={table} columns={columns} />
-      </Table>
-      <CompanyTablePagination table={table} />
-    </main>
+    <main className="flex flex-col gap-4 w-full h-full max-h-[850px]   bg-white rounded-md p-4 relative"></main>
   );
 }

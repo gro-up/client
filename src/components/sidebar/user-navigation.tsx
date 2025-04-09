@@ -17,37 +17,35 @@ export const UserNavigation = () => {
   const { profile } = useProfile();
 
   return (
-    <div className="w-full ">
-      <DropdownMenu>
-        <DropdownMenuTrigger
-          asChild
-          className="cursor-pointer hover:bg-transparent focus:border-transparent focus:focus:ring-0"
-        >
-          <Button variant="ghost" className="w-full">
-            <Avatar className="w-12 h-12 mr-3">
-              <AvatarImage src={profile.photo || undefined} />
-            </Avatar>
+    <DropdownMenu>
+      <DropdownMenuTrigger
+        asChild
+        className="cursor-pointer hover:bg-transparent focus:border-transparent focus:focus:ring-0"
+      >
+        <Button variant="ghost" className="w-full flex justify-between items-center mt-3 ">
+          <Avatar className="w-8 h-8 mr-1">
+            <AvatarImage src={profile.photo || undefined} />
+          </Avatar>
 
-            <div className="flex justify-between items-center w-full">
-              <div className="flex flex-col gap-1 text-left">
-                <span className="text-sm">{profile.displayName || '사용자'}</span>
-                <span className="text-xs text-gray-500">{profile.email}</span>
-              </div>
-
-              <ChevronDown />
+          <div className="flex justify-between items-center w-full">
+            <div className="flex flex-col text-left">
+              <span className="text-sm">{profile.displayName || '사용자'}</span>
+              <span className="text-xs text-gray-500">{profile.email}</span>
             </div>
-          </Button>
-        </DropdownMenuTrigger>
-        <UserNavigation.Content />
-      </DropdownMenu>
-    </div>
+
+            <ChevronDown />
+          </div>
+        </Button>
+      </DropdownMenuTrigger>
+      <UserNavigation.Content />
+    </DropdownMenu>
   );
 };
 
 const Content = () => {
   const { logoutHandler } = useLogout();
   return (
-    <DropdownMenuContent>
+    <DropdownMenuContent align="end">
       <div className="flex flex-col gap-2">
         {DROPDOWN_PATHS.map(path => (
           <div key={path.title}>
@@ -65,7 +63,7 @@ const Content = () => {
                         {child.type === 'event' ? (
                           <span onClick={logoutHandler}>{child.title}</span>
                         ) : (
-                          <Link to={child.url ?? ''}>{child.title}</Link>
+                          <Link to={child.to ?? ''}>{child.title}</Link>
                         )}
                       </div>
                     </div>

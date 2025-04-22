@@ -13,10 +13,10 @@ export const PrivateLayout = () => {
 
   return (
     <ThemeProvider defaultTheme="dark" storageKey="gro-ui-theme">
-      <main className="flex justify-center items-center gap-4 w-full h-screen px-4 ">
+      <main className="flex justify-center items-center gap-4 w-full h-screen px-4 bg-neutral-900">
         <Sidebar />
 
-        <div className="flex justify-center items-center w-full min-h-[750px] h-11/12 rounded-md gap-2 relative">
+        <div className="flex  items-center w-full min-h-[750px] gap-2 h-11/12">
           <Outlet />
         </div>
       </main>

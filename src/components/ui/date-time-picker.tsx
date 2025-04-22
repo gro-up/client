@@ -19,14 +19,14 @@ interface DateTimePickerClassNames {
 interface DateTimePickerProps {
   date: Date;
   onDate: (day: Date) => void;
-  type?: 'today_viewer' | 'calendar_viewer' | 'editor';
+  type?: 'viewer' | 'editor';
   className?: DateTimePickerClassNames;
 }
 
 export const DateTimePicker = ({
   date,
   onDate,
-  type = 'today_viewer',
+  type = 'viewer',
   className,
 }: DateTimePickerProps) => {
   return (
@@ -45,7 +45,7 @@ export const DateTimePicker = ({
           cell: `w-15 h-15 ${className?.cell} first:text-red-500 last:text-red-500`,
           day_selected: `bg-gray-200 rounded-md ${className?.day_selected}`,
           day_today: `bg-gray-900 rounded-md ${className?.day_today}  text-white `,
-          day: `w-full h-full flex flex-col items-center justify-start ${className?.day} border border-gray-100`,
+          day: `w-full h-full flex flex-col items-center justify-start ${className?.day}`,
         }}
         onSelect={day => {
           if (day) {

@@ -8,7 +8,7 @@ import LandingPage from '@/pages/landing-page';
 import CompanyPage from '@/pages/company-page';
 import RetrospectivePage from '@/pages/retrospective-page';
 import { RouterGuard } from '@/components/guard';
-import TodayPage from '@/pages/today-page';
+import DashboardPage from '@/pages/dashboard-page';
 
 const browserRouter = createBrowserRouter([
   {
@@ -31,8 +31,8 @@ const browserRouter = createBrowserRouter([
       },
 
       {
-        path: `${ROUTER_PATH.PRIVATE.CHILD.TODAY}`,
-        element: <TodayPage />,
+        path: `${ROUTER_PATH.PRIVATE.CHILD.DASHBOARD}`,
+        element: <DashboardPage />,
       },
 
       {

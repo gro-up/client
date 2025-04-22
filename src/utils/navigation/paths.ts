@@ -13,10 +13,10 @@ interface PathItem {
 
 export const SIDEBAR_PATHS: PathItem[] = [
   {
-    title: SidebarPaths.TODAY,
+    title: SidebarPaths.DASHBOARD,
     type: PathType.LINK,
     icon: Sun,
-    to: ROUTER_PATH.PRIVATE.CHILD.TODAY,
+    to: ROUTER_PATH.PRIVATE.CHILD.DASHBOARD,
   },
   {
     title: SidebarPaths.COMPANY,

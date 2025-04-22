@@ -4,7 +4,7 @@ export enum PathType {
 }
 
 export enum SidebarPaths {
-  TODAY = '오늘',
+  DASHBOARD = '대시보드',
   COMPANY = '관심 기업',
   RETROSPECTIVE = '회고',
 }

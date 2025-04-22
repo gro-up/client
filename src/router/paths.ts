@@ -7,7 +7,7 @@ export const ROUTER_PATH = {
       APP: '/app',
     },
     CHILD: {
-      TODAY: 'today',
+      DASHBOARD: 'dashboard',
       CALENDAR: 'calendar',
       COMPANY: 'company',
       RETROSPECTIVE: 'retrospective',

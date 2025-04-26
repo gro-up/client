@@ -1,8 +1,8 @@
-import { format } from 'date-fns';
-import { ko } from 'date-fns/locale';
+import { format } from "date-fns";
+import { ko } from "date-fns/locale";
 
 export const ScheduleHeader = () => {
-  const currentDate = format(new Date(), 'd일 (E)', { locale: ko });
+  const currentDate = format(new Date(), "d일 (E)", { locale: ko });
 
   return (
     <header className="flex justify-between  items-center  w-full p-2 rounded-md">

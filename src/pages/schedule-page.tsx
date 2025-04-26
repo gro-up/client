@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { ScheduleHeader, ScheduleList } from "@/components/schedule";
+
 import { Container, DateTimePicker } from "@/components/ui";
 
-export default function DashboardPage() {
-  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+export default function SchedulePage() {
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null); // 선택된 날짜
 
   return (
     <>
@@ -14,12 +15,12 @@ export default function DashboardPage() {
             setSelectedDate(newDate); // 날짜 상태 업데이트
           }}
         />
-
-        <hr />
         <ScheduleHeader />
         <ScheduleList />
       </Container>
-      <Container as="aside" className="w-6/12 p-4"></Container>
+      <Container as="aside" className="w-6/12 p-4">
+        aaaaaadddddddddddddddddddd
+      </Container>
     </>
   );
 }

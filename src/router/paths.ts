@@ -1,20 +1,23 @@
+import { ScheduleDetailContent } from "@/components/schedule";
+
 export const ROUTER_PATH = {
   PUBLIC: {
-    LANDING: '/',
+    LANDING: "/",
   },
   PRIVATE: {
     PARENT: {
-      APP: '/app',
+      APP: "/app",
     },
     CHILD: {
-      DASHBOARD: 'dashboard',
-      CALENDAR: 'calendar',
-      COMPANY: 'company',
-      RETROSPECTIVE: 'retrospective',
+      DASHBOARD: "dashboard",
+      CALENDAR: "calendar",
+      COMPANY: "company",
+      SCHEDULE: "schedule",
+      RETROSPECTIVE: "retrospective",
       SETTING: {
-        NOTIFICATION: 'notification',
-        PROFILE: 'profile',
-        FEEDBACK: 'feedback',
+        NOTIFICATION: "notification",
+        PROFILE: "profile",
+        FEEDBACK: "feedback",
       },
     },
   },

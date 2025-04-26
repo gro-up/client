@@ -10,6 +10,7 @@ import RetrospectivePage from "@/pages/retrospective-page";
 import { RouterGuard } from "@/components/guard";
 import DashboardPage from "@/pages/dashboard-page";
 import SchedulePage from "@/pages/schedule-page";
+import SignupPage from "@/pages/signup-page";
 
 const browserRouter = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const browserRouter = createBrowserRouter([
       {
         path: ROUTER_PATH.PUBLIC.LANDING,
         element: <LandingPage />,
+      },
+      {
+        path: ROUTER_PATH.PUBLIC.SIGNUP,
+        element: <SignupPage />,
       },
     ],
   },

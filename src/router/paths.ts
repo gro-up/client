@@ -1,8 +1,7 @@
-import { ScheduleDetailContent } from "@/components/schedule";
-
 export const ROUTER_PATH = {
   PUBLIC: {
     LANDING: "/",
+    SIGNUP: "/signup",
   },
   PRIVATE: {
     PARENT: {

@@ -22,7 +22,7 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
         mint: "bg-emerald-400 text-white shadow-xs hover:bg-emerald-600 cursor-pointer", // 기본 민트색(emerald-400), hover 시 emerald-500으로 진하게
         google:
-          "bg-white text-black shadow-xs cursor-pointer hover:bg-gray-200", // 구글 버튼: 흰 배경 + 검정 글자, hover 시 회색톤으로 자연스럽게
+          "bg-white text-black shadow-xs cursor-pointer hover:bg-gray-200", //  흰 배경 + 검정 글자, hover 시 회색톤으로 자연스럽게
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",

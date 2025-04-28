@@ -16,5 +16,5 @@ createRoot(document.getElementById("root")!).render(
         <Toaster />
       </CookiesProvider>
     </QueryClientProvider>
-  </StrictMode>
+  </StrictMode>,
 );

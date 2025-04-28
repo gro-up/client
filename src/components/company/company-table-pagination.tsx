@@ -1,6 +1,6 @@
-import { Button } from '../shadcn';
+import { Button } from "../shadcn";
 
-import type { CompanyProps } from './company-table-header';
+import type { CompanyProps } from "./company-table-header";
 
 export const CompanyTablePagination = ({ table }: CompanyProps) => {
   return (

@@ -6,9 +6,7 @@ export default function SignupFooter() {
       </div>
       <div className="flex gap-1 justify-center">
         <span>아이디가 있으신가요?</span>
-        <span className="text-emerald-400 cursor-pointer hover:underline">
-          로그인하기
-        </span>
+        <span className="text-emerald-400 cursor-pointer hover:underline">로그인하기</span>
       </div>
     </div>
   );

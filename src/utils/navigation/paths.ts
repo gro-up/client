@@ -1,20 +1,7 @@
 import { ROUTER_PATH } from "@/router";
-import {
-  Bell,
-  LogOut,
-  User,
-  Mail,
-  Building2,
-  NotebookText,
-  Sun,
-} from "lucide-react";
+import { Bell, LogOut, User, Mail, Building2, NotebookText, Sun } from "lucide-react";
 
-import {
-  PathType,
-  SidebarPaths,
-  DropdownPathCategories,
-  DropdownPathItems,
-} from "./constants";
+import { PathType, SidebarPaths, DropdownPathCategories, DropdownPathItems } from "./constants";
 
 interface PathItem {
   title: string;

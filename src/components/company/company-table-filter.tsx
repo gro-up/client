@@ -1,7 +1,7 @@
-import { Plus } from 'lucide-react';
-import { Input, Button } from '../shadcn';
+import { Plus } from "lucide-react";
+import { Input, Button } from "../shadcn";
 
-import type { CompanyProps } from './company-table-header';
+import type { CompanyProps } from "./company-table-header";
 
 export const CompanyTableFilter = ({ table }: CompanyProps) => {
   return (
@@ -10,8 +10,8 @@ export const CompanyTableFilter = ({ table }: CompanyProps) => {
       <div className="flex items-center gap-2">
         <Input
           placeholder="회사명을 입력해주세요."
-          value={(table.getColumn('company')?.getFilterValue() as string) ?? ''}
-          onChange={event => table.getColumn('company')?.setFilterValue(event.target.value)}
+          value={(table.getColumn("company")?.getFilterValue() as string) ?? ""}
+          onChange={(event) => table.getColumn("company")?.setFilterValue(event.target.value)}
           className="max-w-sm"
         />
 

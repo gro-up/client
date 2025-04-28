@@ -28,9 +28,7 @@ export default function useSignup() {
   };
 
   // 비밀번호 확인 핸들러
-  const handleConfirmPasswordChange = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const handleConfirmPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setConfirmPassword(value);
 

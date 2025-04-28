@@ -2,6 +2,7 @@ export const ROUTER_PATH = {
   PUBLIC: {
     LANDING: "/",
     SIGNUP: "/signup",
+    LOGIN: "/login",
   },
   PRIVATE: {
     PARENT: {

@@ -6,7 +6,7 @@ export default function LoginFooter() {
 
   return (
     <>
-      <hr className="border-t border-gray-600 bg-gray-600 h-px w-125 mt-4" />
+      <hr className="border-t border-gray-600 bg-gray-600 h-px w-125 mt-1" />
       <GoogleButton />
 
       <div className="w-125 h-20 flex flex-col items-center justify-center text-white gap-3 pt-3">

@@ -11,11 +11,7 @@ export function useLogin() {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;
 
-    if (
-      !emailRegex.test(email) ||
-      password.length < 8 ||
-      !specialCharRegex.test(password)
-    ) {
+    if (!emailRegex.test(email) || password.length < 8 || !specialCharRegex.test(password)) {
       setError("유효하지 않은 이메일 혹은 패스워드입니다.");
       return false;
     } else {

@@ -35,10 +35,7 @@ export const CompanyTableBody = ({ table, columns }: CompanyTableBodyProps) => {
         ))
       ) : (
         <TableRow>
-          <TableCell
-            colSpan={columns.length}
-            className="h-24 text-center text-gray-500"
-          >
+          <TableCell colSpan={columns.length} className="h-24 text-center text-gray-500">
             일정이 없습니다.
           </TableCell>
         </TableRow>

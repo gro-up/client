@@ -18,11 +18,7 @@ export default function LandingPage() {
     const specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/; // 특수문자 포함 검사용 정규식
 
     // 이메일이 틀리거나, 비밀번호가 8자 미만이거나, 특수문자가 없으면 에러
-    if (
-      !emailRegex.test(email) ||
-      password.length < 8 ||
-      !specialCharRegex.test(password)
-    ) {
+    if (!emailRegex.test(email) || password.length < 8 || !specialCharRegex.test(password)) {
       setError("유효하지 않은 이메일 혹은 패스워드입니다."); // 에러 메세지 설정
       return false; // 유효성 검사 실패
     } else {

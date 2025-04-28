@@ -9,20 +9,16 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default:
-          "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90",
+        default: "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90",
         destructive:
           "bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
         outline:
           "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
-        secondary:
-          "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
-        ghost:
-          "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
+        secondary: "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
+        ghost: "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
         link: "text-primary underline-offset-4 hover:underline",
         mint: "bg-emerald-400 text-white shadow-xs hover:bg-emerald-600 cursor-pointer", // 기본 민트색(emerald-400), hover 시 emerald-500으로 진하게
-        google:
-          "bg-white text-black shadow-xs cursor-pointer hover:bg-gray-200", //  흰 배경 + 검정 글자, hover 시 회색톤으로 자연스럽게
+        google: "bg-white text-black shadow-xs cursor-pointer hover:bg-gray-200", //  흰 배경 + 검정 글자, hover 시 회색톤으로 자연스럽게
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",
@@ -35,7 +31,7 @@ const buttonVariants = cva(
       variant: "default",
       size: "default",
     },
-  }
+  },
 );
 
 function Button({

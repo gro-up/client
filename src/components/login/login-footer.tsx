@@ -10,9 +10,7 @@ export default function LoginFooter() {
       <GoogleButton />
 
       <div className="w-125 h-20 flex flex-col items-center justify-center text-white gap-3 pt-3">
-        <span className="text-emerald-400 cursor-pointer hover:underline">
-          비밀번호 찾기
-        </span>
+        <span className="text-emerald-400 cursor-pointer hover:underline">비밀번호 찾기</span>
 
         <div className="flex gap-1">
           <span>아이디가 없으신가요?</span>

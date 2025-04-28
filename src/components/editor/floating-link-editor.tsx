@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   SELECTION_CHANGE_COMMAND,
   $getSelection,
@@ -6,12 +6,12 @@ import {
   type EditorState,
   type LexicalEditor,
   type BaseSelection,
-} from 'lexical';
-import { $isLinkNode, TOGGLE_LINK_COMMAND } from '@lexical/link';
-import { mergeRegister } from '@lexical/utils';
+} from "lexical";
+import { $isLinkNode, TOGGLE_LINK_COMMAND } from "@lexical/link";
+import { mergeRegister } from "@lexical/utils";
 
-import { getSelectedNode, positionEditorElement } from '@/utils/editor/utils';
-import { LOW_PRIORITY } from '@/utils/editor/utils/constants';
+import { getSelectedNode, positionEditorElement } from "@/utils/editor/utils";
+import { LOW_PRIORITY } from "@/utils/editor/utils/constants";
 
 interface FloatingLinkEditorProps {
   editor: LexicalEditor;
@@ -22,7 +22,7 @@ export const FloatingLinkEditor = ({ editor }: FloatingLinkEditorProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const mouseDownRef = useRef(false);
 
-  const [linkUrl, setLinkUrl] = useState('');
+  const [linkUrl, setLinkUrl] = useState("");
   const [isEditMode, setEditMode] = useState(false);
   const [lastSelection, setLastSelection] = useState<BaseSelection | null>(null);
 
@@ -36,7 +36,7 @@ export const FloatingLinkEditor = ({ editor }: FloatingLinkEditorProps) => {
       } else if ($isLinkNode(node)) {
         setLinkUrl(node.getURL());
       } else {
-        setLinkUrl('');
+        setLinkUrl("");
       }
     }
     const editorElem = editorRef.current;
@@ -73,11 +73,11 @@ export const FloatingLinkEditor = ({ editor }: FloatingLinkEditorProps) => {
         positionEditorElement(editorElem, rect);
       }
       setLastSelection(selection);
-    } else if (!activeElement || activeElement.className !== 'link-input') {
+    } else if (!activeElement || activeElement.className !== "link-input") {
       positionEditorElement(editorElem, null);
       setLastSelection(null);
       setEditMode(false);
-      setLinkUrl('');
+      setLinkUrl("");
     }
 
     return true;
@@ -97,8 +97,8 @@ export const FloatingLinkEditor = ({ editor }: FloatingLinkEditorProps) => {
           updateLinkEditor();
           return true;
         },
-        LOW_PRIORITY
-      )
+        LOW_PRIORITY,
+      ),
     );
   }, [editor, updateLinkEditor]);
 
@@ -121,19 +121,19 @@ export const FloatingLinkEditor = ({ editor }: FloatingLinkEditorProps) => {
           ref={inputRef}
           className="link-input"
           value={linkUrl}
-          onChange={event => {
+          onChange={(event) => {
             setLinkUrl(event.target.value);
           }}
-          onKeyDown={event => {
-            if (event.key === 'Enter') {
+          onKeyDown={(event) => {
+            if (event.key === "Enter") {
               event.preventDefault();
               if (lastSelection !== null) {
-                if (linkUrl !== '') {
+                if (linkUrl !== "") {
                   editor.dispatchCommand(TOGGLE_LINK_COMMAND, linkUrl);
                 }
                 setEditMode(false);
               }
-            } else if (event.key === 'Escape') {
+            } else if (event.key === "Escape") {
               event.preventDefault();
               setEditMode(false);
             }
@@ -149,7 +149,7 @@ export const FloatingLinkEditor = ({ editor }: FloatingLinkEditorProps) => {
               className="link-edit"
               role="button"
               tabIndex={0}
-              onMouseDown={event => event.preventDefault()}
+              onMouseDown={(event) => event.preventDefault()}
               onClick={() => {
                 setEditMode(true);
               }}

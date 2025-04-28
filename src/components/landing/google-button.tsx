@@ -7,11 +7,7 @@ export const GoogleButton = () => {
   const { signInWithGoogle } = useGoogleLoggedIn();
 
   return (
-    <Button
-      onClick={signInWithGoogle}
-      variant="google"
-      className="w-125 text-xs  text-black"
-    >
+    <Button onClick={signInWithGoogle} variant="google" className="w-125 text-xs  text-black">
       <GoogleIcon className="w-4 h-4 " />
       Google에서 시작하기
     </Button>

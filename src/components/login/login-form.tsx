@@ -2,14 +2,8 @@ import { Button, Input } from "@/components/shadcn";
 import { useLogin } from "@/hooks/auth/use-login";
 
 export default function LoginForm() {
-  const {
-    email,
-    password,
-    error,
-    handleEmailChange,
-    handlePasswordChange,
-    handleSubmit,
-  } = useLogin();
+  const { email, password, error, handleEmailChange, handlePasswordChange, handleSubmit } =
+    useLogin();
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col items-center gap-2">

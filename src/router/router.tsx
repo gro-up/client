@@ -25,6 +25,10 @@ const browserRouter = createBrowserRouter([
         path: ROUTER_PATH.PUBLIC.SIGNUP,
         element: <SignupPage />,
       },
+      {
+        path: ROUTER_PATH.PUBLIC.LOGIN,
+        element: <SignupPage />,
+      },
     ],
   },
   {

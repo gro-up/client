@@ -13,7 +13,7 @@ export function useLogin() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const isEmailValid = validateEmail(email);
-    const isPasswordValid = validatePasswordComplexity(password); // 🔥 복잡도만 검사
+    const isPasswordValid = validatePasswordComplexity(password);
 
     if (!isEmailValid || !isPasswordValid) {
       setError("유효하지 않은 이메일 혹은 패스워드입니다.");

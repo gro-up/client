@@ -7,7 +7,7 @@ import {
   Tag,
   Link,
   MessageCircle,
-} from 'lucide-react';
+} from "lucide-react";
 
 import {
   Menubar,
@@ -19,7 +19,7 @@ import {
   MenubarSubContent,
   MenubarSubTrigger,
   MenubarTrigger,
-} from '@/components/shadcn';
+} from "@/components/shadcn";
 
 export const MoreActions = () => {
   return (

@@ -1,1 +1,1 @@
-export * from './use-company-table';
+export * from "./use-company-table";

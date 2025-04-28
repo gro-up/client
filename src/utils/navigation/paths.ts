@@ -1,7 +1,7 @@
-import { ROUTER_PATH } from '@/router';
-import { Bell, LogOut, User, Mail, Building2, NotebookText, Sun } from 'lucide-react';
+import { ROUTER_PATH } from "@/router";
+import { Bell, LogOut, User, Mail, Building2, NotebookText, Sun } from "lucide-react";
 
-import { PathType, SidebarPaths, DropdownPathCategories, DropdownPathItems } from './constants';
+import { PathType, SidebarPaths, DropdownPathCategories, DropdownPathItems } from "./constants";
 
 interface PathItem {
   title: string;
@@ -29,6 +29,12 @@ export const SIDEBAR_PATHS: PathItem[] = [
     type: PathType.LINK,
     icon: NotebookText,
     to: ROUTER_PATH.PRIVATE.CHILD.RETROSPECTIVE,
+  },
+  {
+    title: SidebarPaths.SCHEDULE,
+    type: PathType.LINK,
+    icon: NotebookText,
+    to: ROUTER_PATH.PRIVATE.CHILD.SCHEDULE,
   },
 ];
 

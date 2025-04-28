@@ -1,9 +1,9 @@
-import { useEffect, useRef, useCallback } from 'react';
-import { toast } from 'sonner';
+import { useEffect, useRef, useCallback } from "react";
+import { toast } from "sonner";
 
-import type { Coordinate } from './use-geocode';
-import { mapOptions, NAVER_MAP_SCRIPT_SRC } from '@/utils/map';
-import { setError } from '@/utils/error';
+import type { Coordinate } from "./use-geocode";
+import { mapOptions, NAVER_MAP_SCRIPT_SRC } from "@/utils/map";
+import { setError } from "@/utils/error";
 
 export const useLoadNaverMap = (geocode: Coordinate | null) => {
   const mapElement = useRef<HTMLDivElement>(null);
@@ -22,15 +22,15 @@ export const useLoadNaverMap = (geocode: Coordinate | null) => {
         }
       };
     } catch (error) {
-      toast.error('네이버 지도 오류: 지도 초기화 오류');
+      toast.error("네이버 지도 오류: 지도 초기화 오류");
       setError(error);
     }
   }, [geocode]);
 
   useEffect(() => {
     const loadNaverMap = () => {
-      if (typeof window.naver === 'undefined' || geocode) {
-        const script = document.createElement('script');
+      if (typeof window.naver === "undefined" || geocode) {
+        const script = document.createElement("script");
         script.src = NAVER_MAP_SCRIPT_SRC;
         script.async = true;
         script.onload = initializeMap;

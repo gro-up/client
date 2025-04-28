@@ -1,4 +1,4 @@
-import { ScheduleItem } from './schedule-item';
+import { ScheduleItem } from "./schedule-item";
 
 export const ScheduleList = () => {
   return (

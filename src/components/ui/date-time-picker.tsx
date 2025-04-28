@@ -1,7 +1,7 @@
-import { DayPicker } from 'react-day-picker';
-import { ko } from 'date-fns/locale';
-import { Input } from '../shadcn';
-import { format } from 'date-fns';
+import { DayPicker } from "react-day-picker";
+import { ko } from "date-fns/locale";
+import { Input } from "../shadcn";
+import { format } from "date-fns";
 
 interface DateTimePickerClassNames {
   month?: string;
@@ -17,16 +17,16 @@ interface DateTimePickerClassNames {
 }
 
 interface DateTimePickerProps {
-  date: Date;
+  date: Date | null;
   onDate: (day: Date) => void;
-  type?: 'viewer' | 'editor';
+  type?: "viewer" | "editor";
   className?: DateTimePickerClassNames;
 }
 
 export const DateTimePicker = ({
-  date,
-  onDate,
-  type = 'viewer',
+  date, // 선택된 날짜
+  onDate, // 날짜가 선택되거나 시간 입력이 변경될 때 호출되는 콜백
+  type = "viewer",
   className,
 }: DateTimePickerProps) => {
   return (
@@ -34,7 +34,7 @@ export const DateTimePicker = ({
       <DayPicker
         locale={ko}
         mode="single"
-        selected={date}
+        selected={date ?? undefined}
         classNames={{
           month: `w-full ${className?.month} `,
           months: `w-full ${className?.months}`,
@@ -43,21 +43,25 @@ export const DateTimePicker = ({
           nav_button_previous: `absolute bg-transparent top-1/2 -translate-y-1/2 right-15 text-gray-400 ${className?.nav_button_previous}`,
           head: `w-full ${className?.head}`,
           cell: `w-15 h-15 ${className?.cell} first:text-red-500 last:text-red-500`,
-          day_selected: `bg-gray-200 rounded-md ${className?.day_selected}`,
-          day_today: `bg-gray-900 rounded-md ${className?.day_today}  text-white `,
+          day_selected: `bg-gray-200 text-black rounded-md ${className?.day_selected}`, // 선택됐을시 날짜의 배경색 gray-200 및 텍스트색깔 black으로 변경
+          day_today: `${
+            date
+              ? "" // 선택된 날짜가 있으면 today 스타일 제거
+              : `bg-gray-900 rounded-md ${className?.day_today} text-white`
+          }`,
           day: `w-full h-full flex flex-col items-center justify-start ${className?.day}`,
         }}
-        onSelect={day => {
+        onSelect={(day) => {
           if (day) {
             onDate(day);
           }
         }}
         components={{
-          DayContent: props => {
+          DayContent: (props) => {
             return (
               <>
                 <div {...props} className="text-sm p-2">
-                  {format(props.date, 'dd')}
+                  {format(props.date, "dd")}
                 </div>
                 <ul className="text-sm text-white  w-full">
                   {props.date === date && <li className="bg-red-500 h-2 w-2" />}
@@ -68,14 +72,16 @@ export const DateTimePicker = ({
         }}
       />
 
-      {type === 'editor' && (
+      {type === "editor" && (
         <Input
           type="time"
-          value={format(date, 'HH:mm')}
-          onChange={e => {
+          value={date ? format(date, "HH:mm") : ""}
+          onChange={(e) => {
+            if (!date) return;
+
             const time = new Date(date.getTime());
-            time.setHours(Number(e.target.value.split(':')[0]));
-            time.setMinutes(Number(e.target.value.split(':')[1]));
+            time.setHours(Number(e.target.value.split(":")[0]));
+            time.setMinutes(Number(e.target.value.split(":")[1]));
             onDate(time);
           }}
         />

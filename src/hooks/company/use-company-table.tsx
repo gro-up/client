@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 import {
   getCoreRowModel,
   useReactTable,
@@ -7,10 +7,10 @@ import {
   getSortedRowModel,
   ColumnFiltersState,
   getFilteredRowModel,
-} from '@tanstack/react-table';
+} from "@tanstack/react-table";
 
-import { columns } from '@/components/company';
-import { companyList } from '@/utils/table';
+import { columns } from "@/components/company";
+import { companyList } from "@/utils/table";
 
 export const useCompanyTable = () => {
   const [sorting, setSorting] = useState<SortingState>([]);

@@ -1,22 +1,22 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import {
   SELECTION_CHANGE_COMMAND,
   FORMAT_TEXT_COMMAND,
   $getSelection,
   $isRangeSelection,
   $getNodeByKey,
-} from 'lexical';
-import { $isLinkNode, TOGGLE_LINK_COMMAND } from '@lexical/link';
-import { $getNearestNodeOfType, mergeRegister } from '@lexical/utils';
-import { $isListNode, ListNode } from '@lexical/list';
-import { createPortal } from 'react-dom';
-import { $isHeadingNode } from '@lexical/rich-text';
-import { $isCodeNode, getDefaultCodeLanguage, getCodeLanguages } from '@lexical/code';
+} from "lexical";
+import { $isLinkNode, TOGGLE_LINK_COMMAND } from "@lexical/link";
+import { $getNearestNodeOfType, mergeRegister } from "@lexical/utils";
+import { $isListNode, ListNode } from "@lexical/list";
+import { createPortal } from "react-dom";
+import { $isHeadingNode } from "@lexical/rich-text";
+import { $isCodeNode, getDefaultCodeLanguage, getCodeLanguages } from "@lexical/code";
 
-import { Bold, ChevronDown, Code, Italic, Link, Strikethrough, Underline } from 'lucide-react';
+import { Bold, ChevronDown, Code, Italic, Link, Strikethrough, Underline } from "lucide-react";
 
-import './styles/index.css';
+import "./styles/index.css";
 
 import {
   blockTypeToBlockIcon,
@@ -24,21 +24,21 @@ import {
   getSelectedNode,
   LOW_PRIORITY,
   supportedBlockTypes,
-} from '@/utils/editor/utils';
+} from "@/utils/editor/utils";
 
-import { Select } from './select';
-import { Divider } from './divider';
-import { FloatingLinkEditor } from './floating-link-editor';
-import { BlockOptionsDropdownList } from './block-options-dropdown-list';
-import { DropdownMenu, DropdownMenuTrigger } from '@/components/shadcn';
+import { Select } from "./select";
+import { Divider } from "./divider";
+import { FloatingLinkEditor } from "./floating-link-editor";
+import { BlockOptionsDropdownList } from "./block-options-dropdown-list";
+import { DropdownMenu, DropdownMenuTrigger } from "@/components/shadcn";
 
 export default function ToolbarPlugin() {
   const [editor] = useLexicalComposerContext();
   const toolbarRef = useRef<HTMLDivElement>(null);
-  const [blockType, setBlockType] = useState<keyof typeof blockTypeToBlockName>('paragraph');
+  const [blockType, setBlockType] = useState<keyof typeof blockTypeToBlockName>("paragraph");
   const [selectedElementKey, setSelectedElementKey] = useState<string | null>(null);
   const [showBlockOptionsDropDown, setShowBlockOptionsDropDown] = useState(false);
-  const [codeLanguage, setCodeLanguage] = useState('');
+  const [codeLanguage, setCodeLanguage] = useState("");
   const [isLink, setIsLink] = useState(false);
   const [isBold, setIsBold] = useState(false);
   const [isItalic, setIsItalic] = useState(false);
@@ -51,7 +51,7 @@ export default function ToolbarPlugin() {
     if ($isRangeSelection(selection)) {
       const anchorNode = selection.anchor.getNode();
       const element =
-        anchorNode.getKey() === 'root' ? anchorNode : anchorNode.getTopLevelElementOrThrow();
+        anchorNode.getKey() === "root" ? anchorNode : anchorNode.getTopLevelElementOrThrow();
       const elementKey = element.getKey();
       const elementDOM = editor.getElementByKey(elementKey);
       if (elementDOM !== null) {
@@ -69,11 +69,11 @@ export default function ToolbarPlugin() {
         }
       }
       // Update text format
-      setIsBold(selection.hasFormat('bold'));
-      setIsItalic(selection.hasFormat('italic'));
-      setIsUnderline(selection.hasFormat('underline'));
-      setIsStrikethrough(selection.hasFormat('strikethrough'));
-      setIsCode(selection.hasFormat('code'));
+      setIsBold(selection.hasFormat("bold"));
+      setIsItalic(selection.hasFormat("italic"));
+      setIsUnderline(selection.hasFormat("underline"));
+      setIsStrikethrough(selection.hasFormat("strikethrough"));
+      setIsCode(selection.hasFormat("code"));
 
       // Update links
       const node = getSelectedNode(selection);
@@ -99,8 +99,8 @@ export default function ToolbarPlugin() {
           updateToolbar();
           return false;
         },
-        LOW_PRIORITY
-      )
+        LOW_PRIORITY,
+      ),
     );
   }, [editor, updateToolbar]);
 
@@ -116,12 +116,12 @@ export default function ToolbarPlugin() {
         }
       });
     },
-    [editor, selectedElementKey]
+    [editor, selectedElementKey],
   );
 
   const insertLink = useCallback(() => {
     if (!isLink) {
-      editor.dispatchCommand(TOGGLE_LINK_COMMAND, 'https://');
+      editor.dispatchCommand(TOGGLE_LINK_COMMAND, "https://");
     } else {
       editor.dispatchCommand(TOGGLE_LINK_COMMAND, null);
     }
@@ -159,7 +159,7 @@ export default function ToolbarPlugin() {
           <Divider />
         </>
       )}
-      {blockType === 'code' ? (
+      {blockType === "code" ? (
         <>
           <Select onChange={onCodeLanguageSelect} options={codeLanguages} value={codeLanguage} />
           <ChevronDown className="chevron-down inside" />
@@ -168,52 +168,52 @@ export default function ToolbarPlugin() {
         <>
           <button
             onClick={() => {
-              editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'bold');
+              editor.dispatchCommand(FORMAT_TEXT_COMMAND, "bold");
             }}
-            className={'toolbar-item spaced ' + (isBold ? 'active' : '')}
+            className={"toolbar-item spaced " + (isBold ? "active" : "")}
             aria-label="Format Bold"
           >
             <Bold className="w-4 h-4" />
           </button>
           <button
             onClick={() => {
-              editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'italic');
+              editor.dispatchCommand(FORMAT_TEXT_COMMAND, "italic");
             }}
-            className={'toolbar-item spaced ' + (isItalic ? 'active' : '')}
+            className={"toolbar-item spaced " + (isItalic ? "active" : "")}
             aria-label="Format Italics"
           >
             <Italic className="w-4 h-4" />
           </button>
           <button
             onClick={() => {
-              editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'underline');
+              editor.dispatchCommand(FORMAT_TEXT_COMMAND, "underline");
             }}
-            className={'toolbar-item spaced ' + (isUnderline ? 'active' : '')}
+            className={"toolbar-item spaced " + (isUnderline ? "active" : "")}
             aria-label="Format Underline"
           >
             <Underline className="w-4 h-4" />
           </button>
           <button
             onClick={() => {
-              editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'strikethrough');
+              editor.dispatchCommand(FORMAT_TEXT_COMMAND, "strikethrough");
             }}
-            className={'toolbar-item spaced ' + (isStrikethrough ? 'active' : '')}
+            className={"toolbar-item spaced " + (isStrikethrough ? "active" : "")}
             aria-label="Format Strikethrough"
           >
             <Strikethrough className="w-4 h-4" />
           </button>
           <button
             onClick={() => {
-              editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'code');
+              editor.dispatchCommand(FORMAT_TEXT_COMMAND, "code");
             }}
-            className={'toolbar-item spaced ' + (isCode ? 'active' : '')}
+            className={"toolbar-item spaced " + (isCode ? "active" : "")}
             aria-label="Insert Code"
           >
             <Code className="w-4 h-4" />
           </button>
           <button
             onClick={insertLink}
-            className={'toolbar-item spaced ' + (isLink ? 'active' : '')}
+            className={"toolbar-item spaced " + (isLink ? "active" : "")}
             aria-label="Insert Link"
           >
             <Link className="w-4 h-4" />

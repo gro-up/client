@@ -1,6 +1,6 @@
-import { Search } from 'lucide-react';
-import { useGeocode, useGeocodeQuery, useLoadNaverMap } from '@/hooks/schedule';
-import { Input, Button } from '../shadcn';
+import { Search } from "lucide-react";
+import { useGeocode, useGeocodeQuery, useLoadNaverMap } from "@/hooks/schedule";
+import { Input, Button } from "../shadcn";
 
 export const ScheduleDetailMap = () => {
   const { queryValue, searchQuery, handleIsSearch, handleQueryChange } = useGeocodeQuery();

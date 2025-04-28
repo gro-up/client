@@ -14,10 +14,10 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from '@/components/shadcn';
-import { Calendar, Plus, Send, X } from 'lucide-react';
-import { DateTimePicker } from '../ui';
-import Editor from '../editor/editor';
+} from "@/components/shadcn";
+import { Calendar, Plus, Send, X } from "lucide-react";
+import { DateTimePicker } from "../ui";
+import Editor from "../editor/editor";
 
 export const ScheduleForm = () => {
   return (

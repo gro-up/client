@@ -1,2 +1,2 @@
-export * from './dummy-company-list';
-export * from './format-link';
+export * from "./dummy-company-list";
+export * from "./format-link";

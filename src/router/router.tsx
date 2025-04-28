@@ -1,23 +1,33 @@
-import { createBrowserRouter, RouterProvider } from 'react-router';
-import { PublicLayout } from '@/layouts/public-layout';
-import { PrivateLayout } from '@/layouts/private-layout';
-import { ROUTER_PATH } from './paths';
+import { createBrowserRouter, RouterProvider } from "react-router";
+import { PublicLayout } from "@/layouts/public-layout";
+import { PrivateLayout } from "@/layouts/private-layout";
+import { ROUTER_PATH } from "./paths";
 
-import LandingPage from '@/pages/landing-page';
+import LandingPage from "@/pages/landing-page";
 
-import CompanyPage from '@/pages/company-page';
-import RetrospectivePage from '@/pages/retrospective-page';
-import { RouterGuard } from '@/components/guard';
-import DashboardPage from '@/pages/dashboard-page';
+import CompanyPage from "@/pages/company-page";
+import RetrospectivePage from "@/pages/retrospective-page";
+import { RouterGuard } from "@/components/guard";
+import DashboardPage from "@/pages/dashboard-page";
+import SchedulePage from "@/pages/schedule-page";
+import SignupPage from "@/pages/signup-page";
 
 const browserRouter = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <PublicLayout />,
     children: [
       {
         path: ROUTER_PATH.PUBLIC.LANDING,
         element: <LandingPage />,
+      },
+      {
+        path: ROUTER_PATH.PUBLIC.SIGNUP,
+        element: <SignupPage />,
+      },
+      {
+        path: ROUTER_PATH.PUBLIC.LOGIN,
+        element: <SignupPage />,
       },
     ],
   },
@@ -43,10 +53,14 @@ const browserRouter = createBrowserRouter([
         path: ROUTER_PATH.PRIVATE.CHILD.RETROSPECTIVE,
         element: <RetrospectivePage />,
       },
+      {
+        path: ROUTER_PATH.PRIVATE.CHILD.SCHEDULE,
+        element: <SchedulePage />,
+      },
     ],
   },
   {
-    path: '*',
+    path: "*",
     element: <RouterGuard />,
   },
 ]);

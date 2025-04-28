@@ -1,11 +1,11 @@
-import { Table } from '@/components/shadcn';
+import { Table } from "@/components/shadcn";
 import {
   CompanyTableHeader,
   CompanyTableBody,
   CompanyTableFilter,
   CompanyTablePagination,
-} from '@/components/company';
-import { useCompanyTable } from '@/hooks/company/use-company-table';
+} from "@/components/company";
+import { useCompanyTable } from "@/hooks/company/use-company-table";
 
 export default function CompanyPage() {
   const { table, columns } = useCompanyTable();

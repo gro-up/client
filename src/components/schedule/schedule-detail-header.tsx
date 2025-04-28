@@ -1,6 +1,6 @@
-import { ChevronUp, ChevronDown } from 'lucide-react';
-import { Button } from '@/components/shadcn';
-import { MoreActions } from '../ui';
+import { ChevronUp, ChevronDown } from "lucide-react";
+import { Button } from "@/components/shadcn";
+import { MoreActions } from "../ui";
 
 export const ScheduleDetailHeader = () => {
   return (

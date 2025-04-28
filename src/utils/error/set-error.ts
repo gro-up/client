@@ -3,5 +3,5 @@ export const setError = (error: unknown) => {
     throw new Error(error.message);
   }
 
-  throw new Error('알 수 없는 오류');
+  throw new Error("알 수 없는 오류");
 };

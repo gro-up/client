@@ -1,11 +1,11 @@
-import { ColumnDef } from '@tanstack/react-table';
+import { ColumnDef } from "@tanstack/react-table";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@radix-ui/react-dropdown-menu';
+} from "@radix-ui/react-dropdown-menu";
 import {
   MoreHorizontal,
   Calendar,
@@ -18,18 +18,18 @@ import {
   Building,
   ExternalLink,
   Briefcase,
-} from 'lucide-react';
+} from "lucide-react";
 
-import { Button, Checkbox } from '@/components/shadcn';
-import type { Company } from '@/utils/table';
-import { cn } from '@/utils/shadcn';
+import { Button, Checkbox } from "@/components/shadcn";
+import type { Company } from "@/utils/table";
+import { cn } from "@/utils/shadcn";
 
 const selectColumn: ColumnDef<Company> = {
-  id: 'select',
+  id: "select",
   header: ({ table }) => (
     <Checkbox
       checked={
-        table.getIsAllPageRowsSelected() || (table.getIsSomePageRowsSelected() && 'indeterminate')
+        table.getIsAllPageRowsSelected() || (table.getIsSomePageRowsSelected() && "indeterminate")
       }
       onCheckedChange={(value: boolean) => table.toggleAllPageRowsSelected(!!value)}
       aria-label="Select all"
@@ -47,20 +47,20 @@ const selectColumn: ColumnDef<Company> = {
 };
 
 const companyColumn: ColumnDef<Company> = {
-  accessorKey: 'company',
+  accessorKey: "company",
   header: ({ column }) => {
     return (
       <Button
         className={cn(
-          (column.getIsSorted() === 'desc' || column.getIsSorted() === 'asc') && 'text-blue-500',
-          'cursor-pointer'
+          (column.getIsSorted() === "desc" || column.getIsSorted() === "asc") && "text-blue-500",
+          "cursor-pointer",
         )}
         variant="ghost"
-        onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
       >
         <Building className="w-3 h-3" />
         회사
-        {column.getIsSorted() === 'asc' ? (
+        {column.getIsSorted() === "asc" ? (
           <ChevronUp className="ml-2 h-3 w-3" />
         ) : (
           <ChevronDown className="ml-2 h-3 w-3" />
@@ -71,20 +71,20 @@ const companyColumn: ColumnDef<Company> = {
 };
 
 const jobColumn: ColumnDef<Company> = {
-  accessorKey: 'job',
+  accessorKey: "job",
   header: ({ column }) => {
     return (
       <Button
         variant="ghost"
-        onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         className={cn(
-          (column.getIsSorted() === 'desc' || column.getIsSorted() === 'asc') && 'text-blue-500',
-          'cursor-pointer'
+          (column.getIsSorted() === "desc" || column.getIsSorted() === "asc") && "text-blue-500",
+          "cursor-pointer",
         )}
       >
         <Briefcase className="w-3 h-3" />
         직무
-        {column.getIsSorted() === 'asc' ? (
+        {column.getIsSorted() === "asc" ? (
           <ChevronUp className="ml-2 h-3 w-3" />
         ) : (
           <ChevronDown className="ml-2 h-3 w-3" />
@@ -95,7 +95,7 @@ const jobColumn: ColumnDef<Company> = {
 };
 
 const companyLinkColumn: ColumnDef<Company> = {
-  accessorKey: 'company_link',
+  accessorKey: "company_link",
   header: () => {
     return (
       <span className="flex items-center gap-2">
@@ -107,7 +107,7 @@ const companyLinkColumn: ColumnDef<Company> = {
 };
 
 const actionsColumn: ColumnDef<Company> = {
-  id: 'actions',
+  id: "actions",
   cell: ({ row }) => {
     const payment = row.original;
 

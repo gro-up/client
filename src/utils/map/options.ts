@@ -1,4 +1,4 @@
-import { Coordinate } from '@/hooks/schedule';
+import { Coordinate } from "@/hooks/schedule";
 
 export const mapOptions = (geocode: Coordinate) => ({
   center: new window.naver.maps.LatLng(geocode.y, geocode.x),

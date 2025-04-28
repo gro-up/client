@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
-import { toast } from 'sonner';
+import { useState, useEffect } from "react";
+import { toast } from "sonner";
 
-import { setError } from '@/utils/error';
+import { setError } from "@/utils/error";
 
 export interface Coordinate {
   x: number;
@@ -15,7 +15,7 @@ export const useGeocode = (query: string) => {
     if (!query) return;
     window.naver.maps.Service.geocode({ query }, (status, response) => {
       if (status !== window.naver.maps.Service.Status.OK) {
-        toast.error('네이버 지도 오류: 주소를 찾을 수 없습니다.');
+        toast.error("네이버 지도 오류: 주소를 찾을 수 없습니다.");
       }
 
       try {
@@ -26,7 +26,7 @@ export const useGeocode = (query: string) => {
         };
         setGeocode(coordinates);
       } catch (error) {
-        toast.error('네이버 지도 오류: 주소를 찾을 수 없습니다.');
+        toast.error("네이버 지도 오류: 주소를 찾을 수 없습니다.");
         setError(error);
       }
     });

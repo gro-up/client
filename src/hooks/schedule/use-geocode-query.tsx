@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 export const useGeocodeQuery = () => {
-  const [queryValue, setQueryValue] = useState<string>('');
-  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [queryValue, setQueryValue] = useState<string>("");
+  const [searchQuery, setSearchQuery] = useState<string>("");
   const [isSearch, setIsSearch] = useState(false);
 
   const handleQueryChange = (e: React.ChangeEvent<HTMLInputElement>) =>

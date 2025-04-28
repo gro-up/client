@@ -1,5 +1,5 @@
-import { cn } from '@/utils/shadcn';
-import React from 'react';
+import { cn } from "@/utils/shadcn";
+import React from "react";
 
 interface HeaderProps {
   headerTitle: string;
@@ -17,9 +17,9 @@ export const Header = ({
   children,
 }: HeaderProps) => {
   return (
-    <div className={cn('flex justify-between items-center ps-4', className)}>
+    <div className={cn("flex justify-between items-center ps-4", className)}>
       <div className="flex items-center gap-2 ">
-        <IconComponent className={cn('w-5 h-5', iconClassName)} />
+        <IconComponent className={cn("w-5 h-5", iconClassName)} />
         <h3 className="text-lg font-bold">{headerTitle}</h3>
       </div>
       {children}

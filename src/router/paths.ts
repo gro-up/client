@@ -1,20 +1,23 @@
 export const ROUTER_PATH = {
   PUBLIC: {
-    LANDING: '/',
+    LANDING: "/",
+    SIGNUP: "/signup",
+    LOGIN: "/login",
   },
   PRIVATE: {
     PARENT: {
-      APP: '/app',
+      APP: "/app",
     },
     CHILD: {
-      DASHBOARD: 'dashboard',
-      CALENDAR: 'calendar',
-      COMPANY: 'company',
-      RETROSPECTIVE: 'retrospective',
+      DASHBOARD: "dashboard",
+      CALENDAR: "calendar",
+      COMPANY: "company",
+      SCHEDULE: "schedule",
+      RETROSPECTIVE: "retrospective",
       SETTING: {
-        NOTIFICATION: 'notification',
-        PROFILE: 'profile',
-        FEEDBACK: 'feedback',
+        NOTIFICATION: "notification",
+        PROFILE: "profile",
+        FEEDBACK: "feedback",
       },
     },
   },

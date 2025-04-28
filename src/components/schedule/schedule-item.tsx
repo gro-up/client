@@ -1,4 +1,4 @@
-import { MoreActions } from '../ui';
+import { MoreActions } from "../ui";
 
 export const ScheduleItem = () => {
   return (

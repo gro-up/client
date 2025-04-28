@@ -1,8 +1,8 @@
-import { Navigate, Outlet } from 'react-router';
-import { ON_STEP_TOKEN_NAME, useCookies } from '@/hooks/auth';
-import { ROUTER_PATH } from '@/router';
-import { Sidebar } from '@/components/sidebar';
-import { ThemeProvider } from '@/context/theme';
+import { Navigate, Outlet } from "react-router";
+import { ON_STEP_TOKEN_NAME, useCookies } from "@/hooks/auth";
+import { ROUTER_PATH } from "@/router";
+import { Sidebar } from "@/components/sidebar";
+import { ThemeProvider } from "@/context/theme";
 
 export const PrivateLayout = () => {
   const { cookies } = useCookies();

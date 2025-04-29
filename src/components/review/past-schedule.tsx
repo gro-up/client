@@ -4,7 +4,7 @@ import { PastScheduleCarouselItem } from "./past-schedule-carousel-item";
 export const PastSchedule = () => {
   return (
     <section>
-      <header>
+      <header className="mb-5">
         <h2>지난 일정</h2>
       </header>
       <Carousel>

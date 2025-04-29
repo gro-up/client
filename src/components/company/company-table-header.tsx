@@ -8,7 +8,7 @@ export interface CompanyProps {
 
 export const CompanyTableHeader = ({ table }: CompanyProps) => {
   return (
-    <TableHeader className="bg-gray-50 rounded-md ">
+    <TableHeader className="rounded-md ">
       {table.getHeaderGroups().map((headerGroup) => (
         <TableRow key={headerGroup.id} className="border-none">
           {headerGroup.headers.map((header) => {

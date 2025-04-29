@@ -2,17 +2,9 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import ScheduleAddButton from "@/components/schedule/schedule-add-button";
 
-import dayjs from "dayjs";
-import weekday from "dayjs/plugin/weekday";
-import updateLocale from "dayjs/plugin/updateLocale";
-import "dayjs/locale/ko";
 import ScheduleDateTimeModal from "./schedule-date-time-modal";
 import ScheduleModalForm from "./schedule-modal-form";
 import { useScheduleFormState } from "@/hooks/schedule";
-
-dayjs.extend(weekday);
-dayjs.extend(updateLocale);
-dayjs.locale("ko");
 
 export default function ScheduleModal() {
   const {

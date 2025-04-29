@@ -6,9 +6,8 @@ import {
 } from "@/components/shadcn/dropdown-menu";
 import { Input, Button } from "@/components/shadcn";
 import { CalendarPlus, ChevronDown } from "lucide-react";
-import dayjs from "dayjs";
 import { STEP_OPTIONS } from "@/utils/map";
-
+import dayjs from "@/utils/time/dayjs-setup";
 import * as Dialog from "@radix-ui/react-dialog";
 interface Props {
   selectedStep: string;

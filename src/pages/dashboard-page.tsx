@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { ScheduleHeader, ScheduleList } from "@/components/schedule";
 import { Container, DateTimePicker } from "@/components/ui";
-import ScheduleAddButton from "@/components/schedule/schedule-add-button";
+
+import ScheduleModal from "@/components/schedule/schedule-modal";
 
 export default function DashboardPage() {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
@@ -19,7 +20,7 @@ export default function DashboardPage() {
         <hr />
         <ScheduleHeader />
         <ScheduleList />
-        <ScheduleAddButton />
+        <ScheduleModal />
       </Container>
       <Container as="aside" className="w-6/12 p-4"></Container>
     </>

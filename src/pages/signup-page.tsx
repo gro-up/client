@@ -9,12 +9,17 @@ import { usePassword } from "@/hooks/auth/use-password";
 import { useVerificationCode } from "@/hooks/auth/use-verification-code";
 
 export default function SignupPage() {
-  // 각각 역할별로 분리해서 훅 가져오기
   const { email, isEmailValid, handleEmailChange } = useEmail();
   const { verificationCode, isCodeVerified, setVerificationCode, handleVerification } =
     useVerificationCode();
-  const { password, confirmPassword, passwordError, setPassword, handleConfirmPasswordChange } =
-    usePassword();
+  const {
+    password,
+    confirmPassword,
+    passwordComplexityError,
+    passwordMatchError,
+    handlePasswordChange,
+    handleConfirmPasswordChange,
+  } = usePassword();
 
   return (
     <>
@@ -35,8 +40,9 @@ export default function SignupPage() {
             <PasswordSection
               password={password}
               confirmPassword={confirmPassword}
-              passwordError={passwordError}
-              setPassword={setPassword}
+              passwordComplexityError={passwordComplexityError}
+              passwordMatchError={passwordMatchError}
+              handlePasswordChange={handlePasswordChange}
               handleConfirmPasswordChange={handleConfirmPasswordChange}
             />
             <SubmitButton />

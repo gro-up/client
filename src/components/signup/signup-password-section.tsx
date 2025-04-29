@@ -3,16 +3,18 @@ import { Input } from "../shadcn";
 type PasswordSectionProps = {
   password: string;
   confirmPassword: string;
-  passwordError: string;
-  setPassword: (password: string) => void;
+  passwordComplexityError: string;
+  passwordMatchError: string;
+  handlePasswordChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleConfirmPasswordChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export default function PasswordSection({
   password,
   confirmPassword,
-  passwordError,
-  setPassword,
+  passwordComplexityError,
+  passwordMatchError,
+  handlePasswordChange,
   handleConfirmPasswordChange,
 }: PasswordSectionProps) {
   return (
@@ -20,10 +22,11 @@ export default function PasswordSection({
       <Input
         type="password"
         value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={handlePasswordChange}
         className="h-11 w-125 !placeholder-white placeholder:text-xs text-white rounded-b-none"
         placeholder="패스워드를 입력해주세요."
       />
+
       <Input
         type="password"
         value={confirmPassword}
@@ -31,7 +34,12 @@ export default function PasswordSection({
         className="h-11 w-125 !placeholder-white placeholder:text-xs text-white rounded-t-none"
         placeholder="패스워드를 확인해주세요."
       />
-      <div className="text-red-500 mt-4 mb-2 text-xs">{passwordError}</div>
+
+      {passwordComplexityError ? (
+        <div className="text-red-500 mt-4 text-xs">{passwordComplexityError}</div>
+      ) : passwordMatchError ? (
+        <div className="text-red-500 mt-2 text-xs">{passwordMatchError}</div>
+      ) : null}
     </div>
   );
 }

@@ -22,7 +22,7 @@ export default function LoginForm() {
           className="h-11 w-125 rounded-t-none !placeholder-white placeholder:text-xs text-white"
           placeholder="패스워드를 입력해주세요."
         />
-        <div className="text-red-500 mt-4 mb-4 text-xs">{error}</div>
+        <div className="text-red-500 mt-2 mb-4 text-xs">{error}</div>
       </div>
 
       <Button type="submit" variant="mint" className="w-125 text-xs">

@@ -1,4 +1,4 @@
-import { PastSchedule } from "@/components/review";
+import { PastSchedule, PastScheduleList } from "@/components/review";
 
 export default function ReviewPage() {
   return (
@@ -10,6 +10,7 @@ export default function ReviewPage() {
       <hr />
 
       <PastSchedule />
+      <PastScheduleList />
     </div>
   );
 }

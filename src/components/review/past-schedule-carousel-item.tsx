@@ -1,6 +1,6 @@
 import { MoreHorizontal } from "lucide-react";
 
-export const PastScheduleItem = () => {
+export const PastScheduleCarouselItem = () => {
   return (
     <div>
       <div className="flex justify-between items-center">

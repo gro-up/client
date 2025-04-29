@@ -1,5 +1,5 @@
 import { Carousel, CarouselContent, CarouselItem } from "@/components/shadcn";
-import { PastScheduleItem } from "./past-schedule-item";
+import { PastScheduleCarouselItem } from "./past-schedule-carousel-item";
 
 export const PastSchedule = () => {
   return (
@@ -10,13 +10,13 @@ export const PastSchedule = () => {
       <Carousel>
         <CarouselContent>
           <CarouselItem className="basis-1/3">
-            <PastScheduleItem key={1} />
+            <PastScheduleCarouselItem key={1} />
           </CarouselItem>
           <CarouselItem className="basis-1/3">
-            <PastScheduleItem key={2} />
+            <PastScheduleCarouselItem key={2} />
           </CarouselItem>
           <CarouselItem className="basis-1/3">
-            <PastScheduleItem key={3} />
+            <PastScheduleCarouselItem key={3} />
           </CarouselItem>
         </CarouselContent>
       </Carousel>

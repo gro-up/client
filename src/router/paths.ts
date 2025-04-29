@@ -3,6 +3,7 @@ export const ROUTER_PATH = {
     LANDING: "/",
     SIGNUP: "/signup",
     LOGIN: "/login",
+    RESETPASSWORD: "/reset-password",
   },
   PRIVATE: {
     PARENT: {

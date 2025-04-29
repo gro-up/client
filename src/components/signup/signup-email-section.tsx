@@ -7,6 +7,7 @@ type EmailSectionProps = {
   handleEmailChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleVerification: () => void;
   setVerificationCode: (code: string) => void;
+  isCodeVerified: boolean;
 };
 
 export default function EmailSection({
@@ -16,6 +17,7 @@ export default function EmailSection({
   handleEmailChange,
   handleVerification,
   setVerificationCode,
+  isCodeVerified,
 }: EmailSectionProps) {
   return (
     <>
@@ -45,7 +47,8 @@ export default function EmailSection({
             type="button"
             variant="mint"
             onClick={handleVerification}
-            className="h-full absolute top-1/2 right-0 -translate-y-1/2 px-3 text-sm rounded-r-md rounded-l-none border-none text-white"
+            className={`h-[96%] absolute top-1/2 right-[0.3px] -translate-y-1/2 px-3 text-sm rounded-r-md rounded-l-none border-none text-white
+              ${isCodeVerified ? "bg-neutral-800 hover:bg-neutral-800 cursor-default" : ""}`}
           >
             확인
           </Button>

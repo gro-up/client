@@ -12,6 +12,7 @@ import DashboardPage from "@/pages/dashboard-page";
 import SchedulePage from "@/pages/schedule-page";
 import LoginPage from "@/pages/login-page";
 import SignupPage from "@/pages/signup-page";
+import ResetPasswordPage from "@/pages/reset-password-page";
 
 const browserRouter = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const browserRouter = createBrowserRouter([
       {
         path: ROUTER_PATH.PUBLIC.SIGNUP,
         element: <SignupPage />,
+      },
+      {
+        path: ROUTER_PATH.PUBLIC.RESETPASSWORD,
+        element: <ResetPasswordPage />,
       },
     ],
   },

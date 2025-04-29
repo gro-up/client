@@ -1,14 +1,15 @@
-import SignupHeader from "@/components/signup/signup-header";
 import PasswordSection from "@/components/signup/signup-password-section";
-import SubmitButton from "@/components/signup/signup-submit-button";
-import SignupFooter from "@/components/signup/signup-footer";
+
 import EmailSection from "@/components/signup/signup-email-section";
 
 import { useEmail } from "@/hooks/auth/use-email";
 import { usePassword } from "@/hooks/auth/use-password";
 import { useVerificationCode } from "@/hooks/auth/use-verification-code";
+import ResetPasswordHeader from "@/components/reset-password/reset-password-header";
+import { Button } from "@/components/shadcn";
+import ResetPasswordFooter from "@/components/reset-password/reset-password-footer";
 
-export default function SignupPage() {
+export default function ResetPasswordPage() {
   const { email, isEmailValid, handleEmailChange } = useEmail();
   const { verificationCode, isCodeVerified, setVerificationCode, handleVerification } =
     useVerificationCode();
@@ -23,7 +24,7 @@ export default function SignupPage() {
 
   return (
     <>
-      <SignupHeader />
+      <ResetPasswordHeader />
 
       <form className="flex flex-col gap-2.5">
         <EmailSection
@@ -46,12 +47,11 @@ export default function SignupPage() {
               handlePasswordChange={handlePasswordChange}
               handleConfirmPasswordChange={handleConfirmPasswordChange}
             />
-            <SubmitButton />
+            <Button variant="mint">비밀번호 바꾸기</Button>
           </>
         )}
       </form>
-
-      <SignupFooter />
+      <ResetPasswordFooter />
     </>
   );
 }

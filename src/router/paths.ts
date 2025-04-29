@@ -14,7 +14,7 @@ export const ROUTER_PATH = {
       CALENDAR: "calendar",
       COMPANY: "company",
       SCHEDULE: "schedule",
-      RETROSPECTIVE: "retrospective",
+      REVIEW: "review",
       SETTING: {
         NOTIFICATION: "notification",
         PROFILE: "profile",

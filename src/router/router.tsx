@@ -6,13 +6,13 @@ import { ROUTER_PATH } from "./paths";
 import LandingPage from "@/pages/landing-page";
 
 import CompanyPage from "@/pages/company-page";
-import RetrospectivePage from "@/pages/retrospective-page";
 import { RouterGuard } from "@/components/guard";
 import DashboardPage from "@/pages/dashboard-page";
 import SchedulePage from "@/pages/schedule-page";
 import LoginPage from "@/pages/login-page";
 import SignupPage from "@/pages/signup-page";
 import ResetPasswordPage from "@/pages/reset-password-page";
+import ReviewPage from "@/pages/review-page";
 
 const browserRouter = createBrowserRouter([
   {
@@ -56,8 +56,8 @@ const browserRouter = createBrowserRouter([
         element: <CompanyPage />,
       },
       {
-        path: ROUTER_PATH.PRIVATE.CHILD.RETROSPECTIVE,
-        element: <RetrospectivePage />,
+        path: ROUTER_PATH.PRIVATE.CHILD.REVIEW,
+        element: <ReviewPage />,
       },
       {
         path: ROUTER_PATH.PRIVATE.CHILD.SCHEDULE,

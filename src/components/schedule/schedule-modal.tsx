@@ -22,6 +22,10 @@ export default function ScheduleModal() {
     setOpen,
     subModalOpen,
     setSubModalOpen,
+    setAddress,
+    address,
+    addressDetail,
+    setAddressDetail,
   } = useScheduleFormState();
 
   return (
@@ -51,6 +55,10 @@ export default function ScheduleModal() {
                   selectedDate={selectedDate}
                   selectedTime={selectedTime}
                   isDateTimeConfirmed={isDateTimeConfirmed}
+                  address={address}
+                  setAddress={setAddress}
+                  addressDetail={addressDetail}
+                  setAddressDetail={setAddressDetail}
                   onDateClick={() => {
                     setTempDate(selectedDate ?? new Date());
                     setTempTime(selectedTime || new Date().toTimeString().slice(0, 5));

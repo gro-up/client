@@ -7,7 +7,8 @@ export function useScheduleFormState() {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [selectedTime, setSelectedTime] = useState("");
   const [isDateTimeConfirmed, setIsDateTimeConfirmed] = useState(false);
-
+  const [address, setAddress] = useState(""); // 검색 주소
+  const [addressDetail, setAddressDetail] = useState(""); // 나머지 입력 주소
   const [tempDate, setTempDate] = useState<Date | null>(null);
   const [tempTime, setTempTime] = useState("");
 
@@ -44,5 +45,9 @@ export function useScheduleFormState() {
     setOpen,
     subModalOpen,
     setSubModalOpen,
+    setAddress,
+    address,
+    addressDetail,
+    setAddressDetail,
   };
 }

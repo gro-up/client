@@ -28,7 +28,7 @@ export const SIDEBAR_PATHS: PathItem[] = [
     title: SidebarPaths.RETROSPECTIVE,
     type: PathType.LINK,
     icon: NotebookText,
-    to: ROUTER_PATH.PRIVATE.CHILD.RETROSPECTIVE,
+    to: ROUTER_PATH.PRIVATE.CHILD.REVIEW,
   },
   {
     title: SidebarPaths.SCHEDULE,

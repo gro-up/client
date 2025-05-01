@@ -1,4 +1,4 @@
-export {}; // 전역 타입 파일에서는 꼭 필요합니다
+export {};
 
 export interface DaumPostcodeData {
   address: string;

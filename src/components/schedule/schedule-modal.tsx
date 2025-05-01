@@ -4,12 +4,10 @@ import ScheduleAddButton from "@/components/schedule/schedule-add-button";
 
 import ScheduleDateTimeModal from "./schedule-date-time-modal";
 import ScheduleModalForm from "./schedule-modal-form";
-import { useScheduleFormState } from "@/hooks/schedule";
+import { useAddressState, useDateTimePickerState, useModalState } from "@/hooks/schedule";
 
 export default function ScheduleModal() {
   const {
-    selectedStep,
-    setSelectedStep,
     selectedDate,
     selectedTime,
     isDateTimeConfirmed,
@@ -18,15 +16,10 @@ export default function ScheduleModal() {
     tempTime,
     setTempTime,
     handleConfirmDateTime,
-    open,
-    setOpen,
-    subModalOpen,
-    setSubModalOpen,
-    setAddress,
-    address,
-    addressDetail,
-    setAddressDetail,
-  } = useScheduleFormState();
+  } = useDateTimePickerState();
+  const { address, setAddress, addressDetail, setAddressDetail } = useAddressState();
+  const { open, setOpen, subModalOpen, setSubModalOpen, selectedStep, setSelectedStep } =
+    useModalState();
 
   return (
     <>
@@ -81,7 +74,7 @@ export default function ScheduleModal() {
         tempTime={tempTime}
         setTempDate={setTempDate}
         setTempTime={setTempTime}
-        onConfirm={handleConfirmDateTime}
+        onConfirm={() => handleConfirmDateTime(() => setSubModalOpen(false))}
       />
     </>
   );

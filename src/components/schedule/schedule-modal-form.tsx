@@ -7,15 +7,17 @@ import {
 import { Input, Button } from "@/components/shadcn";
 import { CalendarPlus, ChevronDown } from "lucide-react";
 import { STEP_OPTIONS } from "@/utils/map";
-import dayjs from "@/utils/time/dayjs-setup";
 import * as Dialog from "@radix-ui/react-dialog";
+import { format, setHours, setMinutes } from "date-fns";
+import { ko } from "date-fns/locale";
 import { DaumPostcodeData } from "@/types";
+
 interface Props {
   selectedStep: string;
   address: string;
-  addressDetail: string; // 나머지 주소
+  addressDetail: string;
   setAddress: (data: string) => void;
-  setAddressDetail: (data: string) => void; //  나머지 주소 setter
+  setAddressDetail: (data: string) => void;
   setSelectedStep: (step: string) => void;
   selectedDate: Date | null;
   selectedTime: string;
@@ -45,12 +47,22 @@ export default function ScheduleModalForm({
 
     const postcode = new window.daum.Postcode({
       oncomplete: (data: DaumPostcodeData) => {
-        setAddress(data.address); // 도로명 주소 또는 지번 주소
+        setAddress(data.address);
       },
     });
 
     postcode.open();
   };
+
+  // 시간 포맷팅
+  const formattedDateTime = (() => {
+    if (!selectedDate || !selectedTime) return null;
+    const [hourStr, minuteStr] = selectedTime.split(":");
+    const hour = Number(hourStr);
+    const minute = Number(minuteStr);
+    const dateWithTime = setMinutes(setHours(selectedDate, hour), minute);
+    return format(dateWithTime, "yyyy.MM.dd EEEE a HH:mm", { locale: ko });
+  })();
 
   return (
     <div>
@@ -100,13 +112,8 @@ export default function ScheduleModalForm({
           <CalendarPlus />
         </Button>
 
-        {isDateTimeConfirmed && selectedDate && selectedTime && (
-          <p className="text-sm text-center">
-            {dayjs(selectedDate)
-              .hour(Number(selectedTime.split(":")[0]))
-              .minute(Number(selectedTime.split(":")[1]))
-              .format("YYYY.MM.DD dddd A HH:mm")}
-          </p>
+        {isDateTimeConfirmed && formattedDateTime && (
+          <p className="text-sm text-center">{formattedDateTime}</p>
         )}
       </div>
 

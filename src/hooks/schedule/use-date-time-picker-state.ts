@@ -1,18 +1,13 @@
 import { useState } from "react";
 
-export function useScheduleFormState() {
-  const [open, setOpen] = useState(false);
-  const [subModalOpen, setSubModalOpen] = useState(false);
-  const [selectedStep, setSelectedStep] = useState("");
+export function useDateTimePickerState() {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [selectedTime, setSelectedTime] = useState("");
   const [isDateTimeConfirmed, setIsDateTimeConfirmed] = useState(false);
-  const [address, setAddress] = useState(""); // 검색 주소
-  const [addressDetail, setAddressDetail] = useState(""); // 나머지 입력 주소
   const [tempDate, setTempDate] = useState<Date | null>(null);
   const [tempTime, setTempTime] = useState("");
 
-  const handleConfirmDateTime = () => {
+  const handleConfirmDateTime = (onSuccess?: () => void) => {
     if (!tempDate || !tempTime) return;
 
     const [hours, minutes] = tempTime.split(":").map(Number);
@@ -24,12 +19,10 @@ export function useScheduleFormState() {
     setSelectedDate(combinedDate);
     setSelectedTime(tempTime);
     setIsDateTimeConfirmed(true);
-    setSubModalOpen(false);
+    if (onSuccess) onSuccess();
   };
 
   return {
-    selectedStep,
-    setSelectedStep,
     selectedDate,
     setSelectedDate,
     selectedTime,
@@ -41,13 +34,5 @@ export function useScheduleFormState() {
     tempTime,
     setTempTime,
     handleConfirmDateTime,
-    open,
-    setOpen,
-    subModalOpen,
-    setSubModalOpen,
-    setAddress,
-    address,
-    addressDetail,
-    setAddressDetail,
   };
 }

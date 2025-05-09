@@ -5,7 +5,7 @@ export default function LandingPage() {
   return (
     <>
       <div className="flex flex-col text-white text-5xl">
-        <span>당신의 도약</span>
+        <p>당신의 도약</p>
         <div>
           <span className="text-emerald-400 ">&nbsp;Gro와</span> <span>함께</span>
         </div>

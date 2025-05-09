@@ -2,7 +2,7 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import ScheduleAddButton from "@/components/schedule/schedule-add-button";
 
-import ScheduleDateTimeModal from "./schedule-date-time-modal";
+import ScheduleDateTimeModal from "./schedule-modal-date-time";
 import ScheduleModalForm from "./schedule-modal-form";
 import { useAddressState, useDateTimePickerState, useModalState } from "@/hooks/schedule";
 

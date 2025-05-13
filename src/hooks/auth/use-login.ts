@@ -19,11 +19,9 @@ export function useLogin() {
     mutationFn: () => signin(email, password),
     onSuccess: (data) => {
       const token = data.token;
-
       setCookie(ON_STEP_TOKEN_NAME, JSON.stringify({ token }));
-
       navigate(`${ROUTER_PATH.PRIVATE.PARENT.APP}/${ROUTER_PATH.PRIVATE.CHILD.DASHBOARD}`);
-      toast.info("로그인 성공");
+      toast.success("로그인 성공");
     },
     onError: (err) => {
       if (err instanceof Error) {

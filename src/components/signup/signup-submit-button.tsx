@@ -1,8 +1,12 @@
 import { Button } from "../shadcn";
 
-export default function SubmitButton() {
+type SubmitButtonProps = {
+  disabled?: boolean;
+};
+
+export default function SubmitButton({ disabled }: SubmitButtonProps) {
   return (
-    <Button variant="mint" type="submit">
+    <Button type="submit" variant="mint" disabled={disabled}>
       회원가입
     </Button>
   );

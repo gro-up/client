@@ -47,3 +47,23 @@ export const signup = async ({ email, password }: { email: string; password: str
 
   return res.json();
 };
+
+export const signin = async (email: string, password: string) => {
+  const url = `${BASE_URL}/api/auth/signin`;
+
+  const res = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email, password }),
+  });
+  const result = await res.json();
+
+  if (!res.ok || result.code !== 200) {
+    const message = result.message || "로그인 실패";
+    throw new Error(message);
+  }
+
+  return result.data;
+};

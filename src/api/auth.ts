@@ -1,0 +1,49 @@
+import { BASE_URL } from "./base";
+
+export const verifyEmail = async (email: string) => {
+  const url = `${BASE_URL}/api/auth/email/verify-request?email=${encodeURIComponent(email)}`;
+
+  const res = await fetch(url, {
+    method: "POST",
+  });
+
+  if (!res.ok) {
+    const errorData = await res.json();
+    throw new Error(errorData?.message);
+  }
+
+  return res.json();
+};
+
+export const verifyCheck = async (email: string, code: string) => {
+  const url = `${BASE_URL}/api/auth/email/verify-check?email=${encodeURIComponent(email)}&code=${encodeURIComponent(code)}`;
+
+  const res = await fetch(url, {
+    method: "POST",
+  });
+
+  if (!res.ok) {
+    const errorData = await res.json();
+    throw new Error(errorData?.message);
+  }
+
+  return res.json();
+};
+
+export const signup = async ({ email, password }: { email: string; password: string }) => {
+  const url = `${BASE_URL}/api/auth/signup`;
+
+  const res = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email, password }),
+  });
+
+  if (!res.ok) {
+    throw new Error("회원가입 실패");
+  }
+
+  return res.json();
+};

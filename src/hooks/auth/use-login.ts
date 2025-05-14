@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router";
-import { useEmail } from "./use-email";
+import { useVerificationEmail } from "./use-verification-email";
 import { usePassword } from "./use-password";
 import { useState } from "react";
 
 export function useLogin() {
   const navigate = useNavigate();
   const [error, setError] = useState("");
-  const { email, emailError, handleEmailChange, validateEmail } = useEmail();
+  const { email, emailError, handleEmailChange, validateEmail } = useVerificationEmail();
   const { password, passwordComplexityError, handlePasswordChange, validatePasswordComplexity } =
     usePassword();
 

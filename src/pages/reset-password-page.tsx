@@ -2,7 +2,7 @@ import PasswordSection from "@/components/signup/signup-password-section";
 
 import EmailSection from "@/components/signup/signup-email-section";
 
-import { useEmail } from "@/hooks/auth/use-email";
+import { useVerificationEmail } from "@/hooks/auth/use-verification-email";
 import { usePassword } from "@/hooks/auth/use-password";
 import { useVerificationCode } from "@/hooks/auth/use-verification-code";
 import ResetPasswordHeader from "@/components/reset-password/reset-password-header";
@@ -10,9 +10,9 @@ import { Button } from "@/components/shadcn";
 import ResetPasswordFooter from "@/components/reset-password/reset-password-footer";
 
 export default function ResetPasswordPage() {
-  const { email, isEmailValid, handleEmailChange } = useEmail();
+  const { email, isEmailValid, handleEmailChange } = useVerificationEmail();
   const { verificationCode, isCodeVerified, setVerificationCode, handleVerification } =
-    useVerificationCode();
+    useVerificationCode(email);
   const {
     password,
     confirmPassword,

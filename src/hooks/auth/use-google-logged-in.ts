@@ -1,7 +1,7 @@
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 import { firebaseAuth, firebaseProvider } from "@/firebase/auth";
-import { COOKIES, useCookies } from "./use-cookies";
+import { ON_STEP_TOKEN_NAME, useCookies } from "./use-cookies";
 import { useNavigate } from "react-router";
 import { ROUTER_PATH } from "@/router";
 import { toast } from "sonner";
@@ -22,9 +22,7 @@ export const useGoogleLoggedIn = () => {
 
       const token = credential.accessToken;
       const idToken = credential.idToken;
-      setCookie(COOKIES.groAccessToken, token);
-      setCookie(COOKIES.groRefreshToken, idToken);
-
+      setCookie(ON_STEP_TOKEN_NAME, { token, idToken });
       navigate(`${ROUTER_PATH.PRIVATE.PARENT.APP}/${ROUTER_PATH.PRIVATE.CHILD.DASHBOARD}`);
     } catch (error) {
       toast.error("구글 로그인에 실패했습니다.");

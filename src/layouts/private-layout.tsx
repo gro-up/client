@@ -1,5 +1,5 @@
 import { Navigate, Outlet } from "react-router";
-import { COOKIES, useCookies } from "@/hooks/auth";
+import { ON_STEP_TOKEN_NAME, useCookies } from "@/hooks/auth";
 import { ROUTER_PATH } from "@/router";
 import { Sidebar } from "@/components/sidebar";
 import { ThemeProvider } from "@/context/theme";
@@ -7,7 +7,7 @@ import { ThemeProvider } from "@/context/theme";
 export const PrivateLayout = () => {
   const { cookies } = useCookies();
 
-  if (!cookies[COOKIES.groAccessToken]) {
+  if (!cookies[ON_STEP_TOKEN_NAME]) {
     return <Navigate to={ROUTER_PATH.PUBLIC.LANDING} />;
   }
 

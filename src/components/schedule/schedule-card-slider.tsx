@@ -3,7 +3,6 @@ import ScheduleCard from "./schedule-card";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
-import "swiper/css";
 
 import { Schedule } from "@/types";
 export default function ScheduleCardSlider() {
@@ -15,7 +14,7 @@ export default function ScheduleCardSlider() {
     <div className="w-full">
       <p className="p-2.5 text-xs font-bold">지난일정</p>
 
-      <Swiper spaceBetween={0} slidesPerView={2.5}>
+      {/* <Swiper spaceBetween={0} slidesPerView={2.5}>
         {data.data.scheduleList.map((schedule: Schedule) => (
           <SwiperSlide>
             <ScheduleCard
@@ -27,7 +26,7 @@ export default function ScheduleCardSlider() {
             />
           </SwiperSlide>
         ))}
-      </Swiper>
+      </Swiper> */}
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { ON_STEP_TOKEN_NAME, useCookies } from "@/hooks/auth/use-cookies";
+import { COOKIES, useCookies } from "@/hooks/auth/use-cookies";
 import { Navigate, Outlet } from "react-router";
 import { ROUTER_PATH } from "../router/paths";
 import { ThemeProvider } from "next-themes";
@@ -6,7 +6,7 @@ import { ThemeProvider } from "next-themes";
 export const PublicLayout = () => {
   const { cookies } = useCookies();
 
-  if (cookies[ON_STEP_TOKEN_NAME]) {
+  if (cookies[COOKIES.groAccessToken]) {
     return (
       <Navigate to={`${ROUTER_PATH.PRIVATE.PARENT.APP}/${ROUTER_PATH.PRIVATE.CHILD.DASHBOARD}`} />
     );

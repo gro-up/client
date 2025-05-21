@@ -1,8 +1,8 @@
 import { BASE_URL } from "./base";
 import { Cookies } from "react-cookie";
-import { ON_STEP_TOKEN_NAME } from "@/hooks/auth";
+import { COOKIES } from "@/hooks/auth";
 const cookies = new Cookies();
-const token = cookies.get(ON_STEP_TOKEN_NAME);
+const token = cookies.get(COOKIES.groAccessToken);
 //스케쥴조회
 export async function getSchedules() {
   const res = await fetch(`${BASE_URL}/api/schedules`, {

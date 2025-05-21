@@ -23,10 +23,11 @@ export default function ResetPasswordPage() {
   } = usePassword();
 
   return (
+    // 다시 해야함
     <>
       <ResetPasswordHeader />
 
-      <form className="flex flex-col gap-2.5">
+      {/* <form className="flex flex-col gap-2.5">
         <EmailSection
           email={email}
           verificationCode={verificationCode}
@@ -50,7 +51,7 @@ export default function ResetPasswordPage() {
             <Button variant="mint">비밀번호 바꾸기</Button>
           </>
         )}
-      </form>
+      </form> */}
       <ResetPasswordFooter />
     </>
   );

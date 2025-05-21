@@ -1,6 +1,6 @@
 import { CalendarPlus } from "lucide-react";
 
-import ScheduleDateTimeModal from "./schedule-date-time-modal";
+import ScheduleModalDateTime from "./schedule-date-time-modal";
 import {
   useDateTimePickerState,
   useDateTimeModal,
@@ -114,7 +114,7 @@ export default function ScheduleAddPanel() {
       </div>
 
       {/* 날짜 선택 모달창 */}
-      <ScheduleDateTimeModal
+      <ScheduleModalDateTime
         open={isDateTimeModalOpen}
         onClose={closeDateTimeModal}
         tempDate={tempDate}

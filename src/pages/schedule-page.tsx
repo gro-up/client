@@ -8,7 +8,7 @@ import ScheduleAddPanel from "@/components/schedule/schedule-add-panel";
 
 export default function SchedulePage() {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null); // 선택된 날짜
-  const [isAddPanelOpen, setIsAddPanelOpen] = useState(true); //
+  const [isAddPanelOpen, setIsAddPanelOpen] = useState(false); //
   return (
     <>
       <Container as="main" className="w-6/12 p-4  bg-neutral-900">

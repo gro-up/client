@@ -10,6 +10,7 @@ import {
 import { Button, Textarea } from "@/components/shadcn";
 import ScheduleAddInputFields from "./schedule-add-input-fields";
 import { formatSelectedDateTime } from "@/utils/time/dateTime";
+import ScheduleCardSlider from "./schedule-card-slider";
 
 export default function ScheduleAddPanel() {
   const {
@@ -53,15 +54,11 @@ export default function ScheduleAddPanel() {
     selectedDate,
     selectedTime,
   });
+
   return (
     <>
-      <div className="flex flex-col gap-2.5 h-full ">
-        {/* 헤더 */}
-        <div className="flex flex-col py-[10px]">
-          <div>면접</div>
-          <div>A컴퍼니 프론트엔드 개발자</div>
-          <div>서울 성동구</div>
-        </div>
+      <div className="flex flex-col gap-2.5 h-full w-full ">
+        <ScheduleCardSlider />
 
         {/* 폼 전체 */}
         <form className="flex flex-col gap-2.5 h-full">
@@ -94,7 +91,7 @@ export default function ScheduleAddPanel() {
 
           {/* 마크다운 노트 입력 */}
           <Textarea
-            className=" w-full h-[163px]"
+            className="w-full h-[163px]"
             placeholder="메모를 작성하세요 "
             value={memo}
             onChange={(e) => setMemo(e.target.value)}

@@ -12,7 +12,7 @@ interface Props {
   onConfirm: () => void;
 }
 
-export default function ScheduleModalDateTime({
+export default function ScheduleDateTimeModal({
   open,
   onClose,
   tempDate,

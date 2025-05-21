@@ -3,14 +3,15 @@ import { ScheduleHeader, ScheduleList } from "@/components/schedule";
 
 import { Container, DateTimePicker } from "@/components/ui";
 
-import ScheduleModal from "@/components/schedule/schedule-modal";
+import ScheduleAddButton from "@/components/schedule/schedule-add-button";
+import ScheduleAddPanel from "@/components/schedule/schedule-add-panel";
 
 export default function SchedulePage() {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null); // 선택된 날짜
-
+  const [isAddPanelOpen, setIsAddPanelOpen] = useState(false); //
   return (
     <>
-      <Container as="main" className="w-6/12 p-4 bg-neutral-900">
+      <Container as="main" className="w-6/12 p-4  bg-neutral-900">
         <DateTimePicker
           date={selectedDate}
           onDate={(newDate) => {
@@ -19,11 +20,13 @@ export default function SchedulePage() {
         />
         <ScheduleHeader />
         <ScheduleList />
-        <ScheduleModal />
+        <ScheduleAddButton onClick={() => setIsAddPanelOpen(true)} />
       </Container>
-      <Container as="aside" className="w-6/12 p-4">
-        aaaaaadddddddddddddddddddd
-      </Container>
+      {isAddPanelOpen && (
+        <Container as="aside" className="w-6/12 p-4">
+          <ScheduleAddPanel />
+        </Container>
+      )}
     </>
   );
 }

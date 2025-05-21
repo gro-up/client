@@ -4,7 +4,7 @@ import { usePassword } from "./use-password";
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { signin } from "@/api/auth"; // 경로는 프로젝트 구조에 맞게 조정
-import { useCookies, COOKIES } from "./use-cookies";
+import { useCookies, ON_STEP_TOKEN_NAME, ON_STEP_REFRESH_TOKEN_NAME } from "./use-cookies";
 import { ROUTER_PATH } from "@/router";
 import { toast } from "sonner";
 export function useLogin() {
@@ -24,9 +24,9 @@ export function useLogin() {
       const accessToken = rawToken.replace(/^Bearer\s/, "");
       const refreshToken = rawRefreshToken?.replace(/^Bearer\s/, "");
 
-      setCookie(COOKIES.groAccessToken, accessToken, { path: "/" });
+      setCookie(ON_STEP_TOKEN_NAME, accessToken, { path: "/" });
       if (refreshToken) {
-        setCookie(COOKIES.groRefreshToken, refreshToken, {
+        setCookie(ON_STEP_REFRESH_TOKEN_NAME, refreshToken, {
           path: "/",
         });
       }

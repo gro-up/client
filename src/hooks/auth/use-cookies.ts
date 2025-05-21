@@ -1,14 +1,12 @@
 import { useCookies as useReactCookies } from "react-cookie";
 
-export enum COOKIES {
-  groAccessToken = "groAccessToken",
-  groRefreshToken = "groRefreshToken",
-}
+export const ON_STEP_TOKEN_NAME = "on-step-token";
+export const ON_STEP_REFRESH_TOKEN_NAME = "on-step-refresh-token";
 
 export const useCookies = () => {
   const [cookies, setCookie, removeCookie] = useReactCookies([
-    COOKIES.groAccessToken,
-    COOKIES.groRefreshToken,
+    ON_STEP_TOKEN_NAME,
+    ON_STEP_REFRESH_TOKEN_NAME,
   ]);
 
   return { cookies, setCookie, removeCookie };

@@ -4,6 +4,7 @@ import {
   CompanyTableBody,
   CompanyHeader,
   CompanyTablePagination,
+  CompanyForm,
 } from "@/components/company";
 import { useCompanyTable } from "@/hooks/company/use-company-table";
 
@@ -18,6 +19,8 @@ export default function CompanyPage() {
         <CompanyTableBody table={table} columns={columns} />
         <CompanyTablePagination table={table} />
       </Table>
+
+      <CompanyForm />
     </main>
   );
 }

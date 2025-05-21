@@ -1,23 +1,23 @@
 import { useState } from "react";
 export function useRecruitInfoState() {
   const [companyName, setCompanyName] = useState("");
-  const [jobTitle, setJobTitle] = useState("");
+  const [position, setPosition] = useState("");
   const [address, setAddress] = useState("");
   const [addressDetail, setAddressDetail] = useState("");
-  const [note, setNote] = useState("");
+  const [memo, setMemo] = useState("");
   const [selectedStep, setSelectedStep] = useState("");
 
   return {
     companyName,
     setCompanyName,
-    jobTitle,
-    setJobTitle,
+    position,
+    setPosition,
     address,
     setAddress,
     addressDetail,
     setAddressDetail,
-    note,
-    setNote,
+    memo,
+    setMemo,
     selectedStep,
     setSelectedStep,
   };

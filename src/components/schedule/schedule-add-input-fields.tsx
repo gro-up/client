@@ -6,15 +6,15 @@ import {
 } from "@/components/shadcn/dropdown-menu";
 import { Input } from "@/components/shadcn";
 import { ChevronDown } from "lucide-react";
-import { STEP_OPTIONS } from "@/utils/map";
+import { STEP_OPTIONS } from "@/constants/step";
 
 import { DaumPostcodeData } from "@/types";
 
 interface Props {
   companyName: string;
   setCompanyName: (value: string) => void;
-  jobTitle: string;
-  setJobTitle: (value: string) => void;
+  position: string;
+  setPosition: (value: string) => void;
   selectedStep: string;
   setSelectedStep: (step: string) => void;
   address: string;
@@ -26,8 +26,8 @@ interface Props {
 export default function ScheduleAddInputFields({
   companyName,
   setCompanyName,
-  jobTitle,
-  setJobTitle,
+  position,
+  setPosition,
   selectedStep,
   setSelectedStep,
   setAddress,
@@ -64,7 +64,7 @@ export default function ScheduleAddInputFields({
           <div className="w-full relative">
             <Input
               readOnly
-              value={selectedStep}
+              value={STEP_OPTIONS.find((step) => step.value === selectedStep)?.label || ""}
               placeholder="채용 단계를 선택해주세요."
               className="w-full h-[50px] p-[10px] placeholder:text-white rounded-t-none cursor-pointer"
             />
@@ -73,16 +73,16 @@ export default function ScheduleAddInputFields({
         </DropdownMenuTrigger>
         <DropdownMenuContent side="bottom" align="end">
           {STEP_OPTIONS.map((step) => (
-            <DropdownMenuItem key={step} onSelect={() => setSelectedStep(step)}>
-              {step}
+            <DropdownMenuItem key={step.value} onSelect={() => setSelectedStep(step.value)}>
+              {step.label}
             </DropdownMenuItem>
           ))}
         </DropdownMenuContent>
       </DropdownMenu>
       <Input
         placeholder="직무를 입력해주세요."
-        value={jobTitle}
-        onChange={(e) => setJobTitle(e.target.value)}
+        value={position}
+        onChange={(e) => setPosition(e.target.value)}
         className="w-full h-[50px] p-[10px] mt-[10px]  placeholder:text-white "
       />
       <Input

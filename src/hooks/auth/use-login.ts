@@ -18,8 +18,10 @@ export function useLogin() {
   const { mutate: loginMutate, isPending } = useMutation({
     mutationFn: () => signin(email, password),
     onSuccess: (data) => {
-      const token = data.token;
-      setCookie(ON_STEP_TOKEN_NAME, JSON.stringify({ token }));
+      const rawToken = data.accessToken; //
+      const token = rawToken.replace(/^Bearer\s/, ""); // "Bearer " 떼기
+
+      setCookie(ON_STEP_TOKEN_NAME, token); //
       navigate(`${ROUTER_PATH.PRIVATE.PARENT.APP}/${ROUTER_PATH.PRIVATE.CHILD.DASHBOARD}`);
       toast.success("로그인 성공");
     },

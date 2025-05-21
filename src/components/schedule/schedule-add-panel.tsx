@@ -1,15 +1,15 @@
-import { format, setHours, setMinutes } from "date-fns";
-import { ko } from "date-fns/locale";
 import { CalendarPlus } from "lucide-react";
 
 import ScheduleDateTimeModal from "./schedule-date-time-modal";
 import {
   useDateTimePickerState,
-  useDateTimeModalState,
+  useDateTimeModal,
   useRecruitInfoState,
+  useCreateSchedule,
 } from "@/hooks/schedule";
 import { Button, Textarea } from "@/components/shadcn";
 import ScheduleAddInputFields from "./schedule-add-input-fields";
+import { formatSelectedDateTime } from "@/utils/time/dateTime";
 
 export default function ScheduleAddPanel() {
   const {
@@ -25,47 +25,34 @@ export default function ScheduleAddPanel() {
   const {
     companyName,
     setCompanyName,
-    jobTitle,
-    setJobTitle,
+    position,
+    setPosition,
     address,
     setAddress,
     addressDetail,
     setAddressDetail,
-    note,
-    setNote,
+    memo,
+    setMemo,
     selectedStep,
     setSelectedStep,
   } = useRecruitInfoState();
-  const { isDateTimeModalOpen, setIsDateTimeModalOpen } = useDateTimeModalState();
+  const { isDateTimeModalOpen, openDateTimeModal, closeDateTimeModal } = useDateTimeModal({
+    selectedDate,
+    selectedTime,
+    setTempDate,
+    setTempTime,
+  });
 
-  const formattedDateTime = (() => {
-    if (!selectedDate || !selectedTime) return null;
-    const [hourStr, minuteStr] = selectedTime.split(":");
-    const hour = Number(hourStr);
-    const minute = Number(minuteStr);
-    const dateWithTime = setMinutes(setHours(selectedDate, hour), minute);
-    return format(dateWithTime, "yyyy.MM.dd EEEE a HH:mm", { locale: ko });
-  })();
+  const formattedDateTime = formatSelectedDateTime(selectedDate, selectedTime);
 
-  const handleDateClick = () => {
-    setTempDate(selectedDate ?? new Date());
-    setTempTime(selectedTime || new Date().toTimeString().slice(0, 5));
-    setIsDateTimeModalOpen(true);
-  };
-
-  const handleSubmit = () => {
-    const payload = {
-      step: selectedStep,
-      address,
-      addressDetail,
-      date: selectedDate,
-      time: selectedTime,
-      note,
-    };
-
-    console.log("📝 제출됨:", payload);
-  };
-
+  const { handleSubmit } = useCreateSchedule({
+    companyName,
+    position,
+    memo,
+    selectedStep,
+    selectedDate,
+    selectedTime,
+  });
   return (
     <>
       <div className="flex flex-col gap-2.5 h-full ">
@@ -81,8 +68,8 @@ export default function ScheduleAddPanel() {
           <ScheduleAddInputFields
             companyName={companyName}
             setCompanyName={setCompanyName}
-            jobTitle={jobTitle}
-            setJobTitle={setJobTitle}
+            position={position}
+            setPosition={setPosition}
             selectedStep={selectedStep}
             setSelectedStep={setSelectedStep}
             address={address}
@@ -94,7 +81,7 @@ export default function ScheduleAddPanel() {
           {/* 날짜 확인 영역 */}
           <div className="flex items-center p-2.5 gap-[10px]">
             <Button
-              onClick={handleDateClick}
+              onClick={openDateTimeModal}
               type="button"
               className="rounded-[10px] cursor-pointer"
             >
@@ -109,8 +96,8 @@ export default function ScheduleAddPanel() {
           <Textarea
             className=" w-full h-[163px]"
             placeholder="메모를 작성하세요 "
-            value={note}
-            onChange={(e) => setNote(e.target.value)}
+            value={memo}
+            onChange={(e) => setMemo(e.target.value)}
           />
 
           {/* 제출 버튼 영역 */}
@@ -132,12 +119,12 @@ export default function ScheduleAddPanel() {
       {/* 날짜 선택 모달창 */}
       <ScheduleDateTimeModal
         open={isDateTimeModalOpen}
-        onClose={() => setIsDateTimeModalOpen(false)}
+        onClose={closeDateTimeModal}
         tempDate={tempDate}
         tempTime={tempTime}
         setTempDate={setTempDate}
         setTempTime={setTempTime}
-        onConfirm={() => handleConfirmDateTime(() => setIsDateTimeModalOpen(false))}
+        onConfirm={() => handleConfirmDateTime(() => closeDateTimeModal())}
       />
     </>
   );

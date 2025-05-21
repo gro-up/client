@@ -4,36 +4,32 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from "@/components/shadcn/dropdown-menu";
-import { Input, Button } from "@/components/shadcn";
-import { CalendarPlus, ChevronDown } from "lucide-react";
+import { Input } from "@/components/shadcn";
+import { ChevronDown } from "lucide-react";
 import { STEP_OPTIONS } from "@/utils/map";
-import * as Dialog from "@radix-ui/react-dialog";
-import { format, setHours, setMinutes } from "date-fns";
-import { ko } from "date-fns/locale";
+
 import { DaumPostcodeData } from "@/types";
 
 interface Props {
+  companyName: string;
+  setCompanyName: (value: string) => void;
+  jobTitle: string;
+  setJobTitle: (value: string) => void;
   selectedStep: string;
-  address: string;
-  addressDetail: string;
-  setAddress: (data: string) => void;
-  setAddressDetail: (data: string) => void;
   setSelectedStep: (step: string) => void;
-  selectedDate: Date | null;
-  selectedTime: string;
-  isDateTimeConfirmed: boolean;
-  onDateClick: () => void;
-  onSubmit: () => void;
+  address: string;
+  setAddress: (value: string) => void;
+  addressDetail: string;
+  setAddressDetail: (value: string) => void;
 }
 
-export default function ScheduleModalForm({
+export default function ScheduleAddInputFields({
+  companyName,
+  setCompanyName,
+  jobTitle,
+  setJobTitle,
   selectedStep,
   setSelectedStep,
-  selectedDate,
-  selectedTime,
-  isDateTimeConfirmed,
-  onDateClick,
-  onSubmit,
   setAddress,
   address,
   addressDetail,
@@ -54,21 +50,13 @@ export default function ScheduleModalForm({
     postcode.open();
   };
 
-  // 시간 포맷팅
-  const formattedDateTime = (() => {
-    if (!selectedDate || !selectedTime) return null;
-    const [hourStr, minuteStr] = selectedTime.split(":");
-    const hour = Number(hourStr);
-    const minute = Number(minuteStr);
-    const dateWithTime = setMinutes(setHours(selectedDate, hour), minute);
-    return format(dateWithTime, "yyyy.MM.dd EEEE a HH:mm", { locale: ko });
-  })();
-
   return (
     <div>
       <Input
         placeholder="회사명을 입력해주세요."
         className="w-full h-[50px] p-[10px] placeholder:text-white rounded-b-none"
+        value={companyName}
+        onChange={(e) => setCompanyName(e.target.value)}
       />
 
       <DropdownMenu>
@@ -91,7 +79,12 @@ export default function ScheduleModalForm({
           ))}
         </DropdownMenuContent>
       </DropdownMenu>
-
+      <Input
+        placeholder="직무를 입력해주세요."
+        value={jobTitle}
+        onChange={(e) => setJobTitle(e.target.value)}
+        className="w-full h-[50px] p-[10px] mt-[10px]  placeholder:text-white "
+      />
       <Input
         readOnly
         placeholder="주소를 입력해주세요."
@@ -107,29 +100,6 @@ export default function ScheduleModalForm({
           onChange={(e) => setAddressDetail(e.target.value)}
         />
       )}
-      <div className="flex items-center gap-[10px] mt-[10px]">
-        <Button onClick={onDateClick} type="button" className="rounded-[10px] cursor-pointer">
-          <CalendarPlus />
-        </Button>
-
-        {isDateTimeConfirmed && formattedDateTime && (
-          <p className="text-sm text-center">{formattedDateTime}</p>
-        )}
-      </div>
-
-      <div className="flex justify-end gap-2 absolute bottom-0 right-0 py-[10px] px-[10px]">
-        <Dialog.Close asChild>
-          <Button
-            size="lg"
-            className="bg-neutral-900 hover:bg-neutral-700 text-white cursor-pointer"
-          >
-            취소
-          </Button>
-        </Dialog.Close>
-        <Button onClick={onSubmit} type="button" variant="mint" size="lg">
-          추가
-        </Button>
-      </div>
     </div>
   );
 }

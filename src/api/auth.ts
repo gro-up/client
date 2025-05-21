@@ -42,7 +42,9 @@ export const signup = async ({ email, password }: { email: string; password: str
   });
 
   if (!res.ok) {
-    throw new Error("회원가입 실패");
+    const errorData = await res.json().catch(() => null);
+    const message = errorData?.message || "회원가입 실패";
+    throw new Error(message);
   }
 
   return res.json();

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ScheduleHeader, ScheduleList } from "@/components/schedule";
 import { Container, DateTimePicker } from "@/components/ui";
 
-import ScheduleModal from "@/components/schedule/schedule-modal";
+import ScheduleModal from "@/components/schedule/schedule-add-panel";
 
 export default function DashboardPage() {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);

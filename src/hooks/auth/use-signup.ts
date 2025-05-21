@@ -14,11 +14,9 @@ export function useSignup() {
   } = useMutation({
     mutationFn: signup,
     onSuccess: () => {
-      console.log("회원가입 성공");
       setSignupError(""); // 성공 시 에러 초기화
     },
     onError: (err: Error) => {
-      console.error("회원가입 실패:", err);
       setSignupError(err.message || "회원가입 중 오류가 발생했습니다.");
     },
   });

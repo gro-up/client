@@ -10,7 +10,14 @@ import { Button } from "@/components/shadcn";
 import ResetPasswordFooter from "@/components/reset-password/reset-password-footer";
 
 export default function ResetPasswordPage() {
-  const { email, isEmailValid, handleEmailChange } = useVerificationEmail();
+  const {
+    email,
+    handleEmailChange,
+    isEmailValid,
+    requestResetEmail,
+    isResetEmailPending,
+    isResetEmailSuccess,
+  } = useVerificationEmail();
   const { verificationCode, isCodeVerified, setVerificationCode, handleVerification } =
     useVerificationCode(email);
   const {
@@ -27,15 +34,18 @@ export default function ResetPasswordPage() {
     <>
       <ResetPasswordHeader />
 
-      {/* <form className="flex flex-col gap-2.5">
+      <form className="flex flex-col gap-2.5">
         <EmailSection
           email={email}
-          verificationCode={verificationCode}
-          isEmailValid={isEmailValid}
           handleEmailChange={handleEmailChange}
+          isEmailValid={isEmailValid}
+          verificationCode={verificationCode}
           handleVerification={handleVerification}
           setVerificationCode={setVerificationCode}
           isCodeVerified={isCodeVerified}
+          isPending={isResetEmailPending}
+          isSuccess={isResetEmailSuccess}
+          requestEmailVerification={requestResetEmail}
         />
 
         {isCodeVerified && (
@@ -51,7 +61,7 @@ export default function ResetPasswordPage() {
             <Button variant="mint">비밀번호 바꾸기</Button>
           </>
         )}
-      </form> */}
+      </form>
       <ResetPasswordFooter />
     </>
   );

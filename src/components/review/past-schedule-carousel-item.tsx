@@ -1,17 +1,29 @@
 import { MoreHorizontal } from "lucide-react";
-
-export const PastScheduleCarouselItem = () => {
+interface Props {
+  step: string;
+  companyName: string;
+  position: string;
+  companyLocation: string;
+}
+export const PastScheduleCarouselItem = ({
+  step,
+  companyName,
+  position,
+  companyLocation,
+}: Props) => {
   return (
     <div>
       <div className="flex justify-between items-center">
-        <span className="text-sm font-semibold">면접</span>
+        <span className="text-sm font-semibold">{step}</span>
 
-        <MoreHorizontal className="size-4 text-neutral-500" />
+        <MoreHorizontal className="size-4 text-neutral-500 cursor-pointer" />
       </div>
 
-      <strong>A 컴퍼니 - 프론트엔드 개발자</strong>
+      <strong>
+        {companyName} - {position}
+      </strong>
 
-      <p className="text-xs text-neutral-500">서울 성동구 연무장17길 10</p>
+      <p className="text-xs text-neutral-500">{companyLocation}</p>
     </div>
   );
 };

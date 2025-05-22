@@ -10,7 +10,8 @@ import {
 import { Button, Textarea } from "@/components/shadcn";
 import ScheduleAddInputFields from "./schedule-add-input-fields";
 import { formatSelectedDateTime } from "@/utils/time/dateTime";
-import ScheduleCardSlider from "./schedule-card-slider";
+
+import { PastSchedule } from "../review";
 
 export default function ScheduleAddPanel() {
   const {
@@ -48,6 +49,8 @@ export default function ScheduleAddPanel() {
 
   const { handleSubmit } = useCreateSchedule({
     companyName,
+    address,
+    addressDetail,
     position,
     memo,
     selectedStep,
@@ -58,7 +61,7 @@ export default function ScheduleAddPanel() {
   return (
     <>
       <div className="flex flex-col gap-2.5 h-full w-full ">
-        <ScheduleCardSlider />
+        <PastSchedule />
 
         {/* 폼 전체 */}
         <form className="flex flex-col gap-2.5 h-full">

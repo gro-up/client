@@ -7,6 +7,8 @@ export function useCreateSchedule(state: {
   companyName: string;
   position: string;
   memo: string;
+  address: string;
+  addressDetail: string;
   selectedStep: string;
   selectedDate: Date | null;
   selectedTime: string;
@@ -22,7 +24,16 @@ export function useCreateSchedule(state: {
   });
 
   const handleSubmit = () => {
-    const { selectedDate, selectedTime, companyName, position, selectedStep, memo } = state;
+    const {
+      selectedDate,
+      selectedTime,
+      companyName,
+      position,
+      selectedStep,
+      memo,
+      address,
+      addressDetail,
+    } = state;
 
     const dueDate = toDueDateISO(selectedDate, selectedTime);
     if (!dueDate) {
@@ -35,12 +46,15 @@ export function useCreateSchedule(state: {
       return;
     }
 
+    const companyLocation = `${address} ${addressDetail}`.trim();
+
     const payload = {
       companyName,
       step: selectedStep,
       dueDate,
       position,
       memo,
+      companyLocation,
     };
 
     mutation.mutate(payload);

@@ -22,6 +22,7 @@ export function useLogin() {
       const rawRefreshToken = data.refreshToken;
 
       const accessToken = rawToken.replace(/^Bearer\s/, "");
+      console.log(accessToken);
       const refreshToken = rawRefreshToken?.replace(/^Bearer\s/, "");
 
       setCookie(ON_STEP_TOKEN_NAME, accessToken, { path: "/" });

@@ -8,5 +8,5 @@ export * from "./schedule-add-input-fields";
 
 export * from "./schedule-date-time-modal";
 export * from "./schedule-add-panel";
-export * from "./schedule-card-slider";
+export * from "./schedule-nearest-panel";
 export * from "./schedule-card";

@@ -10,7 +10,8 @@ import {
 import { Button, Textarea } from "@/components/shadcn";
 import ScheduleAddInputFields from "./schedule-add-input-fields";
 import { formatSelectedDateTime } from "@/utils/time/dateTime";
-import ScheduleCardSlider from "./schedule-card-slider";
+
+import { PastSchedule } from "../review";
 
 export default function ScheduleAddPanel() {
   const {
@@ -23,6 +24,7 @@ export default function ScheduleAddPanel() {
     setTempTime,
     handleConfirmDateTime,
   } = useDateTimePickerState();
+
   const {
     companyName,
     setCompanyName,
@@ -37,6 +39,7 @@ export default function ScheduleAddPanel() {
     selectedStep,
     setSelectedStep,
   } = useRecruitInfoState();
+
   const { isDateTimeModalOpen, openDateTimeModal, closeDateTimeModal } = useDateTimeModal({
     selectedDate,
     selectedTime,
@@ -47,18 +50,33 @@ export default function ScheduleAddPanel() {
   const formattedDateTime = formatSelectedDateTime(selectedDate, selectedTime);
 
   const { handleSubmit } = useCreateSchedule({
-    companyName,
-    position,
-    memo,
-    selectedStep,
-    selectedDate,
-    selectedTime,
+    state: {
+      companyName,
+      address,
+      addressDetail,
+      position,
+      memo,
+      selectedStep,
+      selectedDate,
+      selectedTime,
+    },
+    setters: {
+      setCompanyName,
+      setPosition,
+      setMemo,
+      setAddress,
+      setAddressDetail,
+      setSelectedStep,
+      setTempDate,
+      setTempTime,
+      handleConfirmDateTime,
+    },
   });
 
   return (
     <>
       <div className="flex flex-col gap-2.5 h-full w-full ">
-        <ScheduleCardSlider />
+        <PastSchedule />
 
         {/* 폼 전체 */}
         <form className="flex flex-col gap-2.5 h-full">

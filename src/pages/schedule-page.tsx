@@ -5,6 +5,7 @@ import { Container, DateTimePicker } from "@/components/ui";
 
 import ScheduleAddButton from "@/components/schedule/schedule-add-button";
 import ScheduleAddPanel from "@/components/schedule/schedule-add-panel";
+import ScheduleNearestPanel from "@/components/schedule/schedule-nearest-panel";
 
 export default function SchedulePage() {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null); // 선택된 날짜
@@ -20,13 +21,11 @@ export default function SchedulePage() {
         />
         <ScheduleHeader />
         <ScheduleList />
-        <ScheduleAddButton onClick={() => setIsAddPanelOpen(true)} />
+        <ScheduleAddButton onClick={() => setIsAddPanelOpen((prev) => !prev)} />
       </Container>
-      {isAddPanelOpen && (
-        <Container as="aside" className="w-6/12 p-4">
-          <ScheduleAddPanel />
-        </Container>
-      )}
+      <Container as="aside" className="w-6/12 p-4">
+        {isAddPanelOpen ? <ScheduleAddPanel /> : <ScheduleNearestPanel />}
+      </Container>
     </>
   );
 }

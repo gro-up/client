@@ -24,6 +24,7 @@ export default function ScheduleAddPanel() {
     setTempTime,
     handleConfirmDateTime,
   } = useDateTimePickerState();
+
   const {
     companyName,
     setCompanyName,
@@ -38,6 +39,7 @@ export default function ScheduleAddPanel() {
     selectedStep,
     setSelectedStep,
   } = useRecruitInfoState();
+
   const { isDateTimeModalOpen, openDateTimeModal, closeDateTimeModal } = useDateTimeModal({
     selectedDate,
     selectedTime,
@@ -48,14 +50,27 @@ export default function ScheduleAddPanel() {
   const formattedDateTime = formatSelectedDateTime(selectedDate, selectedTime);
 
   const { handleSubmit } = useCreateSchedule({
-    companyName,
-    address,
-    addressDetail,
-    position,
-    memo,
-    selectedStep,
-    selectedDate,
-    selectedTime,
+    state: {
+      companyName,
+      address,
+      addressDetail,
+      position,
+      memo,
+      selectedStep,
+      selectedDate,
+      selectedTime,
+    },
+    setters: {
+      setCompanyName,
+      setPosition,
+      setMemo,
+      setAddress,
+      setAddressDetail,
+      setSelectedStep,
+      setTempDate,
+      setTempTime,
+      handleConfirmDateTime,
+    },
   });
 
   return (

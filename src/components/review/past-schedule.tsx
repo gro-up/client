@@ -17,7 +17,7 @@ export const PastSchedule = () => {
     .sort((a: Schedule, b: Schedule) => {
       return compareDesc(parseISO(a.dueDate), parseISO(b.dueDate));
     });
-  console.log(pastSchedules);
+
   return (
     <section>
       <header className="mb-5">
@@ -25,7 +25,7 @@ export const PastSchedule = () => {
       </header>
       <Carousel>
         <CarouselContent>
-          {data.data.scheduleList.map((schedule: Schedule) => (
+          {pastSchedules.map((schedule: Schedule) => (
             <CarouselItem className="basis-1/3">
               <PastScheduleCarouselItem
                 key={schedule._id}

@@ -8,18 +8,25 @@ import { useVerificationCode } from "@/hooks/auth/use-verification-code";
 import ResetPasswordHeader from "@/components/reset-password/reset-password-header";
 import { Button } from "@/components/shadcn";
 import ResetPasswordFooter from "@/components/reset-password/reset-password-footer";
+import { useResetPassword } from "@/hooks/auth";
 
 export default function ResetPasswordPage() {
   const {
     email,
+    emailError,
     handleEmailChange,
     isEmailValid,
-    requestResetEmail,
-    isResetEmailPending,
-    isResetEmailSuccess,
+    requestEmailVerification,
+    isEmailVerificationPending,
+    isEmailVerificationSuccess,
   } = useVerificationEmail();
-  const { verificationCode, isCodeVerified, setVerificationCode, handleVerification } =
-    useVerificationCode(email);
+  const {
+    verificationCode,
+    isCodeVerified,
+    setVerificationCode,
+    handleVerification,
+    isVerifyError,
+  } = useVerificationCode(email);
   const {
     password,
     confirmPassword,
@@ -28,24 +35,33 @@ export default function ResetPasswordPage() {
     handlePasswordChange,
     handleConfirmPasswordChange,
   } = usePassword();
-
+  const { resetPassword } = useResetPassword();
   return (
-    // 다시 해야함
     <>
       <ResetPasswordHeader />
 
-      <form className="flex flex-col gap-2.5">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault(); //  폼 기본 동작 방지
+          resetPassword({ email, password }); // 회원가입 실행
+        }}
+        className="flex flex-col gap-2.5"
+      >
         <EmailSection
           email={email}
+          emailError={emailError}
           handleEmailChange={handleEmailChange}
           isEmailValid={isEmailValid}
+          isPending={isEmailVerificationPending}
+          isSuccess={isEmailVerificationSuccess}
+          requestEmailVerification={requestEmailVerification}
+          //
           verificationCode={verificationCode}
           handleVerification={handleVerification}
           setVerificationCode={setVerificationCode}
           isCodeVerified={isCodeVerified}
-          isPending={isResetEmailPending}
-          isSuccess={isResetEmailSuccess}
-          requestEmailVerification={requestResetEmail}
+          //
+          isVerifyError={isVerifyError}
         />
 
         {isCodeVerified && (
@@ -58,7 +74,18 @@ export default function ResetPasswordPage() {
               handlePasswordChange={handlePasswordChange}
               handleConfirmPasswordChange={handleConfirmPasswordChange}
             />
-            <Button variant="mint">비밀번호 바꾸기</Button>
+            <Button
+              type="submit"
+              variant="mint"
+              disabled={
+                !!passwordComplexityError ||
+                !!passwordMatchError ||
+                password === "" ||
+                confirmPassword === ""
+              }
+            >
+              비밀번호 바꾸기
+            </Button>
           </>
         )}
       </form>

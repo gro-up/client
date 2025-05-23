@@ -70,19 +70,20 @@ export const signin = async (email: string, password: string) => {
 
   return result.data;
 };
-//비밀번호 재설정 요청
-export const requestResetPassword = async (email: string) => {
-  const url = `${BASE_URL}/api/auth/reset-request?email=${encodeURIComponent(email)}`;
+
+// 비밀번호 재설정 요청
+export const passwordReset = async (email: string, password: string) => {
+  const url = `${BASE_URL}/api/auth/reset-password?email=${encodeURIComponent(email)}`;
   const res = await fetch(url, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
+    body: JSON.stringify({ password }),
   });
   const result = await res.json();
   if (!res.ok) {
     const message = result.message;
     throw new Error(message);
   }
-  return result.data;
 };

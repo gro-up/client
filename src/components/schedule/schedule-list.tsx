@@ -5,7 +5,7 @@ import { useTodayTomorrowSchedules } from "@/hooks/schedule";
 export const ScheduleList = () => {
   const { isLoading, todaySchedules, tomorrowSchedules, todayLabel, tomorrowLabel } =
     useTodayTomorrowSchedules();
-
+  console.log(todaySchedules);
   if (isLoading) return <div>로딩중...</div>;
   return (
     <div className="flex flex-col gap-6 p-2 pl-3">

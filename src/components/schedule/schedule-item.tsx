@@ -1,15 +1,17 @@
 import { MoreActions } from "../ui";
-import { Schedule } from "@/types"; // 타입 정의가 있다면
-import { parseISO, format } from "date-fns";
+import { Schedule } from "@/types";
+import { parseISO, format, addHours } from "date-fns";
 interface Props {
   schedule: Schedule;
 }
 
 export const ScheduleItem = ({ schedule }: Props) => {
+  const koreanTime = addHours(parseISO(schedule.dueDate), 9); // UTC → KST 보정
+  const timeStr = format(koreanTime, "HH:mm");
   return (
     <li className="flex justify-between py-4">
       <div className="flex">
-        <div className="p-1 text-sm "> {format(parseISO(schedule.dueDate), "HH:mm")}</div>
+        <div className="p-1 text-sm "> {timeStr}</div>
         <div className="w-1 h-full bg-red-400 mx-4 rounded-md" />
         <div className="flex flex-col justify-center">
           <p className="text-sm text-[#939292] font-normal">{schedule.step}</p>

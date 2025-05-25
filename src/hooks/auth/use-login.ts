@@ -18,19 +18,20 @@ export function useLogin() {
   const { mutate: loginMutate, isPending } = useMutation({
     mutationFn: () => signin(email, password),
     onSuccess: (data) => {
-      const rawToken = data.accessToken; //
-      const rawRefreshToken = data.refreshToken;
+      console.log(data);
+      const rawToken = data; //
+      // const rawRefreshToken = data.refreshToken;
 
       const accessToken = rawToken.replace(/^Bearer\s/, "");
       console.log(accessToken);
-      const refreshToken = rawRefreshToken?.replace(/^Bearer\s/, "");
+      // const refreshToken = rawRefreshToken?.replace(/^Bearer\s/, "");
 
       setCookie(ON_STEP_TOKEN_NAME, accessToken, { path: "/" });
-      if (refreshToken) {
-        setCookie(ON_STEP_REFRESH_TOKEN_NAME, refreshToken, {
-          path: "/",
-        });
-      }
+      // if (refreshToken) {
+      //   setCookie(ON_STEP_REFRESH_TOKEN_NAME, refreshToken, {
+      //     path: "/",
+      //   });
+      // }
 
       navigate(`${ROUTER_PATH.PRIVATE.PARENT.APP}/${ROUTER_PATH.PRIVATE.CHILD.DASHBOARD}`);
       toast.success("로그인 성공");

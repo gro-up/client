@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ScheduleHeader, ScheduleList } from "@/components/schedule";
+import { ScheduleList } from "@/components/schedule";
 
 import { Container, DateTimePicker } from "@/components/ui";
 
@@ -17,9 +17,10 @@ export default function SchedulePage() {
           date={selectedDate}
           onDate={(newDate) => {
             setSelectedDate(newDate); // 날짜 상태 업데이트
+            console.log(newDate);
           }}
         />
-        <ScheduleHeader />
+
         <ScheduleList />
         <ScheduleAddButton onClick={() => setIsAddPanelOpen((prev) => !prev)} />
       </Container>

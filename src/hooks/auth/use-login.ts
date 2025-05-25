@@ -18,7 +18,6 @@ export function useLogin() {
   const { mutate: loginMutate, isPending } = useMutation({
     mutationFn: () => signin(email, password),
     onSuccess: (data) => {
-      console.log(data);
       const rawToken = data; //
       // const rawRefreshToken = data.refreshToken;
 

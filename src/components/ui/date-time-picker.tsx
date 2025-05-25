@@ -39,21 +39,22 @@ export const DateTimePicker = ({
           month: `w-full ${className?.month} `,
           months: `w-full ${className?.months}`,
           caption: `relative h-10 flex items-center justify-start pl-5 ${className?.caption}`,
-          nav_button_next: `absolute bg-transparent top-1/2 -translate-y-1/2 right-5 text-gray-400 ${className?.nav_button_next}`,
-          nav_button_previous: `absolute bg-transparent top-1/2 -translate-y-1/2 right-15 text-gray-400 ${className?.nav_button_previous}`,
+          nav_button_next: `absolute bg-transparent top-1/2 -translate-y-1/2 right-5 text-gray-400 cursor-pointer ${className?.nav_button_next}`,
+          nav_button_previous: `absolute bg-transparent top-1/2 -translate-y-1/2 right-15 text-gray-400 cursor-pointer ${className?.nav_button_previous}`,
           head: `w-full ${className?.head}`,
-          cell: `w-15 h-15 ${className?.cell} first:text-red-500 last:text-red-500`,
+          cell: `w-15 h-15 ${className?.cell} first:text-red-500 last:text-red-500 `,
           day_selected: `bg-gray-200 text-black rounded-md ${className?.day_selected}`, // 선택됐을시 날짜의 배경색 gray-200 및 텍스트색깔 black으로 변경
           day_today: `${
             date
               ? "" // 선택된 날짜가 있으면 today 스타일 제거
               : `bg-gray-900 rounded-md ${className?.day_today} text-white`
           }`,
-          day: `w-full h-full flex flex-col items-center justify-start ${className?.day}`,
+          day: `w-full h-full flex flex-col items-center justify-start cursor-pointer ${className?.day}`,
         }}
         onSelect={(day) => {
           if (day) {
             onDate(day);
+            console.log(day);
           }
         }}
         components={{

@@ -5,7 +5,7 @@ import { Schedule } from "@/types";
 import { isBefore, parseISO, compareDesc } from "date-fns";
 export const PastSchedule = () => {
   const { data, isLoading } = useScheduleList();
-  if (isLoading) return <div>로딩 중...</div>;
+  if (isLoading || !data || !data.data) return <div>로딩 중...</div>;
 
   const now = new Date();
 
@@ -17,7 +17,7 @@ export const PastSchedule = () => {
     .sort((a: Schedule, b: Schedule) => {
       return compareDesc(parseISO(a.dueDate), parseISO(b.dueDate));
     });
-
+  console.log(pastSchedules);
   return (
     <section>
       <header className="mb-5">

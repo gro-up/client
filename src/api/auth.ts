@@ -1,5 +1,6 @@
 import { BASE_URL } from "./base";
 
+//이메일 인증요청
 export const verifyEmail = async (email: string) => {
   const url = `${BASE_URL}/api/auth/email/verify-request?email=${encodeURIComponent(email)}`;
 
@@ -14,7 +15,7 @@ export const verifyEmail = async (email: string) => {
 
   return res.json();
 };
-
+// 이메일 인증코드 검증
 export const verifyCheck = async (email: string, code: string) => {
   const url = `${BASE_URL}/api/auth/email/verify-check?email=${encodeURIComponent(email)}&code=${encodeURIComponent(code)}`;
 
@@ -68,4 +69,21 @@ export const signin = async (email: string, password: string) => {
   }
 
   return result.data;
+};
+
+// 비밀번호 재설정 요청
+export const passwordReset = async (email: string, password: string) => {
+  const url = `${BASE_URL}/api/auth/reset-password?email=${encodeURIComponent(email)}`;
+  const res = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ password }),
+  });
+  const result = await res.json();
+  if (!res.ok) {
+    const message = result.message;
+    throw new Error(message);
+  }
 };

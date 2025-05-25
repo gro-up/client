@@ -15,8 +15,8 @@ export default function SignupPage() {
     emailError,
     isEmailValid,
     handleEmailChange,
-    isPending,
-    isSuccess,
+    isEmailVerificationPending,
+    isEmailVerificationSuccess,
     requestEmailVerification,
   } = useVerificationEmail();
   const {
@@ -54,8 +54,8 @@ export default function SignupPage() {
           verificationCode={verificationCode}
           isEmailValid={isEmailValid}
           requestEmailVerification={requestEmailVerification}
-          isSuccess={isSuccess}
-          isPending={isPending}
+          isSuccess={isEmailVerificationSuccess}
+          isPending={isEmailVerificationPending}
           handleEmailChange={handleEmailChange}
           handleVerification={handleVerification}
           setVerificationCode={setVerificationCode}

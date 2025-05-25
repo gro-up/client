@@ -67,3 +67,22 @@ export async function getSchedulesByDateRange(start: string, end: string) {
 
   return res.json();
 }
+export async function deleteSchedule(scheduleId: number) {
+  const url = `${BASE_URL}/api/schedules/${scheduleId}`;
+
+  const res = await fetch(url, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    // credentials: "include", // 쿠키 기반 인증이면
+  });
+
+  if (!res.ok) {
+    const errorData = await res.json().catch(() => ({}));
+    throw new Error(errorData.message || "일정 삭제 실패");
+  }
+
+  return res.json();
+}

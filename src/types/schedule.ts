@@ -1,6 +1,6 @@
 // types/schedule.ts
 export interface Schedule {
-  _id: string;
+  scheduleId: number;
   companyName: string;
   position: string;
   step: string;

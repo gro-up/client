@@ -23,7 +23,7 @@ export const ScheduleItem = ({ schedule }: Props) => {
       </div>
 
       <div className="flex items-center gap-2">
-        <MoreActions />
+        <MoreActions scheduleId={schedule.scheduleId} />
       </div>
     </li>
   );

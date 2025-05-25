@@ -1,4 +1,4 @@
-import { MoreHorizontal } from "lucide-react";
+import { MoreActions } from "../ui";
 interface Props {
   step: string;
   companyName: string;
@@ -16,7 +16,7 @@ export const PastScheduleCarouselItem = ({
       <div className="flex justify-between items-center">
         <span className="text-sm font-semibold">{step}</span>
 
-        <MoreHorizontal className="size-4 text-neutral-500 cursor-pointer" />
+        <MoreActions />
       </div>
 
       <strong>

@@ -19,8 +19,8 @@ export default function SchedulePage() {
           date={selectedDate}
           onDate={(newDate) => {
             setSelectedDate(newDate); // 날짜 상태 업데이트
-
             setIsAddPanelOpen(false);
+            setEditingScheduleId(null);
           }}
         />
 

@@ -44,7 +44,7 @@ export const MoreActions = ({ scheduleId }: MoreActionsProps) => {
     }
   };
   return (
-    <Menubar className="bg-transparent border-none shadow-none">
+    <Menubar className="bg-transparent border-none shadow-none z-1000">
       <MenubarMenu>
         <MenubarTrigger className="cursor-pointer">
           <MoreHorizontal className="w-4 h-4" />

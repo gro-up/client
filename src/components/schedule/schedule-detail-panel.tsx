@@ -38,10 +38,12 @@ const ScheduleDetailPanel = ({ selectedDate }: Props) => {
             </div>
             <MoreActions scheduleId={s.scheduleId} />
           </section>
+          {s.companyLocation && (
+            <div className="mt-5 text-[10px] text-neutral-500">
+              {s.companyLocation} <ScheduleMapRender address={s.companyLocation} />
+            </div>
+          )}
 
-          <div className="mt-5 text-[10px] text-neutral-500">
-            {s.companyLocation} <ScheduleMapRender address={s.companyLocation} />
-          </div>
           <blockquote className="mt-3 text-[12px] pl-4 border-l-4 border-mint-500 text-sm text-gray-300 italic whitespace-pre-line">
             Memo : {s.memo}
           </blockquote>

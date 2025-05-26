@@ -5,8 +5,13 @@ import { useTodayTomorrowSchedules } from "@/hooks/schedule";
 interface Props {
   setIsAddPanelOpen: (value: boolean) => void;
   isAddPanelOpen: boolean;
+  onEditClick: (id: number) => void;
 }
-export const ScheduleList = ({ setIsAddPanelOpen, isAddPanelOpen }: Props) => {
+export const ScheduleTodayTomorrowPanel = ({
+  setIsAddPanelOpen,
+  isAddPanelOpen,
+  onEditClick,
+}: Props) => {
   const { isLoading, todaySchedules, tomorrowSchedules, todayLabel, tomorrowLabel } =
     useTodayTomorrowSchedules();
 
@@ -18,7 +23,9 @@ export const ScheduleList = ({ setIsAddPanelOpen, isAddPanelOpen }: Props) => {
         <p className="text-sm font-bold mb-2">{todayLabel}</p>
         <ul className="flex flex-col gap-2">
           {todaySchedules.length > 0 ? (
-            todaySchedules.map((item) => <ScheduleItem key={item.scheduleId} schedule={item} />)
+            todaySchedules.map((item) => (
+              <ScheduleItem key={item.scheduleId} schedule={item} onEditClick={onEditClick} />
+            ))
           ) : (
             <p className="text-xs text-gray-500">오늘 일정이 없습니다.</p>
           )}
@@ -30,12 +37,16 @@ export const ScheduleList = ({ setIsAddPanelOpen, isAddPanelOpen }: Props) => {
         <p className="text-sm font-bold mb-2">{tomorrowLabel}</p>
         <ul className="flex flex-col gap-2">
           {tomorrowSchedules.length > 0 ? (
-            tomorrowSchedules.map((item) => <ScheduleItem key={item.scheduleId} schedule={item} />)
+            tomorrowSchedules.map((item) => (
+              <ScheduleItem key={item.scheduleId} schedule={item} onEditClick={onEditClick} />
+            ))
           ) : (
             <p className="text-xs text-gray-500">내일 일정이 없습니다.</p>
           )}
         </ul>
       </div>
+      <hr />
+      {/* 스케쥴 추가 버튼 */}
       <div className="flex justify-end">
         <ScheduleAddButton onClick={() => setIsAddPanelOpen(!isAddPanelOpen)} />
       </div>

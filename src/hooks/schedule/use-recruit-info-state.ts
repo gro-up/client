@@ -5,7 +5,7 @@ export function useRecruitInfoState() {
   const [address, setAddress] = useState("");
   const [addressDetail, setAddressDetail] = useState("");
   const [memo, setMemo] = useState("");
-  const [selectedStep, setSelectedStep] = useState("");
+  const [step, setStep] = useState("");
 
   return {
     companyName,
@@ -18,7 +18,7 @@ export function useRecruitInfoState() {
     setAddressDetail,
     memo,
     setMemo,
-    selectedStep,
-    setSelectedStep,
+    step,
+    setStep,
   };
 }

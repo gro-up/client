@@ -6,9 +6,10 @@ import { MoreActions } from "../ui";
 import ScheduleMapRender from "./schedule-map-render";
 interface Props {
   selectedDate: Date;
+  onEditClick: (id: number) => void;
 }
 
-const ScheduleDetailPanel = ({ selectedDate }: Props) => {
+const ScheduleDetailPanel = ({ selectedDate, onEditClick }: Props) => {
   const { data, isLoading } = useScheduleList();
 
   if (isLoading) return <div>로딩 중...</div>;
@@ -29,21 +30,26 @@ const ScheduleDetailPanel = ({ selectedDate }: Props) => {
 
   return (
     <>
+      <h2 className="text-lg font-bold mb-5">{format(selectedDate, "yyyy년 MM월 dd일")} 일정</h2>
+
       {schedules.map((s: Schedule) => (
         <div key={s.scheduleId}>
           <section className="flex justify-between">
             <div className="flex gap-5">
               <span className="flex items-center text-sm text-neutral-500">{s.position}</span>
-              <strong className="text-[13px] flex items-center">{s.companyName}</strong>
+              <strong className="text-[13px] flex items-center">
+                {s.companyName} {format(parseISO(s.dueDate), "HH:mm")}
+              </strong>
             </div>
-            <MoreActions scheduleId={s.scheduleId} />
+
+            <MoreActions scheduleId={s.scheduleId} onEditClick={onEditClick} />
           </section>
-          {s.companyLocation && (
+          {s.address && (
             <div className="mt-5 text-[10px] text-neutral-500">
-              {s.companyLocation} <ScheduleMapRender address={s.companyLocation} />
+              {s.address} {s.addressDetail} <ScheduleMapRender address={s.address} />
             </div>
           )}
-
+          {}
           <blockquote className="mt-3 text-[12px] pl-4 border-l-4 border-mint-500 text-sm text-gray-300 italic whitespace-pre-line">
             Memo : {s.memo}
           </blockquote>

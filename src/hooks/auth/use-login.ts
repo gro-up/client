@@ -3,8 +3,8 @@ import { useVerificationEmail } from "./use-verification-email";
 import { usePassword } from "./use-password";
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
-import { signin } from "@/api/auth"; // 경로는 프로젝트 구조에 맞게 조정
-import { useCookies, ON_STEP_TOKEN_NAME, ON_STEP_REFRESH_TOKEN_NAME } from "./use-cookies";
+import { signin } from "@/api/auth";
+import { useCookies, ON_STEP_TOKEN_NAME } from "./use-cookies";
 import { ROUTER_PATH } from "@/router";
 import { toast } from "sonner";
 export function useLogin() {
@@ -19,18 +19,10 @@ export function useLogin() {
     mutationFn: () => signin(email, password),
     onSuccess: (data) => {
       const rawToken = data; //
-      // const rawRefreshToken = data.refreshToken;
 
       const accessToken = rawToken.replace(/^Bearer\s/, "");
-      console.log(accessToken);
-      // const refreshToken = rawRefreshToken?.replace(/^Bearer\s/, "");
 
       setCookie(ON_STEP_TOKEN_NAME, accessToken, { path: "/" });
-      // if (refreshToken) {
-      //   setCookie(ON_STEP_REFRESH_TOKEN_NAME, refreshToken, {
-      //     path: "/",
-      //   });
-      // }
 
       navigate(`${ROUTER_PATH.PRIVATE.PARENT.APP}/${ROUTER_PATH.PRIVATE.CHILD.DASHBOARD}`);
       toast.success("로그인 성공");

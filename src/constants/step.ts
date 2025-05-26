@@ -1,5 +1,5 @@
 export const STEP_OPTIONS = [
-  { value: "DOCUMENT", label: "서류 전형" },
+  { value: "DOCUMENT", label: "서류" },
   { value: "CODING_TEST", label: "코딩 테스트" },
   { value: "ASSIGNMENT_TEST", label: "과제 테스트" },
   { value: "FIRST_INTERVIEW", label: "1차 면접" },

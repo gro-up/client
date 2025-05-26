@@ -3,7 +3,10 @@ import { PastScheduleCarouselItem } from "./past-schedule-carousel-item";
 import { useScheduleList } from "@/hooks/schedule";
 import { Schedule } from "@/types";
 import { isBefore, parseISO, compareDesc } from "date-fns";
-export const PastSchedule = () => {
+interface Props {
+  onEditClick: (id: number) => void;
+}
+export const PastSchedule = ({ onEditClick }: Props) => {
   const { data, isLoading } = useScheduleList();
   if (isLoading || !data || !data.data) return <div>로딩 중...</div>;
 
@@ -17,7 +20,7 @@ export const PastSchedule = () => {
     .sort((a: Schedule, b: Schedule) => {
       return compareDesc(parseISO(a.dueDate), parseISO(b.dueDate));
     });
-  console.log(pastSchedules);
+
   return (
     <section>
       <header className="mb-5">
@@ -32,8 +35,10 @@ export const PastSchedule = () => {
                 step={schedule.step}
                 companyName={schedule.companyName}
                 position={schedule.position}
-                companyLocation={schedule.companyLocation}
+                address={schedule.address}
+                addressDetail={schedule.addressDetail}
                 scheduleId={schedule.scheduleId}
+                onEditClick={onEditClick}
               />
             </CarouselItem>
           ))}

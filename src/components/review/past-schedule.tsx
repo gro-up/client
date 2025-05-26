@@ -28,11 +28,12 @@ export const PastSchedule = () => {
           {pastSchedules.map((schedule: Schedule) => (
             <CarouselItem className="basis-1/3">
               <PastScheduleCarouselItem
-                key={schedule._id}
+                key={schedule.scheduleId}
                 step={schedule.step}
                 companyName={schedule.companyName}
                 position={schedule.position}
                 companyLocation={schedule.companyLocation}
+                scheduleId={schedule.scheduleId}
               />
             </CarouselItem>
           ))}

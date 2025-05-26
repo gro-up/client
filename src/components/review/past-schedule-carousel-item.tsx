@@ -4,19 +4,21 @@ interface Props {
   companyName: string;
   position: string;
   companyLocation: string;
+  scheduleId: number;
 }
 export const PastScheduleCarouselItem = ({
   step,
   companyName,
   position,
   companyLocation,
+  scheduleId,
 }: Props) => {
   return (
     <div>
       <div className="flex justify-between items-center">
-        <span className="text-sm font-semibold">{step}</span>
+        <span className="text-sm font-semibold text-neutral-500">{step}</span>
 
-        <MoreActions />
+        <MoreActions scheduleId={scheduleId} />
       </div>
 
       <strong>

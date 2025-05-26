@@ -7,4 +7,5 @@ export interface Schedule {
   address: string;
   dueDate: string;
   companyLocation: string;
+  memo: string;
 }

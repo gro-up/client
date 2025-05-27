@@ -1,4 +1,4 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createSchedule } from "@/api/schedule";
 import { toDueDateISO } from "@/utils/time/dateTime";
 import { toast } from "sonner";
@@ -29,11 +29,12 @@ export function useCreateSchedule({
     handleConfirmDateTime: (cb: () => void) => void;
   };
 }) {
+  const queryClient = useQueryClient();
   const mutation = useMutation({
     mutationFn: createSchedule,
     onSuccess: () => {
       toast.success("일정이 성공적으로 추가되었습니다.");
-
+      //상태 초기화
       setters.setCompanyName("");
       setters.setPosition("");
       setters.setMemo("");
@@ -43,6 +44,9 @@ export function useCreateSchedule({
       setters.setTempDate(null);
       setters.setTempTime("");
       setters.handleConfirmDateTime(() => {});
+
+      //쿼리 무효화
+      queryClient.invalidateQueries({ queryKey: ["schedules"] });
     },
     onError: (error: Error) => {
       toast.error(error.message || "일정 추가 중 오류가 발생했습니다.");

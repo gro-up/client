@@ -10,10 +10,13 @@ export interface Coordinate {
 
 export const useGeocode = (query: string) => {
   const [geocode, setGeocode] = useState<Coordinate | null>(null);
-
+  console.log("서비스", window.naver.maps.Service);
+  console.log(query);
   useEffect(() => {
     if (!query) return;
     window.naver.maps.Service.geocode({ query }, (status, response) => {
+      console.log("geocode status:", status);
+      console.log("geocode response:", response);
       if (status !== window.naver.maps.Service.Status.OK) {
         toast.error("네이버 지도 오류: 주소를 찾을 수 없습니다.");
       }

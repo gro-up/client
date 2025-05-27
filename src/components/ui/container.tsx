@@ -11,7 +11,10 @@ type ContainerProps = {
 export const Container = ({ as, children, className, ...rest }: ContainerProps) => {
   const Component = as || "div";
   return (
-    <Component {...rest} className={cn("rounded-md relative w-full h-full", className)}>
+    <Component
+      {...rest}
+      className={cn("rounded-md relative w-full h-full flex flex-col", className)}
+    >
       {children}
     </Component>
   );

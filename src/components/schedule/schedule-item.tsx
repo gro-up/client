@@ -1,20 +1,29 @@
 import { MoreActions } from "../ui";
+import { Schedule } from "@/types";
+import { parseISO, format, addHours } from "date-fns";
+interface Props {
+  schedule: Schedule;
+}
 
-export const ScheduleItem = () => {
+export const ScheduleItem = ({ schedule }: Props) => {
+  const koreanTime = addHours(parseISO(schedule.dueDate), 9); // UTC → KST 보정
+  const timeStr = format(koreanTime, "HH:mm");
   return (
     <li className="flex justify-between py-4">
       <div className="flex">
-        <div className="p-1  text-sm">13:00</div>
+        <div className="p-1 text-sm "> {timeStr}</div>
         <div className="w-1 h-full bg-red-400 mx-4 rounded-md" />
-        <div className="flex flex-col justify-center ">
-          <p className="text-sm">면접</p>
-          <p>A 컴퍼니 - 프론트엔드 개발자</p>
-          <p className="text-xs text-gray-500">서울 성동구</p>
+        <div className="flex flex-col justify-center">
+          <p className="text-sm text-[#939292] font-normal">{schedule.step}</p>
+          <p>
+            {schedule.companyName} - {schedule.position}
+          </p>
+          <p className="text-[8px] font-normal text-[#ADADAD]">{schedule.companyLocation}</p>
         </div>
       </div>
 
       <div className="flex items-center gap-2">
-        <MoreActions />
+        <MoreActions scheduleId={schedule.scheduleId} />
       </div>
     </li>
   );

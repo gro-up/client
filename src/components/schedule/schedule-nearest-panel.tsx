@@ -1,19 +1,11 @@
-import { useScheduleList } from "@/hooks/schedule";
-import { Schedule } from "@/types";
+import { useNearestSchedule } from "@/hooks/schedule/useNearestSchedule";
+
 import { formatScheduleDate } from "@/utils/time";
 
 const ScheduleNearestPanel = () => {
-  const { data, isLoading } = useScheduleList();
+  const { isLoading, nearestSchedule } = useNearestSchedule();
 
   if (isLoading) return <div>로딩 중...</div>;
-  const today = new Date();
-
-  const nearestSchedule: Schedule = data?.data.scheduleList
-    ?.filter((schedule: Schedule) => new Date(schedule.dueDate) >= today)
-    .sort(
-      (a: Schedule, b: Schedule) => new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime(),
-    )[0];
-
   if (!nearestSchedule) return <div>일정이 없습니다.</div>;
 
   return (

@@ -5,7 +5,7 @@ interface ScheduleAddButtonProps {
 }
 export default function ScheduleAddButton({ onClick }: ScheduleAddButtonProps) {
   return (
-    <div className="absolute p-[10px] bottom-0 right-2 text-center text-xs text-neutral-500">
+    <div className="flex p-[10px] bottom-0 right-2 text-center text-xs text-neutral-500">
       <Button onClick={onClick} variant="mint" type="button" size="lg">
         <CalendarPlus className="text-black" />
       </Button>

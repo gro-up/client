@@ -35,7 +35,7 @@ export const useLoadNaverMap = (geocode: Coordinate | null) => {
         script.async = true;
         script.onload = initializeMap;
         document.head.appendChild(script);
-
+        console.log("지도 스크립트 src:", NAVER_MAP_SCRIPT_SRC);
         return () => {
           if (script.parentNode) {
             document.head.removeChild(script);
@@ -43,6 +43,7 @@ export const useLoadNaverMap = (geocode: Coordinate | null) => {
         };
       } else {
         initializeMap();
+        console.log("지도 스크립트 src:", NAVER_MAP_SCRIPT_SRC);
       }
     };
 

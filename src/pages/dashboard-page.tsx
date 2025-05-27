@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { ScheduleHeader, ScheduleList } from "@/components/schedule";
+import { ScheduleList } from "@/components/schedule";
 import { Container, DateTimePicker } from "@/components/ui";
 
 export default function DashboardPage() {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-
+  const [isAddPanelOpen, setIsAddPanelOpen] = useState(false); //
   return (
     <>
       <Container as="main" className="w-6/12 p-4 bg-neutral-900">
@@ -16,8 +16,8 @@ export default function DashboardPage() {
         />
 
         <hr />
-        <ScheduleHeader />
-        <ScheduleList />
+
+        <ScheduleList isAddPanelOpen={isAddPanelOpen} setIsAddPanelOpen={setIsAddPanelOpen} />
       </Container>
       <Container as="aside" className="w-6/12 p-4"></Container>
     </>

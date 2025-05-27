@@ -10,8 +10,7 @@ export interface Coordinate {
 
 export const useGeocode = (query: string) => {
   const [geocode, setGeocode] = useState<Coordinate | null>(null);
-  console.log("서비스", window.naver.maps.Service);
-  console.log(query);
+
   useEffect(() => {
     if (!query) return;
     window.naver.maps.Service.geocode({ query }, (status, response) => {

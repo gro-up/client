@@ -2,10 +2,11 @@ import { BASE_URL } from "./base";
 import { Cookies } from "react-cookie";
 import { ON_STEP_TOKEN_NAME } from "@/hooks/auth";
 import { ScheduleUpdatePayload } from "@/types";
-const cookies = new Cookies();
-const token = cookies.get(ON_STEP_TOKEN_NAME);
+
 //스케쥴 전체 조회
 export async function getSchedules() {
+  const cookies = new Cookies();
+  const token = cookies.get(ON_STEP_TOKEN_NAME);
   const res = await fetch(`${BASE_URL}/api/schedules`, {
     method: "GET",
     headers: {
@@ -30,6 +31,8 @@ export async function createSchedule(payload: {
   position: string;
   memo: string;
 }) {
+  const cookies = new Cookies();
+  const token = cookies.get(ON_STEP_TOKEN_NAME);
   const res = await fetch(`${BASE_URL}/api/schedules`, {
     method: "POST",
     headers: {
@@ -50,6 +53,8 @@ export async function createSchedule(payload: {
 
 //스케쥴 범위별 일정조회
 export async function getSchedulesByDateRange(start: string, end: string) {
+  const cookies = new Cookies();
+  const token = cookies.get(ON_STEP_TOKEN_NAME);
   const url = `${BASE_URL}/api/schedules/range?start=${encodeURIComponent(start)}&end=${encodeURIComponent(end)}`;
 
   const res = await fetch(url, {
@@ -71,6 +76,8 @@ export async function getSchedulesByDateRange(start: string, end: string) {
 
 // 스케쥴 삭제
 export async function deleteSchedule(scheduleId: number) {
+  const cookies = new Cookies();
+  const token = cookies.get(ON_STEP_TOKEN_NAME);
   const url = `${BASE_URL}/api/schedules/${scheduleId}`;
 
   const res = await fetch(url, {
@@ -92,6 +99,8 @@ export async function deleteSchedule(scheduleId: number) {
 
 // 단일 스케줄 조회
 export async function getScheduleById(id: number) {
+  const cookies = new Cookies();
+  const token = cookies.get(ON_STEP_TOKEN_NAME);
   const url = `${BASE_URL}/api/schedules/${id}`;
 
   const res = await fetch(url, {
@@ -112,6 +121,8 @@ export async function getScheduleById(id: number) {
 }
 
 export async function updateSchedule(id: number, payload: ScheduleUpdatePayload) {
+  const cookies = new Cookies();
+  const token = cookies.get(ON_STEP_TOKEN_NAME);
   const url = `${BASE_URL}/api/schedules/${id}`;
 
   const res = await fetch(url, {

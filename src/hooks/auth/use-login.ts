@@ -24,7 +24,10 @@ export function useLogin() {
 
       setCookie(ON_STEP_TOKEN_NAME, accessToken, { path: "/" });
 
-      navigate(`${ROUTER_PATH.PRIVATE.PARENT.APP}/${ROUTER_PATH.PRIVATE.CHILD.DASHBOARD}`);
+      // 쿠키가 브라우저에 확실히 반영되도록 delay
+      setTimeout(() => {
+        navigate(`${ROUTER_PATH.PRIVATE.PARENT.APP}/${ROUTER_PATH.PRIVATE.CHILD.DASHBOARD}`);
+      }, 0);
       toast.success("로그인 성공");
     },
     onError: (err) => {

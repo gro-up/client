@@ -18,10 +18,10 @@ import { COMPANY_FORM_VALUES_HANDLER_KEY } from "@/hooks/company";
 export const CompanyForm = () => {
   const { companyFormValues, handleCompanyFormValuesChange } = useCompanyFormValues();
 
-  const { handleCreateCompany } = useCreateCompany(companyFormValues);
+  const { isOpen, setIsOpen, handleCreateCompany } = useCreateCompany(companyFormValues);
 
   return (
-    <Dialog>
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <Button
           variant="mint"

@@ -4,6 +4,7 @@ import { toast } from "sonner";
 import { QUERY_KEY, queryClient } from "@/query";
 import type { CompanyFormValues } from "./use-company-form-values";
 import { BASE_URL } from "@/api/base";
+import { useState } from "react";
 
 const createCompany = async (companyFormValues: CompanyFormValues) => {
   const response = await fetch(`${BASE_URL}/api/companies`, {
@@ -24,9 +25,14 @@ const createCompanyError = () => {
 };
 
 export const useCreateCompany = (companyFormValues: CompanyFormValues) => {
+  const [isOpen, setIsOpen] = useState(false);
+
   const companyMutation = useMutation({
     mutationFn: createCompany,
-    onSuccess: createCompanySuccess,
+    onSuccess: () => {
+      createCompanySuccess();
+      setIsOpen(false);
+    },
     onError: createCompanyError,
   });
 
@@ -36,5 +42,5 @@ export const useCreateCompany = (companyFormValues: CompanyFormValues) => {
     companyMutation.mutate(companyFormValues);
   };
 
-  return { handleCreateCompany, ...companyMutation };
+  return { isOpen, setIsOpen, handleCreateCompany, ...companyMutation };
 };

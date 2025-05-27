@@ -3,9 +3,10 @@ import { Schedule } from "@/types";
 import { parseISO, format, addHours } from "date-fns";
 interface Props {
   schedule: Schedule;
+  onEditClick: (id: number) => void;
 }
 
-export const ScheduleItem = ({ schedule }: Props) => {
+export const ScheduleItem = ({ schedule, onEditClick }: Props) => {
   const koreanTime = addHours(parseISO(schedule.dueDate), 9); // UTC → KST 보정
   const timeStr = format(koreanTime, "HH:mm");
   return (
@@ -18,12 +19,14 @@ export const ScheduleItem = ({ schedule }: Props) => {
           <p>
             {schedule.companyName} - {schedule.position}
           </p>
-          <p className="text-[8px] font-normal text-[#ADADAD]">{schedule.companyLocation}</p>
+          <p className="text-[8px] font-normal text-[#ADADAD]">
+            {schedule.address} {schedule.addressDetail}
+          </p>
         </div>
       </div>
 
       <div className="flex items-center gap-2">
-        <MoreActions scheduleId={schedule.scheduleId} />
+        <MoreActions scheduleId={schedule.scheduleId} onEditClick={onEditClick} />
       </div>
     </li>
   );

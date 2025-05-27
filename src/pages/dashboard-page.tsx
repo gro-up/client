@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ScheduleList } from "@/components/schedule";
+import { ScheduleTodayTomorrowPanel } from "@/components/schedule";
 import { Container, DateTimePicker } from "@/components/ui";
 
 export default function DashboardPage() {
@@ -16,8 +16,6 @@ export default function DashboardPage() {
         />
 
         <hr />
-
-        <ScheduleList isAddPanelOpen={isAddPanelOpen} setIsAddPanelOpen={setIsAddPanelOpen} />
       </Container>
       <Container as="aside" className="w-6/12 p-4"></Container>
     </>

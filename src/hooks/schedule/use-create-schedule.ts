@@ -13,7 +13,7 @@ export function useCreateSchedule({
     memo: string;
     address: string;
     addressDetail: string;
-    selectedStep: string;
+    step: string;
     selectedDate: Date | null;
     selectedTime: string;
   };
@@ -23,7 +23,7 @@ export function useCreateSchedule({
     setMemo: (v: string) => void;
     setAddress: (v: string) => void;
     setAddressDetail: (v: string) => void;
-    setSelectedStep: (v: string) => void;
+    setStep: (v: string) => void;
     setTempDate: (v: Date | null) => void;
     setTempTime: (v: string) => void;
     handleConfirmDateTime: (cb: () => void) => void;
@@ -40,7 +40,7 @@ export function useCreateSchedule({
       setters.setMemo("");
       setters.setAddress("");
       setters.setAddressDetail("");
-      setters.setSelectedStep("DOCUMENT");
+      setters.setStep("");
       setters.setTempDate(null);
       setters.setTempTime("");
       setters.handleConfirmDateTime(() => {});
@@ -59,7 +59,7 @@ export function useCreateSchedule({
       selectedTime,
       companyName,
       position,
-      selectedStep,
+      step,
       memo,
       address,
       addressDetail,
@@ -71,20 +71,19 @@ export function useCreateSchedule({
       return;
     }
 
-    if (!companyName.trim() || !position.trim() || !selectedStep) {
+    if (!companyName.trim() || !position.trim() || !step) {
       alert("회사명, 직무, 채용 단계를 모두 입력해주세요.");
       return;
     }
 
-    const companyLocation = `${address} ${addressDetail}`.trim();
-
     const payload = {
       companyName,
-      step: selectedStep,
+      step,
       dueDate,
       position,
       memo,
-      companyLocation,
+      address,
+      addressDetail,
     };
 
     mutation.mutate(payload);

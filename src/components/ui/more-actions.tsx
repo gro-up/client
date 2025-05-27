@@ -20,28 +20,19 @@ import {
   MenubarSubTrigger,
   MenubarTrigger,
 } from "@/components/shadcn";
-import { deleteSchedule } from "@/api/schedule";
-import { toast } from "sonner";
+
+import { useDeleteSchedule } from "@/hooks/schedule/use-delete-schedule";
 interface MoreActionsProps {
   scheduleId: number;
+  onEditClick: (id: number) => void;
 }
 
-export const MoreActions = ({ scheduleId }: MoreActionsProps) => {
-  const handleDelete = async () => {
+export const MoreActions = ({ scheduleId, onEditClick }: MoreActionsProps) => {
+  const { mutate: deleteScheduleMutate } = useDeleteSchedule();
+  const handleDelete = () => {
+    // 일정삭제함수
     if (!window.confirm("정말 삭제하시겠습니까?")) return;
-
-    try {
-      await deleteSchedule(scheduleId);
-      toast.success("일정이 삭제되었습니다.");
-    } catch (err) {
-      if (err instanceof Error) {
-        console.error("에러 메시지:", err.message);
-        toast.error(err.message);
-      } else {
-        console.error("알 수 없는 에러 발생");
-        toast.error("알 수 없는 에러 발생");
-      }
-    }
+    deleteScheduleMutate(scheduleId);
   };
   return (
     <Menubar className="bg-transparent border-none shadow-none ">
@@ -50,7 +41,7 @@ export const MoreActions = ({ scheduleId }: MoreActionsProps) => {
           <MoreHorizontal className="w-4 h-4" />
         </MenubarTrigger>
         <MenubarContent>
-          <MenubarItem>
+          <MenubarItem onClick={() => onEditClick(scheduleId)}>
             <Edit className="w-4 h-4 text-gray-400" />
             편집
           </MenubarItem>

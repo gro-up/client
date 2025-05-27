@@ -5,17 +5,36 @@ import {
   useDateTimePickerState,
   useDateTimeModal,
   useRecruitInfoState,
-  useCreateSchedule,
+  useUpdateSchedule,
 } from "@/hooks/schedule";
 import { Button, Textarea } from "@/components/shadcn";
 import ScheduleAddInputFields from "./schedule-add-input-fields";
 import { formatSelectedDateTime } from "@/utils/time/dateTime";
 
-import { PastSchedule } from "../review";
-interface Props {
-  onEditClick: (id: number) => void;
+import { useEffect } from "react";
+import { format, addHours } from "date-fns";
+import { STEP_OPTIONS } from "@/constants/step";
+import { useScheduleById } from "@/hooks/schedule/use-schedule-by-id";
+interface ScheduleEditPanelProps {
+  scheduleId: number;
+  onCancel: () => void;
+  onSubmit: () => void;
 }
-export default function ScheduleAddPanel({ onEditClick }: Props) {
+const ScheduleEditPanel = ({ scheduleId, onCancel, onSubmit }: ScheduleEditPanelProps) => {
+  const { data } = useScheduleById(scheduleId);
+  const {
+    selectedDate,
+    selectedTime,
+
+    tempDate,
+    setTempDate,
+    tempTime,
+    setTempTime,
+    handleConfirmDateTime,
+    setSelectedDate,
+    setSelectedTime,
+  } = useDateTimePickerState();
+
   const {
     companyName,
     setCompanyName,
@@ -31,17 +50,6 @@ export default function ScheduleAddPanel({ onEditClick }: Props) {
     setStep,
   } = useRecruitInfoState();
 
-  const {
-    selectedDate,
-    selectedTime,
-    isDateTimeConfirmed,
-    tempDate,
-    setTempDate,
-    tempTime,
-    setTempTime,
-    handleConfirmDateTime,
-  } = useDateTimePickerState();
-
   const { isDateTimeModalOpen, openDateTimeModal, closeDateTimeModal } = useDateTimeModal({
     selectedDate,
     selectedTime,
@@ -51,7 +59,7 @@ export default function ScheduleAddPanel({ onEditClick }: Props) {
 
   const formattedDateTime = formatSelectedDateTime(selectedDate, selectedTime);
 
-  const { handleSubmit } = useCreateSchedule({
+  const { handleUpdate } = useUpdateSchedule(scheduleId, onSubmit, {
     state: {
       companyName,
       address,
@@ -75,15 +83,36 @@ export default function ScheduleAddPanel({ onEditClick }: Props) {
     },
   });
 
+  useEffect(() => {
+    if (!data?.data) return;
+    const schedule = data.data;
+    console.log(schedule);
+
+    const matchedStep = STEP_OPTIONS.find((option) => option.label === schedule.step);
+    setStep(matchedStep?.value || "");
+    setCompanyName(schedule.companyName);
+
+    setPosition(schedule.position);
+    setAddress(schedule.address);
+    setAddressDetail(schedule.addressDetail);
+    setMemo(schedule.memo);
+
+    const parsedUTC = new Date(schedule.dueDate);
+    const koreanTime = addHours(parsedUTC, 9);
+    if (!isNaN(koreanTime.getTime())) {
+      setSelectedDate(koreanTime);
+      setSelectedTime(format(koreanTime, "HH:mm"));
+    }
+  }, [data]);
+
   return (
     <>
+      <header className="h-10 flex items-center">일정 수정</header>
       <div className="flex flex-col gap-2.5 h-full w-full ">
-        <PastSchedule onEditClick={onEditClick} />
-
         <form
           onSubmit={(e) => {
-            e.preventDefault(); // 폼 제출 시 페이지 새로고침 방지
-            handleSubmit(); //
+            e.preventDefault(); // 새로고침 방지
+            handleUpdate(); // 실제 수정 로직 실행
           }}
           className="flex flex-col gap-2.5 h-full"
         >
@@ -109,9 +138,7 @@ export default function ScheduleAddPanel({ onEditClick }: Props) {
             >
               <CalendarPlus />
             </Button>
-            {isDateTimeConfirmed && formattedDateTime && (
-              <p className="text-sm text-center">{formattedDateTime}</p>
-            )}
+            {formattedDateTime && <p className="text-sm text-center">{formattedDateTime}</p>}
           </div>
 
           {/* 마크다운 노트 입력 */}
@@ -122,9 +149,10 @@ export default function ScheduleAddPanel({ onEditClick }: Props) {
             onChange={(e) => setMemo(e.target.value)}
           />
 
-          {/* 제출 버튼 영역 */}
+          {/* 수정 버튼 영역 */}
           <div className="flex justify-end gap-2 absolute bottom-0 right-0 py-[10px] px-[10px]">
             <Button
+              onClick={onCancel}
               size="lg"
               className="bg-neutral-900 hover:bg-neutral-700 text-white cursor-pointer"
               type="button"
@@ -132,7 +160,7 @@ export default function ScheduleAddPanel({ onEditClick }: Props) {
               취소
             </Button>
             <Button type="submit" variant="mint" size="lg">
-              추가
+              수정
             </Button>
           </div>
         </form>
@@ -150,4 +178,6 @@ export default function ScheduleAddPanel({ onEditClick }: Props) {
       />
     </>
   );
-}
+};
+
+export default ScheduleEditPanel;

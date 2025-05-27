@@ -2,12 +2,14 @@ import { useQuery } from "@tanstack/react-query";
 import { addDays, format, parseISO } from "date-fns";
 import { getSchedulesByDateRange } from "@/api/schedule";
 import { Schedule } from "@/types";
-
+import { useCookies } from "../auth";
 import { ko } from "date-fns/locale"; //
 /**
  * 오늘과 내일의 일정을 가져오는 커스텀 훅
  */
 export const useTodayTomorrowSchedules = () => {
+  const { cookies } = useCookies();
+  const token = cookies["on-step-token"];
   // 날짜 기준 생성: today, tomorrow, 모레
   const today = new Date();
   const tomorrow = addDays(today, 1);
@@ -21,6 +23,8 @@ export const useTodayTomorrowSchedules = () => {
   const { data, isLoading, error } = useQuery({
     queryKey: ["schedules", start, end],
     queryFn: () => getSchedulesByDateRange(start, end),
+
+    enabled: !!token,
   });
 
   // 일정 목록 추출 (undefined 방지용 fallback)

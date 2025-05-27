@@ -15,8 +15,8 @@ interface Props {
   setCompanyName: (value: string) => void;
   position: string;
   setPosition: (value: string) => void;
-  selectedStep: string;
-  setSelectedStep: (step: string) => void;
+  step: string;
+  setStep: (step: string) => void;
   address: string;
   setAddress: (value: string) => void;
   addressDetail: string;
@@ -28,8 +28,8 @@ export default function ScheduleAddInputFields({
   setCompanyName,
   position,
   setPosition,
-  selectedStep,
-  setSelectedStep,
+  step,
+  setStep,
   setAddress,
   address,
   addressDetail,
@@ -64,7 +64,7 @@ export default function ScheduleAddInputFields({
           <div className="w-full relative">
             <Input
               readOnly
-              value={STEP_OPTIONS.find((step) => step.value === selectedStep)?.label || ""}
+              value={STEP_OPTIONS.find((steped) => steped.value === step)?.label || ""}
               placeholder="채용 단계를 선택해주세요."
               className="w-full h-[50px] p-[10px] placeholder:text-white rounded-t-none cursor-pointer"
             />
@@ -73,7 +73,7 @@ export default function ScheduleAddInputFields({
         </DropdownMenuTrigger>
         <DropdownMenuContent side="bottom" align="end">
           {STEP_OPTIONS.map((step) => (
-            <DropdownMenuItem key={step.value} onSelect={() => setSelectedStep(step.value)}>
+            <DropdownMenuItem key={step.value} onSelect={() => setStep(step.value)}>
               {step.label}
             </DropdownMenuItem>
           ))}

@@ -3,3 +3,4 @@ export * from "./company-header";
 export * from "./company-table-header";
 export * from "./company-table-pagination";
 export * from "./columns";
+export * from "./company-form";

@@ -6,4 +6,5 @@ export interface Schedule {
   step: string;
   address: string;
   dueDate: string;
+  companyLocation: string;
 }

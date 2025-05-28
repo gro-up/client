@@ -109,13 +109,7 @@ const ScheduleEditPanel = ({ scheduleId, onCancel, onSubmit }: ScheduleEditPanel
     <>
       <header className="h-10 flex items-center">일정 수정</header>
       <div className="flex flex-col gap-2.5 h-full w-full ">
-        <form
-          onSubmit={(e) => {
-            e.preventDefault(); // 새로고침 방지
-            handleUpdate(); // 실제 수정 로직 실행
-          }}
-          className="flex flex-col gap-2.5 h-full"
-        >
+        <form className="flex flex-col gap-2.5 h-full">
           <ScheduleAddInputFields
             companyName={companyName}
             setCompanyName={setCompanyName}
@@ -159,7 +153,7 @@ const ScheduleEditPanel = ({ scheduleId, onCancel, onSubmit }: ScheduleEditPanel
             >
               취소
             </Button>
-            <Button type="submit" variant="mint" size="lg">
+            <Button onClick={handleUpdate} type="submit" variant="mint" size="lg">
               수정
             </Button>
           </div>

@@ -80,13 +80,7 @@ export default function ScheduleAddPanel({ onEditClick }: Props) {
       <div className="flex flex-col gap-2.5 h-full w-full ">
         <PastSchedule onEditClick={onEditClick} />
 
-        <form
-          onSubmit={(e) => {
-            e.preventDefault(); // 폼 제출 시 페이지 새로고침 방지
-            handleSubmit(); //
-          }}
-          className="flex flex-col gap-2.5 h-full"
-        >
+        <form className="flex flex-col gap-2.5 h-full">
           <ScheduleAddInputFields
             companyName={companyName}
             setCompanyName={setCompanyName}
@@ -131,7 +125,7 @@ export default function ScheduleAddPanel({ onEditClick }: Props) {
             >
               취소
             </Button>
-            <Button type="submit" variant="mint" size="lg">
+            <Button onClick={handleSubmit} type="button" variant="mint" size="lg">
               추가
             </Button>
           </div>

@@ -18,7 +18,7 @@ export default function PasswordSection({
   handleConfirmPasswordChange,
 }: PasswordSectionProps) {
   return (
-    <div>
+    <section>
       <Input
         type="password"
         value={password}
@@ -40,6 +40,6 @@ export default function PasswordSection({
       ) : passwordMatchError ? (
         <div className="text-red-500 mt-2 text-xs">{passwordMatchError}</div>
       ) : null}
-    </div>
+    </section>
   );
 }

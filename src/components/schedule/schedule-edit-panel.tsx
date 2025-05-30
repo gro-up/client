@@ -25,7 +25,6 @@ const ScheduleEditPanel = ({ scheduleId, onCancel, onSubmit }: ScheduleEditPanel
   const {
     selectedDate,
     selectedTime,
-
     tempDate,
     setTempDate,
     tempTime,
@@ -86,7 +85,6 @@ const ScheduleEditPanel = ({ scheduleId, onCancel, onSubmit }: ScheduleEditPanel
   useEffect(() => {
     if (!data?.data) return;
     const schedule = data.data;
-    console.log(schedule);
 
     const matchedStep = STEP_OPTIONS.find((option) => option.label === schedule.step);
     setStep(matchedStep?.value || "");

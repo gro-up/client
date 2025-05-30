@@ -1,4 +1,6 @@
-import ScheduleAddButton from "./schedule-add-button";
+import { CalendarPlus } from "lucide-react";
+import { Button } from "../shadcn";
+
 import { ScheduleItem } from "./schedule-item";
 
 import { useTodayTomorrowSchedules } from "@/hooks/schedule";
@@ -48,7 +50,15 @@ export const ScheduleTodayTomorrowPanel = ({
       <hr />
       {/* 스케쥴 추가 버튼 */}
       <div className="flex justify-end">
-        <ScheduleAddButton onClick={() => setIsAddPanelOpen(!isAddPanelOpen)} />
+        <Button
+          className="cursor-pointer text-black"
+          variant="mint"
+          type="button"
+          size="lg"
+          onClick={() => setIsAddPanelOpen(!isAddPanelOpen)}
+        >
+          <CalendarPlus />
+        </Button>
       </div>
     </div>
   );

@@ -3,8 +3,8 @@ export * from "./schedule-today-tomorrow-panel";
 export * from "./schedule-detail-header";
 export * from "./schedule-detail-content";
 export * from "./schedule-detail-map";
-export * from "./schedule-add-button";
-export * from "./schedule-add-input-fields";
+
+export * from "./schedule-input-fields";
 
 export * from "./schedule-date-time-modal";
 export * from "./schedule-add-panel";

@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -9,7 +8,8 @@ import { Input } from "@/components/shadcn";
 import { ChevronDown } from "lucide-react";
 import { STEP_OPTIONS } from "@/constants/step";
 
-import { DaumPostcodeData } from "@/types";
+import { useDaumPostcode } from "@/hooks/schedule";
+import { useEnterToFocusNext } from "@/hooks/shared";
 
 interface Props {
   companyName: string;
@@ -36,31 +36,8 @@ export default function ScheduleAddInputFields({
   addressDetail,
   setAddressDetail,
 }: Props) {
-  const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, index: number) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      const nextInput = inputRefs.current[index + 1];
-      if (nextInput) {
-        nextInput.focus();
-      }
-    }
-  };
-  const handleAddressClick = () => {
-    if (!window.daum?.Postcode) {
-      alert("주소 검색 기능을 사용할 수 없습니다.");
-      return;
-    }
-
-    const postcode = new window.daum.Postcode({
-      oncomplete: (data: DaumPostcodeData) => {
-        setAddress(data.address);
-      },
-    });
-
-    postcode.open();
-  };
-  console.log(inputRefs);
+  const { inputRefs, handleKeyDown } = useEnterToFocusNext();
+  const { handleAddressClick } = useDaumPostcode(setAddress);
   return (
     <div>
       <Input

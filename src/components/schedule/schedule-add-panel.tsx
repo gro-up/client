@@ -8,7 +8,7 @@ import {
   useCreateSchedule,
 } from "@/hooks/schedule";
 import { Button, Textarea } from "@/components/shadcn";
-import ScheduleAddInputFields from "./schedule-add-input-fields";
+import ScheduleAddInputFields from "./schedule-input-fields";
 import { formatSelectedDateTime } from "@/utils/time/dateTime";
 
 import { PastSchedule } from "../review";

@@ -19,15 +19,11 @@ export function useLogin() {
     mutationFn: () => signin(email, password),
     onSuccess: (data) => {
       const rawToken = data; //
-
       const accessToken = rawToken.replace(/^Bearer\s/, "");
-
       setCookie(ON_STEP_TOKEN_NAME, accessToken, { path: "/" });
 
-      // 쿠키가 브라우저에 확실히 반영되도록 delay
-      setTimeout(() => {
-        navigate(`${ROUTER_PATH.PRIVATE.PARENT.APP}/${ROUTER_PATH.PRIVATE.CHILD.DASHBOARD}`);
-      }, 0);
+      navigate(`${ROUTER_PATH.PRIVATE.PARENT.APP}/${ROUTER_PATH.PRIVATE.CHILD.DASHBOARD}`);
+
       toast.success("로그인 성공");
     },
     onError: (err) => {

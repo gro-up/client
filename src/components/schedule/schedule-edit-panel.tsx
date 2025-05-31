@@ -9,7 +9,7 @@ import {
 } from "@/hooks/schedule";
 import { Button, Textarea } from "@/components/shadcn";
 import ScheduleAddInputFields from "./schedule-input-fields";
-import { formatSelectedDateTime } from "@/utils/time/dateTime";
+import { formatSelectedDateTime } from "@/utils/time/date-time";
 
 import { useEffect } from "react";
 import { format, addHours } from "date-fns";

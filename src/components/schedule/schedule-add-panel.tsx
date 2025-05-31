@@ -12,6 +12,7 @@ import ScheduleAddInputFields from "./schedule-input-fields";
 import { formatSelectedDateTime } from "@/utils/time/date-time";
 
 import { PastSchedule } from "../review";
+import FullScreenLoader from "../ui/full-screen-loader";
 interface Props {
   onEditClick: (id: number) => void;
 }
@@ -51,7 +52,7 @@ export default function ScheduleAddPanel({ onEditClick }: Props) {
 
   const formattedDateTime = formatSelectedDateTime(selectedDate, selectedTime);
 
-  const { handleSubmit } = useCreateSchedule({
+  const { handleSubmit, isPending } = useCreateSchedule({
     state: {
       companyName,
       address,
@@ -77,6 +78,7 @@ export default function ScheduleAddPanel({ onEditClick }: Props) {
 
   return (
     <>
+      {isPending && <FullScreenLoader />}
       <div className="flex flex-col gap-2.5 h-full w-full ">
         <PastSchedule onEditClick={onEditClick} />
 

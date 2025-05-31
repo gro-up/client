@@ -5,3 +5,4 @@ export * from "./shadow-container";
 export * from "./date-time-picker";
 export * from "./more-actions";
 export * from "./container";
+export * from "./full-screen-loader";

@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createSchedule } from "@/api/schedule";
-import { toDueDateISO } from "@/utils/time/dateTime";
+import { toDueDateISO } from "@/utils/time/date-time";
 import { toast } from "sonner";
 
 export function useCreateSchedule({

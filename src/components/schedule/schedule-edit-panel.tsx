@@ -9,12 +9,13 @@ import {
 } from "@/hooks/schedule";
 import { Button, Textarea } from "@/components/shadcn";
 import ScheduleAddInputFields from "./schedule-input-fields";
-import { formatSelectedDateTime } from "@/utils/time/dateTime";
+import { formatSelectedDateTime } from "@/utils/time/date-time";
 
 import { useEffect } from "react";
 import { format, addHours } from "date-fns";
 import { STEP_OPTIONS } from "@/constants/step";
 import { useScheduleById } from "@/hooks/schedule/use-schedule-by-id";
+import FullScreenLoader from "../ui/full-screen-loader";
 interface ScheduleEditPanelProps {
   scheduleId: number;
   onCancel: () => void;
@@ -25,7 +26,6 @@ const ScheduleEditPanel = ({ scheduleId, onCancel, onSubmit }: ScheduleEditPanel
   const {
     selectedDate,
     selectedTime,
-
     tempDate,
     setTempDate,
     tempTime,
@@ -59,7 +59,7 @@ const ScheduleEditPanel = ({ scheduleId, onCancel, onSubmit }: ScheduleEditPanel
 
   const formattedDateTime = formatSelectedDateTime(selectedDate, selectedTime);
 
-  const { handleUpdate } = useUpdateSchedule(scheduleId, onSubmit, {
+  const { handleUpdate, isPending } = useUpdateSchedule(scheduleId, onSubmit, {
     state: {
       companyName,
       address,
@@ -86,7 +86,6 @@ const ScheduleEditPanel = ({ scheduleId, onCancel, onSubmit }: ScheduleEditPanel
   useEffect(() => {
     if (!data?.data) return;
     const schedule = data.data;
-    console.log(schedule);
 
     const matchedStep = STEP_OPTIONS.find((option) => option.label === schedule.step);
     setStep(matchedStep?.value || "");
@@ -107,6 +106,7 @@ const ScheduleEditPanel = ({ scheduleId, onCancel, onSubmit }: ScheduleEditPanel
 
   return (
     <>
+      {isPending && <FullScreenLoader />}
       <header className="h-10 flex items-center">일정 수정</header>
       <div className="flex flex-col gap-2.5 h-full w-full ">
         <form className="flex flex-col gap-2.5 h-full">

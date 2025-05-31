@@ -1,6 +1,7 @@
 import { Button, Input } from "@/components/shadcn";
 import { useLogin } from "@/hooks/auth/use-login";
-import { Loader2 } from "lucide-react";
+
+import FullScreenLoader from "../ui/full-screen-loader";
 export default function LoginForm() {
   const {
     email,
@@ -14,11 +15,7 @@ export default function LoginForm() {
 
   return (
     <>
-      {isPending && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-          <Loader2 className="w-10 h-10 text-white animate-spin" />
-        </div>
-      )}
+      {isPending && <FullScreenLoader />}
 
       <form onSubmit={handleSubmit} className="flex flex-col items-center gap-2">
         <div>

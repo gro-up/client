@@ -5,40 +5,45 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
   DialogFooter,
   DialogClose,
   Input,
 } from "@/components/shadcn";
-import { useCompanyFormValues, useCreateCompany } from "@/hooks/company";
-import { ListPlus } from "lucide-react";
+import { useCompanyFormValues, useEditCompany, useGetDetailCompany } from "@/hooks/company";
+import { Edit } from "lucide-react";
 
 import { COMPANY_FORM_VALUES_HANDLER_KEY } from "@/hooks/company";
+import { DialogTrigger } from "@radix-ui/react-dialog";
 
-export const CompanyForm = () => {
+export const CompanyEditForm = ({ companyId }: { companyId: string }) => {
+  const { company, getDetailCompany } = useGetDetailCompany(companyId);
+
   const { companyFormValues, handleCompanyFormValuesChange, handleAddressClick } =
-    useCompanyFormValues();
+    useCompanyFormValues(company);
 
-  const { isOpen, setIsOpen, handleCreateCompany } = useCreateCompany(companyFormValues);
+  const { isOpen, setIsOpen, handleEditCompany } = useEditCompany({
+    companyFormValues,
+    companyId,
+  });
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogTrigger asChild>
-        <Button
-          variant="mint"
-          type="button"
-          size="lg"
-          className="text-black absolute bottom-5 right-5"
-        >
-          <ListPlus />
-        </Button>
+      <DialogTrigger
+        className="flex items-center gap-2 hover:bg-gray-100 w-full h-full cursor-pointer p-3"
+        onClick={() => {
+          setIsOpen(true);
+          getDetailCompany();
+        }}
+      >
+        <Edit className="w-3 h-3" />
+        <span>편집</span>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px] bg-neutral-900">
         <DialogHeader>
           <DialogTitle>관심기업 추가</DialogTitle>
           <DialogDescription>관심기업의 채용사이트를 추가해주세요.</DialogDescription>
         </DialogHeader>
-        <form onSubmit={handleCreateCompany}>
+        <form onSubmit={handleEditCompany}>
           <div className="grid py-4">
             <div className="grid-cols-4 items-center gap-4 mb-5">
               <Input

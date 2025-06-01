@@ -3,9 +3,12 @@ import { Button } from "../shadcn";
 import type { CompanyProps } from "./company-table-header";
 
 export const CompanyTablePagination = ({ table }: CompanyProps) => {
+  if (!table.getCanPreviousPage() && !table.getCanNextPage()) {
+    return null;
+  }
+
   return (
-    <>
-      {table.getCanPreviousPage() || table.getCanNextPage() ? <div className="h-[65px]" /> : null}
+    <div className="relative w-full h-[65px]">
       <div className="flex items-center justify-end space-x-2 py-4 absolute bottom-0 right-10">
         {table.getCanPreviousPage() && (
           <Button
@@ -28,6 +31,6 @@ export const CompanyTablePagination = ({ table }: CompanyProps) => {
           </Button>
         )}
       </div>
-    </>
+    </div>
   );
 };

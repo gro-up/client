@@ -1,7 +1,6 @@
 import { flexRender, type Table } from "@tanstack/react-table";
 import { TableHead, TableHeader, TableRow } from "../shadcn";
-import type { Company } from "@/utils/table";
-
+import type { Company } from "@/hooks/company/use-get-company-list";
 export interface CompanyProps {
   table: Table<Company>;
 }

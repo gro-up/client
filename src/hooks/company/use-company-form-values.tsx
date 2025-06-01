@@ -1,5 +1,7 @@
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import type { DaumPostcodeData } from "@/types";
+import type { Company } from "./use-get-detail-company";
+import { toast } from "sonner";
 
 export interface CompanyFormValues {
   companyName: string;
@@ -15,6 +17,7 @@ enum ACTIONS_TYPES {
   SET_URL = "SET_URL",
   SET_ADDRESS = "SET_ADDRESS",
   SET_ADDRESS_DETAIL = "SET_ADDRESS_DETAIL",
+  SET_COMPANY_INITIAL_VALUES = "SET_COMPANY_INITIAL_VALUES",
 }
 
 export enum COMPANY_FORM_VALUES_HANDLER_KEY {
@@ -38,7 +41,8 @@ type CompanyFormAction =
   | { type: ACTIONS_TYPES.SET_POSITION; payload: string }
   | { type: ACTIONS_TYPES.SET_URL; payload: string }
   | { type: ACTIONS_TYPES.SET_ADDRESS; payload: string }
-  | { type: ACTIONS_TYPES.SET_ADDRESS_DETAIL; payload: string };
+  | { type: ACTIONS_TYPES.SET_ADDRESS_DETAIL; payload: string }
+  | { type: ACTIONS_TYPES.SET_COMPANY_INITIAL_VALUES; payload: Company };
 
 const companyFormValuesReducer = (state: CompanyFormValues, action: CompanyFormAction) => {
   switch (action.type) {
@@ -52,16 +56,27 @@ const companyFormValuesReducer = (state: CompanyFormValues, action: CompanyFormA
       return { ...state, address: action.payload };
     case ACTIONS_TYPES.SET_ADDRESS_DETAIL:
       return { ...state, addressDetail: action.payload };
+    case ACTIONS_TYPES.SET_COMPANY_INITIAL_VALUES:
+      return { ...action.payload };
     default:
       return state;
   }
 };
 
-export const useCompanyFormValues = () => {
+export const useCompanyFormValues = (company?: Company | null) => {
   const [companyFormValues, companyFormValuesDispatch] = useReducer(
     companyFormValuesReducer,
     INITIAL_COMPANY_FORM_VALUES,
   );
+
+  useEffect(() => {
+    if (company) {
+      companyFormValuesDispatch({
+        type: ACTIONS_TYPES.SET_COMPANY_INITIAL_VALUES,
+        payload: company,
+      });
+    }
+  }, [company]);
 
   const handleCompanyFormValuesChange =
     (field: COMPANY_FORM_VALUES_HANDLER_KEY) => (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -76,12 +91,12 @@ export const useCompanyFormValues = () => {
       companyFormValuesDispatch({
         type: actionMap[field],
         payload: e.target.value,
-      });
+      } as CompanyFormAction);
     };
 
   const handleAddressClick = () => {
     if (!window.daum?.Postcode) {
-      alert("주소 검색 기능을 사용할 수 없습니다.");
+      toast.error("주소 검색 기능을 사용할 수 없습니다.");
       return;
     }
 

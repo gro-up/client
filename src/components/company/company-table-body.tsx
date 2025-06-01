@@ -4,9 +4,9 @@ import { TableBody, TableCell, TableRow } from "../shadcn";
 import type { CompanyProps } from "./company-table-header";
 import { formatLink } from "@/utils/table";
 import { Link } from "react-router";
-import type { CompanyList } from "@/hooks/company/use-get-company-list";
+import type { Company } from "@/hooks/company/use-get-company-list";
 interface CompanyTableBodyProps extends CompanyProps {
-  columns: ColumnDef<CompanyList, unknown>[];
+  columns: ColumnDef<Company, unknown>[];
 }
 
 export const CompanyTableBody = ({ table, columns }: CompanyTableBodyProps) => {
@@ -16,20 +16,15 @@ export const CompanyTableBody = ({ table, columns }: CompanyTableBodyProps) => {
         table.getRowModel().rows.map((row) => (
           <TableRow key={row.id} data-state={row.getIsSelected() && "selected"}>
             {row.getVisibleCells().map((cell) => (
-              <>
-                {cell.column.id !== "url" && (
-                  <TableCell key={cell.id}>
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </TableCell>
+              <TableCell key={cell.id}>
+                {cell.column.id === "companyId" ? (
+                  <Link to={row.original.url} target="_blank">
+                    {formatLink(row.original.url)}
+                  </Link>
+                ) : (
+                  flexRender(cell.column.columnDef.cell, cell.getContext())
                 )}
-                {cell.column.id === "url" && (
-                  <TableCell key={cell.id}>
-                    <Link to={row.original.url} target="_blank">
-                      {formatLink(row.original.url)}
-                    </Link>
-                  </TableCell>
-                )}
-              </>
+              </TableCell>
             ))}
           </TableRow>
         ))

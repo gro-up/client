@@ -10,7 +10,6 @@ import {
   MoreHorizontal,
   Calendar,
   Link,
-  Edit,
   Trash,
   Clipboard,
   ChevronUp,
@@ -21,10 +20,11 @@ import {
 } from "lucide-react";
 
 import { Button, Checkbox } from "@/components/shadcn";
-import type { CompanyList } from "@/hooks/company/use-get-company-list";
+import type { Company } from "@/hooks/company/use-get-company-list";
 import { cn } from "@/utils/shadcn";
+import { CompanyEditForm } from "./comapny-edit-form";
 
-const selectColumn: ColumnDef<CompanyList> = {
+const selectColumn: ColumnDef<Company> = {
   id: "select",
   header: ({ table }) => (
     <Checkbox
@@ -46,7 +46,7 @@ const selectColumn: ColumnDef<CompanyList> = {
   enableHiding: false,
 };
 
-const companyColumn: ColumnDef<CompanyList> = {
+const companyColumn: ColumnDef<Company> = {
   accessorKey: "companyName",
   header: ({ column }) => {
     return (
@@ -70,7 +70,7 @@ const companyColumn: ColumnDef<CompanyList> = {
   },
 };
 
-const jobColumn: ColumnDef<CompanyList> = {
+const jobColumn: ColumnDef<Company> = {
   accessorKey: "position",
   header: ({ column }) => {
     return (
@@ -94,7 +94,7 @@ const jobColumn: ColumnDef<CompanyList> = {
   },
 };
 
-const companyLinkColumn: ColumnDef<CompanyList> = {
+const companyLinkColumn: ColumnDef<Company> = {
   accessorKey: "url",
   header: () => {
     return (
@@ -106,7 +106,7 @@ const companyLinkColumn: ColumnDef<CompanyList> = {
   },
 };
 
-const actionsColumn: ColumnDef<CompanyList> = {
+const actionsColumn: ColumnDef<Company> = {
   id: "actions",
   cell: ({ row }) => {
     const payment = row.original;
@@ -133,10 +133,7 @@ const actionsColumn: ColumnDef<CompanyList> = {
           </DropdownMenuItem>
           <DropdownMenuSeparator />
 
-          <DropdownMenuItem className="flex items-center gap-2 hover:bg-gray-100 w-full h-full cursor-pointer p-3">
-            <Edit className="w-3 h-3" />
-            편집
-          </DropdownMenuItem>
+          <CompanyEditForm companyId={payment.companyId} />
 
           <DropdownMenuSeparator className="border-[0.5px] border-gray-200" />
           <DropdownMenuItem
@@ -158,7 +155,7 @@ const actionsColumn: ColumnDef<CompanyList> = {
   },
 };
 
-export const columns: ColumnDef<CompanyList>[] = [
+export const columns: ColumnDef<Company>[] = [
   selectColumn,
   companyColumn,
   jobColumn,

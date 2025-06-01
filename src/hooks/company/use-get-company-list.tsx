@@ -4,7 +4,7 @@ import { Cookies } from "react-cookie";
 import { ON_STEP_TOKEN_NAME } from "../auth";
 import { QUERY_KEY } from "@/query";
 
-export interface CompanyList {
+export interface Company {
   companyId: string;
   companyName: string;
   position: string;
@@ -13,7 +13,7 @@ export interface CompanyList {
 
 type CompanyListResponse = {
   data: {
-    companyList: CompanyList[] | [];
+    companyList: Company[] | [];
   };
 };
 

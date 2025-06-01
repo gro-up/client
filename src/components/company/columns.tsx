@@ -21,10 +21,10 @@ import {
 } from "lucide-react";
 
 import { Button, Checkbox } from "@/components/shadcn";
-import type { Company } from "@/utils/table";
+import type { CompanyList } from "@/hooks/company/use-get-company-list";
 import { cn } from "@/utils/shadcn";
 
-const selectColumn: ColumnDef<Company> = {
+const selectColumn: ColumnDef<CompanyList> = {
   id: "select",
   header: ({ table }) => (
     <Checkbox
@@ -46,8 +46,8 @@ const selectColumn: ColumnDef<Company> = {
   enableHiding: false,
 };
 
-const companyColumn: ColumnDef<Company> = {
-  accessorKey: "company",
+const companyColumn: ColumnDef<CompanyList> = {
+  accessorKey: "companyName",
   header: ({ column }) => {
     return (
       <Button
@@ -70,8 +70,8 @@ const companyColumn: ColumnDef<Company> = {
   },
 };
 
-const jobColumn: ColumnDef<Company> = {
-  accessorKey: "job",
+const jobColumn: ColumnDef<CompanyList> = {
+  accessorKey: "position",
   header: ({ column }) => {
     return (
       <Button
@@ -94,8 +94,8 @@ const jobColumn: ColumnDef<Company> = {
   },
 };
 
-const companyLinkColumn: ColumnDef<Company> = {
-  accessorKey: "company_link",
+const companyLinkColumn: ColumnDef<CompanyList> = {
+  accessorKey: "url",
   header: () => {
     return (
       <span className="flex items-center gap-2">
@@ -106,7 +106,7 @@ const companyLinkColumn: ColumnDef<Company> = {
   },
 };
 
-const actionsColumn: ColumnDef<Company> = {
+const actionsColumn: ColumnDef<CompanyList> = {
   id: "actions",
   cell: ({ row }) => {
     const payment = row.original;
@@ -141,7 +141,7 @@ const actionsColumn: ColumnDef<Company> = {
           <DropdownMenuSeparator className="border-[0.5px] border-gray-200" />
           <DropdownMenuItem
             className="flex items-center gap-2 hover:bg-gray-100 w-full h-full cursor-pointer p-3"
-            onClick={() => navigator.clipboard.writeText(payment.company)}
+            onClick={() => navigator.clipboard.writeText(payment.companyName)}
           >
             <Clipboard className="w-3 h-3" />
             회사명 복사
@@ -158,7 +158,7 @@ const actionsColumn: ColumnDef<Company> = {
   },
 };
 
-export const columns: ColumnDef<Company>[] = [
+export const columns: ColumnDef<CompanyList>[] = [
   selectColumn,
   companyColumn,
   jobColumn,

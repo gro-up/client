@@ -8,12 +8,17 @@ import { useState } from "react";
 import { Cookies } from "react-cookie";
 import { ON_STEP_TOKEN_NAME } from "../auth";
 
-const createCompany = async (companyFormValues: CompanyFormValues) => {
+interface EditCompanyProps {
+  companyFormValues: CompanyFormValues;
+  companyId: string;
+}
+
+const editCompany = async ({ companyFormValues, companyId }: EditCompanyProps) => {
   const cookies = new Cookies();
   const token = cookies.get(ON_STEP_TOKEN_NAME);
 
-  const response = await fetch(`${BASE_URL}/api/companies`, {
-    method: "POST",
+  const response = await fetch(`${BASE_URL}/api/companies/${companyId}`, {
+    method: "PUT",
     body: JSON.stringify(companyFormValues),
     headers: {
       Authorization: `Bearer ${token}`,
@@ -24,32 +29,32 @@ const createCompany = async (companyFormValues: CompanyFormValues) => {
   return response.json();
 };
 
-const createCompanySuccess = () => {
+const editCompanySuccess = () => {
   queryClient.invalidateQueries({ queryKey: [QUERY_KEY.Companies] });
-  toast.success("관심 기업을 추가했습니다.");
+  toast.success("관심 기업을 수정했습니다.");
 };
 
-const createCompanyError = () => {
-  toast.error("관심 기업 추가 실패했습니다.");
+const editCompanyError = () => {
+  toast.error("관심 기업 수정 실패했습니다.");
 };
 
-export const useCreateCompany = (companyFormValues: CompanyFormValues) => {
+export const useEditCompany = ({ companyFormValues, companyId }: EditCompanyProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const companyMutation = useMutation({
-    mutationFn: createCompany,
+    mutationFn: editCompany,
     onSuccess: () => {
-      createCompanySuccess();
+      editCompanySuccess();
       setIsOpen(false);
     },
-    onError: createCompanyError,
+    onError: editCompanyError,
   });
 
-  const handleCreateCompany = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleEditCompany = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    companyMutation.mutate(companyFormValues);
+    companyMutation.mutate({ companyFormValues, companyId });
   };
 
-  return { isOpen, setIsOpen, handleCreateCompany, ...companyMutation };
+  return { isOpen, setIsOpen, handleEditCompany, ...companyMutation };
 };

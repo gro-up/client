@@ -2,9 +2,9 @@ import { type ColumnDef, flexRender } from "@tanstack/react-table";
 import { TableBody, TableCell, TableRow } from "../shadcn";
 
 import type { CompanyProps } from "./company-table-header";
-import { Company, formatLink } from "@/utils/table";
+import { formatLink } from "@/utils/table";
 import { Link } from "react-router";
-
+import type { Company } from "@/hooks/company/use-get-company-list";
 interface CompanyTableBodyProps extends CompanyProps {
   columns: ColumnDef<Company, unknown>[];
 }
@@ -16,20 +16,15 @@ export const CompanyTableBody = ({ table, columns }: CompanyTableBodyProps) => {
         table.getRowModel().rows.map((row) => (
           <TableRow key={row.id} data-state={row.getIsSelected() && "selected"}>
             {row.getVisibleCells().map((cell) => (
-              <>
-                {cell.column.id !== "company_link" && (
-                  <TableCell key={cell.id}>
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </TableCell>
+              <TableCell key={cell.id}>
+                {cell.column.id === "url" ? (
+                  <Link to={row.original.url} target="_blank">
+                    {formatLink(row.original.url)}
+                  </Link>
+                ) : (
+                  flexRender(cell.column.columnDef.cell, cell.getContext())
                 )}
-                {cell.column.id === "company_link" && (
-                  <TableCell key={cell.id}>
-                    <Link to={row.original.company_link} target="_blank">
-                      {formatLink(row.original.company_link)}
-                    </Link>
-                  </TableCell>
-                )}
-              </>
+              </TableCell>
             ))}
           </TableRow>
         ))

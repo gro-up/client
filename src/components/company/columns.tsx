@@ -10,8 +10,6 @@ import {
   MoreHorizontal,
   Calendar,
   Link,
-  Edit,
-  Trash,
   Clipboard,
   ChevronUp,
   ChevronDown,
@@ -21,8 +19,10 @@ import {
 } from "lucide-react";
 
 import { Button, Checkbox } from "@/components/shadcn";
-import type { Company } from "@/utils/table";
+import type { Company } from "@/hooks/company/use-get-company-list";
 import { cn } from "@/utils/shadcn";
+import { CompanyEditForm } from "./comapny-edit-form";
+import { CompanyActionsDelete } from "./columns-actions-delete";
 
 const selectColumn: ColumnDef<Company> = {
   id: "select",
@@ -47,7 +47,7 @@ const selectColumn: ColumnDef<Company> = {
 };
 
 const companyColumn: ColumnDef<Company> = {
-  accessorKey: "company",
+  accessorKey: "companyName",
   header: ({ column }) => {
     return (
       <Button
@@ -71,7 +71,7 @@ const companyColumn: ColumnDef<Company> = {
 };
 
 const jobColumn: ColumnDef<Company> = {
-  accessorKey: "job",
+  accessorKey: "position",
   header: ({ column }) => {
     return (
       <Button
@@ -95,7 +95,7 @@ const jobColumn: ColumnDef<Company> = {
 };
 
 const companyLinkColumn: ColumnDef<Company> = {
-  accessorKey: "company_link",
+  accessorKey: "url",
   header: () => {
     return (
       <span className="flex items-center gap-2">
@@ -133,25 +133,19 @@ const actionsColumn: ColumnDef<Company> = {
           </DropdownMenuItem>
           <DropdownMenuSeparator />
 
-          <DropdownMenuItem className="flex items-center gap-2 hover:bg-gray-100 w-full h-full cursor-pointer p-3">
-            <Edit className="w-3 h-3" />
-            편집
-          </DropdownMenuItem>
+          <CompanyEditForm companyId={payment.companyId} />
 
           <DropdownMenuSeparator className="border-[0.5px] border-gray-200" />
           <DropdownMenuItem
             className="flex items-center gap-2 hover:bg-gray-100 w-full h-full cursor-pointer p-3"
-            onClick={() => navigator.clipboard.writeText(payment.company)}
+            onClick={() => navigator.clipboard.writeText(payment.companyName)}
           >
             <Clipboard className="w-3 h-3" />
             회사명 복사
           </DropdownMenuItem>
           <DropdownMenuSeparator className="border-[0.5px] border-gray-200" />
 
-          <DropdownMenuItem className="flex items-center gap-2 hover:bg-gray-100 w-full h-full cursor-pointer p-3 text-red-500">
-            <Trash className="w-3 h-3" />
-            삭제
-          </DropdownMenuItem>
+          <CompanyActionsDelete companyId={payment.companyId} />
         </DropdownMenuContent>
       </DropdownMenu>
     );

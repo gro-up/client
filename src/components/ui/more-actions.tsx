@@ -25,9 +25,10 @@ import { useDeleteSchedule } from "@/hooks/schedule/use-delete-schedule";
 interface MoreActionsProps {
   scheduleId: number;
   onEditClick: (id: number) => void;
+  onClose: () => void;
 }
 
-export const MoreActions = ({ scheduleId, onEditClick }: MoreActionsProps) => {
+export const MoreActions = ({ scheduleId, onEditClick, onClose }: MoreActionsProps) => {
   const { mutate: deleteScheduleMutate } = useDeleteSchedule();
   const handleDelete = () => {
     // 일정삭제함수
@@ -41,7 +42,11 @@ export const MoreActions = ({ scheduleId, onEditClick }: MoreActionsProps) => {
           <MoreHorizontal className="w-4 h-4" />
         </MenubarTrigger>
         <MenubarContent>
-          <MenubarItem onClick={() => onEditClick(scheduleId)}>
+          <MenubarItem
+            onClick={() => {
+              onEditClick(scheduleId);
+            }}
+          >
             <Edit className="w-4 h-4 text-gray-400" />
             편집
           </MenubarItem>
@@ -86,7 +91,12 @@ export const MoreActions = ({ scheduleId, onEditClick }: MoreActionsProps) => {
           </MenubarItem>
 
           <MenubarSeparator />
-          <MenubarItem onClick={handleDelete}>
+          <MenubarItem
+            onClick={() => {
+              handleDelete();
+              onClose();
+            }}
+          >
             <Trash className="w-4 h-4 text-red-500" />
             삭제
           </MenubarItem>

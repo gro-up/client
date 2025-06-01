@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ScheduleTodayTomorrowPanel } from "@/components/schedule";
+import { ScheduleSelectedDatePanel } from "@/components/schedule";
 
 import { Container, DateTimePicker } from "@/components/ui";
 
@@ -12,6 +12,7 @@ export default function SchedulePage() {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null); // 날짜 선택
   const [isAddPanelOpen, setIsAddPanelOpen] = useState(false); // 추가 패널 열림 여부
   const [editingScheduleId, setEditingScheduleId] = useState<number | null>(null); // 수정할 스케줄 ID
+  const [selectedScheduleId, setSelectedScheduleId] = useState<number | null>(null);
 
   return (
     <>
@@ -24,22 +25,25 @@ export default function SchedulePage() {
             setEditingScheduleId(null);
           }}
         />
-
-        <ScheduleTodayTomorrowPanel
-          isAddPanelOpen={isAddPanelOpen}
-          setIsAddPanelOpen={setIsAddPanelOpen}
-          onEditClick={(id) => {
-            setEditingScheduleId(id);
-            setIsAddPanelOpen(false); // 동시에 추가 패널 닫기
-          }}
-        />
+        {selectedDate && (
+          <ScheduleSelectedDatePanel
+            isAddPanelOpen={isAddPanelOpen}
+            setIsAddPanelOpen={setIsAddPanelOpen}
+            onSelectSchedule={(id) => {
+              setSelectedScheduleId(id);
+              setIsAddPanelOpen(false);
+              setEditingScheduleId(null);
+            }}
+            date={selectedDate} // 선택된날짜
+          />
+        )}
       </Container>
       <Container as="aside" className="w-6/12 p-4">
         {editingScheduleId ? (
           <ScheduleEditPanel
             scheduleId={editingScheduleId}
             onCancel={() => setEditingScheduleId(null)}
-            onSubmit={() => setEditingScheduleId(null)} // 수정 완료 시 닫기
+            onSubmit={() => setEditingScheduleId(null)}
           />
         ) : isAddPanelOpen ? (
           <ScheduleAddPanel
@@ -48,13 +52,15 @@ export default function SchedulePage() {
               setIsAddPanelOpen(false);
             }}
           />
-        ) : selectedDate ? (
+        ) : selectedScheduleId ? (
           <ScheduleDetailPanel
             selectedDate={selectedDate}
+            scheduleId={selectedScheduleId}
             onEditClick={(id) => {
               setEditingScheduleId(id);
-              setIsAddPanelOpen(false);
+              setSelectedScheduleId(null);
             }}
+            onClose={() => setSelectedScheduleId(null)}
           />
         ) : (
           <ScheduleNearestPanel />

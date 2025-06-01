@@ -10,7 +10,6 @@ import {
   MoreHorizontal,
   Calendar,
   Link,
-  Trash,
   Clipboard,
   ChevronUp,
   ChevronDown,
@@ -23,6 +22,7 @@ import { Button, Checkbox } from "@/components/shadcn";
 import type { Company } from "@/hooks/company/use-get-company-list";
 import { cn } from "@/utils/shadcn";
 import { CompanyEditForm } from "./comapny-edit-form";
+import { CompanyActionsDelete } from "./columns-actions-delete";
 
 const selectColumn: ColumnDef<Company> = {
   id: "select",
@@ -145,10 +145,7 @@ const actionsColumn: ColumnDef<Company> = {
           </DropdownMenuItem>
           <DropdownMenuSeparator className="border-[0.5px] border-gray-200" />
 
-          <DropdownMenuItem className="flex items-center gap-2 hover:bg-gray-100 w-full h-full cursor-pointer p-3 text-red-500">
-            <Trash className="w-3 h-3" />
-            삭제
-          </DropdownMenuItem>
+          <CompanyActionsDelete companyId={payment.companyId} />
         </DropdownMenuContent>
       </DropdownMenu>
     );

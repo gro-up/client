@@ -5,11 +5,20 @@ import { QUERY_KEY, queryClient } from "@/query";
 import type { CompanyFormValues } from "./use-company-form-values";
 import { BASE_URL } from "@/api/base";
 import { useState } from "react";
+import { Cookies } from "react-cookie";
+import { ON_STEP_TOKEN_NAME } from "../auth";
 
 const createCompany = async (companyFormValues: CompanyFormValues) => {
+  const cookies = new Cookies();
+  const token = cookies.get(ON_STEP_TOKEN_NAME);
+
   const response = await fetch(`${BASE_URL}/api/companies`, {
     method: "POST",
     body: JSON.stringify(companyFormValues),
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
   });
 
   return response.json();

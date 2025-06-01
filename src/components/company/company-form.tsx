@@ -16,7 +16,8 @@ import { ListPlus } from "lucide-react";
 import { COMPANY_FORM_VALUES_HANDLER_KEY } from "@/hooks/company";
 
 export const CompanyForm = () => {
-  const { companyFormValues, handleCompanyFormValuesChange } = useCompanyFormValues();
+  const { companyFormValues, handleCompanyFormValuesChange, handleAddressClick } =
+    useCompanyFormValues();
 
   const { isOpen, setIsOpen, handleCreateCompany } = useCreateCompany(companyFormValues);
 
@@ -59,7 +60,7 @@ export const CompanyForm = () => {
                 placeholder="직무를 입력해주세요"
               />
             </div>
-            <div className="grid-cols-4 items-center gap-4">
+            <div className="grid-cols-4 items-center gap-4 mb-5">
               <Input
                 id="url"
                 name="url"
@@ -68,6 +69,29 @@ export const CompanyForm = () => {
                 className="col-span-4"
                 placeholder="링크를 입력해주세요."
               />
+            </div>
+            <div className="grid-cols-4 items-center gap-4">
+              <Input
+                readOnly
+                id="address"
+                name="address"
+                value={companyFormValues.address}
+                onClick={handleAddressClick}
+                className="col-span-4"
+                placeholder="주소를 입력해주세요."
+              />
+              {companyFormValues.address && (
+                <Input
+                  id="addressDetail"
+                  name="addressDetail"
+                  value={companyFormValues.addressDetail}
+                  onChange={handleCompanyFormValuesChange(
+                    COMPANY_FORM_VALUES_HANDLER_KEY.ADDRESS_DETAIL,
+                  )}
+                  className="col-span-4"
+                  placeholder="상세주소를 입력해주세요."
+                />
+              )}
             </div>
           </div>
           <DialogFooter>

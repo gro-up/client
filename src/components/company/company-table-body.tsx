@@ -17,7 +17,7 @@ export const CompanyTableBody = ({ table, columns }: CompanyTableBodyProps) => {
           <TableRow key={row.id} data-state={row.getIsSelected() && "selected"}>
             {row.getVisibleCells().map((cell) => (
               <TableCell key={cell.id}>
-                {cell.column.id === "companyId" ? (
+                {cell.column.id === "url" ? (
                   <Link to={row.original.url} target="_blank">
                     {formatLink(row.original.url)}
                   </Link>

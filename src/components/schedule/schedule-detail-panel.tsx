@@ -1,4 +1,3 @@
-import { format, parseISO, addHours } from "date-fns";
 import { Schedule } from "@/types";
 import { MoreActions } from "../ui";
 
@@ -18,22 +17,16 @@ const ScheduleDetailPanel = ({ onEditClick, scheduleId, onClose }: Props) => {
   if (!data) return null;
 
   const schedule: Schedule = data.data;
-  const dueDate = parseISO(schedule.dueDate);
-  const koreanTime = addHours(dueDate, 9);
-  const timeStr = format(koreanTime, "HH:mm");
 
   return (
     <>
-      <h2 className="text-lg font-bold mb-5">{format(koreanTime, "yyyy년 MM월 dd일")} 일정</h2>
-
       <div>
+        <section></section>
         <section className="flex justify-between">
-          <div className="flex gap-5">
+          <h2 className="flex gap-5">
             <span className="flex items-center text-sm text-neutral-500">{schedule.position}</span>
-            <strong className="text-[13px] flex items-center">
-              {schedule.companyName} {timeStr}
-            </strong>
-          </div>
+            <strong className="text-[13px] flex items-center">{schedule.companyName}</strong>
+          </h2>
 
           <MoreActions
             scheduleId={schedule.scheduleId}
@@ -41,7 +34,7 @@ const ScheduleDetailPanel = ({ onEditClick, scheduleId, onClose }: Props) => {
             onClose={onClose}
           />
         </section>
-
+        <hr className="my-5" />
         {schedule.address && (
           <div className="mt-5 text-[10px] text-neutral-500">
             {schedule.address} {schedule.addressDetail}{" "}
@@ -52,8 +45,6 @@ const ScheduleDetailPanel = ({ onEditClick, scheduleId, onClose }: Props) => {
         <blockquote className="mt-3 text-[12px] pl-4 border-l-4 border-mint-500 text-sm text-gray-300 italic whitespace-pre-line">
           Memo : {schedule.memo}
         </blockquote>
-
-        <hr className="my-5" />
       </div>
     </>
   );

@@ -44,9 +44,8 @@ export const DROPDOWN_PATHS: PathItem[] = [
     children: [
       {
         title: DropdownPathItems.PROFILE,
-        type: PathType.LINK,
+        type: PathType.EVENT,
         icon: User,
-        to: ROUTER_PATH.PRIVATE.CHILD.SETTING.PROFILE,
       },
       {
         title: DropdownPathItems.LOGOUT,

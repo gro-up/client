@@ -153,7 +153,7 @@ const ScheduleEditPanel = ({ scheduleId, onCancel, onSubmit }: ScheduleEditPanel
             >
               취소
             </Button>
-            <Button onClick={handleUpdate} type="submit" variant="mint" size="lg">
+            <Button onClick={handleUpdate} type="button" variant="mint" size="lg">
               수정
             </Button>
           </div>

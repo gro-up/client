@@ -7,3 +7,5 @@ export * from "./use-verification-code";
 export * from "./use-verification-code";
 export * from "./use-signup";
 export * from "./use-reset-password";
+export * from "./use-upload-profile-image";
+export * from "./use-imge-preview";

@@ -1,17 +1,20 @@
-import { MoreActions } from "../ui";
 import { Schedule } from "@/types";
 import { parseISO, format, addHours } from "date-fns";
 interface Props {
   schedule: Schedule;
-  onEditClick: (id: number) => void;
+
+  onClick?: (id: number) => void;
 }
 
-export const ScheduleItem = ({ schedule, onEditClick }: Props) => {
+export const ScheduleItem = ({ schedule, onClick }: Props) => {
   const koreanTime = addHours(parseISO(schedule.dueDate), 9); // UTC → KST 보정
   const timeStr = format(koreanTime, "HH:mm");
   return (
-    <li className="flex justify-between py-4">
-      <div className="flex">
+    <li
+      onClick={() => onClick?.(schedule.scheduleId)}
+      className="flex justify-between py-4 cursor-pointer hover:bg-gray-900 transition-colors"
+    >
+      <div className="flex ">
         <div className="p-1 text-sm "> {timeStr}</div>
         <div className="w-1 h-full bg-red-400 mx-4 rounded-md" />
         <div className="flex flex-col justify-center">
@@ -23,10 +26,6 @@ export const ScheduleItem = ({ schedule, onEditClick }: Props) => {
             {schedule.address} {schedule.addressDetail}
           </p>
         </div>
-      </div>
-
-      <div className="flex items-center gap-2">
-        <MoreActions scheduleId={schedule.scheduleId} onEditClick={onEditClick} />
       </div>
     </li>
   );

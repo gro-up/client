@@ -12,7 +12,9 @@ import {
 
 import { DROPDOWN_PATHS } from "@/utils/navigation/paths";
 import { useLogout, useProfile } from "@/hooks/auth";
-
+import { DropdownPathItems } from "@/utils/navigation/constants";
+import { useState } from "react";
+import ProfileModal from "./profile-modal";
 export const UserNavigation = () => {
   const { profile } = useProfile();
 
@@ -29,7 +31,6 @@ export const UserNavigation = () => {
 
           <div className="flex justify-between items-center w-full">
             <div className="flex flex-col text-left">
-              <span className="text-sm">{profile.displayName || "사용자"}</span>
               <span className="text-xs text-gray-500">{profile.email}</span>
             </div>
 
@@ -43,38 +44,53 @@ export const UserNavigation = () => {
 };
 
 const Content = () => {
+  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
   const { logoutHandler } = useLogout();
+
+  const handleEvent = (title: string) => {
+    switch (title) {
+      case DropdownPathItems.PROFILE:
+        setIsProfileModalOpen(true); // 모달 열기
+        break;
+      case DropdownPathItems.LOGOUT:
+        logoutHandler();
+        break;
+    }
+  };
   return (
-    <DropdownMenuContent align="end">
-      <div className="flex flex-col gap-2">
-        {DROPDOWN_PATHS.map((path) => (
-          <div key={path.title}>
-            <p className="flex items-center gap-2 text-sm ps-1">{path.title}</p>
-            <hr />
-            <div>
-              {path.children && (
-                <>
-                  {path.children.map((child) => (
-                    <div key={child.title} className="list-none cursor-pointer">
-                      <div className="flex items-center gap-2 text-gray-500 text-sm">
-                        <span className="flex justify-center items-center w-5 h-5 ms-1 my-2">
-                          {child.icon && <child.icon />}
-                        </span>
-                        {child.type === "event" ? (
-                          <span onClick={logoutHandler}>{child.title}</span>
-                        ) : (
-                          <Link to={child.to ?? ""}>{child.title}</Link>
-                        )}
+    <>
+      <ProfileModal isOpen={isProfileModalOpen} onClose={() => setIsProfileModalOpen(false)} />
+      <DropdownMenuContent align="end">
+        <div className="flex flex-col gap-2">
+          {DROPDOWN_PATHS.map((path) => (
+            <div key={path.title}>
+              <p className="flex items-center gap-2 text-sm ps-1">{path.title}</p>
+              <hr />
+              <div>
+                {path.children && (
+                  <>
+                    {path.children.map((child) => (
+                      <div key={child.title} className="list-none cursor-pointer">
+                        <div className="flex items-center gap-2 text-gray-500 text-sm">
+                          <span className="flex justify-center items-center w-5 h-5 ms-1 my-2">
+                            {child.icon && <child.icon />}
+                          </span>
+                          {child.type === "event" ? (
+                            <span onClick={() => handleEvent(child.title)}>{child.title}</span>
+                          ) : (
+                            <Link to={child.to ?? ""}>{child.title}</Link>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  ))}
-                </>
-              )}
+                    ))}
+                  </>
+                )}
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
-    </DropdownMenuContent>
+          ))}
+        </div>
+      </DropdownMenuContent>
+    </>
   );
 };
 

@@ -1,5 +1,5 @@
 export * from "./schedule-header";
-export * from "./schedule-today-tomorrow-panel";
+export * from "./schedule-selected-date-panel";
 export * from "./schedule-detail-header";
 export * from "./schedule-detail-content";
 export * from "./schedule-detail-map";

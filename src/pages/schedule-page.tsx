@@ -9,7 +9,9 @@ import ScheduleDetailPanel from "@/components/schedule/schedule-detail-panel";
 import ScheduleEditPanel from "@/components/schedule/schedule-edit-panel";
 
 export default function SchedulePage() {
-  const [selectedDate, setSelectedDate] = useState<Date | null>(new Date()); // 날짜 선택
+
+  const [selectedDate, setSelectedDate] = useState<Date>(new Date());
+
   const [isAddPanelOpen, setIsAddPanelOpen] = useState(false); // 추가 패널 열림 여부
   const [editingScheduleId, setEditingScheduleId] = useState<number | null>(null); // 수정할 스케줄 ID
   const [selectedScheduleId, setSelectedScheduleId] = useState<number | null>(null);

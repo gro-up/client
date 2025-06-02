@@ -15,8 +15,9 @@ import { PastSchedule } from "../review";
 import FullScreenLoader from "../ui/full-screen-loader";
 interface Props {
   onEditClick: (id: number) => void;
+  onClose: () => void;
 }
-export default function ScheduleAddPanel({ onEditClick }: Props) {
+export default function ScheduleAddPanel({ onEditClick, onClose }: Props) {
   const {
     companyName,
     setCompanyName,
@@ -121,6 +122,7 @@ export default function ScheduleAddPanel({ onEditClick }: Props) {
           {/* 제출 버튼 영역 */}
           <div className="flex justify-end gap-2 absolute bottom-0 right-0 py-[10px] px-[10px]">
             <Button
+              onClick={onClose}
               size="lg"
               className="bg-neutral-900 hover:bg-neutral-700 text-white cursor-pointer"
               type="button"

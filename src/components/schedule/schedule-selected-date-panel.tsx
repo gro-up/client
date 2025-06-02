@@ -10,11 +10,12 @@ interface Props {
 
   date: Date;
   onSelectSchedule: (id: number) => void;
+  setEditingScheduleId: (value: null | number) => void;
 }
 export const ScheduleSelectedDatePanel = ({
   setIsAddPanelOpen,
   isAddPanelOpen,
-
+  setEditingScheduleId,
   date,
   onSelectSchedule,
 }: Props) => {
@@ -67,7 +68,10 @@ export const ScheduleSelectedDatePanel = ({
           variant="mint"
           type="button"
           size="lg"
-          onClick={() => setIsAddPanelOpen(!isAddPanelOpen)}
+          onClick={() => {
+            setIsAddPanelOpen(!isAddPanelOpen);
+            setEditingScheduleId(null);
+          }}
         >
           <CalendarPlus />
         </Button>

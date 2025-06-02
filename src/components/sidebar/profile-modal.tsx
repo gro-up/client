@@ -7,9 +7,9 @@ import {
 } from "@/components/shadcn/dialog";
 import { Button } from "../shadcn";
 import { useProfile } from "@/hooks/auth";
-import { useState, useRef } from "react";
-import { uploadImageToS3, uploadImage } from "@/api/me";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useRef } from "react";
+import { useImagePreview } from "@/hooks/auth/use-imge-preview";
+import { useUploadProfileImage } from "@/hooks/auth/use-upload-profile-image";
 
 interface Props {
   isOpen: boolean;
@@ -18,52 +18,10 @@ interface Props {
 
 export default function ProfileModal({ isOpen, onClose }: Props) {
   const { profile } = useProfile();
-  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  const queryClient = useQueryClient();
 
-  // 👉 base64 이미지를 S3에 업로드
-  const uploadToS3Mutation = useMutation({
-    mutationFn: uploadImageToS3,
-  });
-
-  // 👉 URL을 서버에 저장 (DB 반영)
-  const updateProfileMutation = useMutation({
-    mutationFn: uploadImage,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["me"] }); //
-      onClose(); // 모달 닫기
-    },
-    onError: (err) => {
-      console.error("프로필 저장 실패", err);
-    },
-  });
-
-  // 👉 파일 선택 시 base64 미리보기 생성
-  const handleImageSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setPreviewUrl(reader.result as string);
-    };
-    reader.readAsDataURL(file);
-  };
-
-  // 👉 저장 버튼 클릭 시: S3 업로드 → DB 저장
-  const handleSave = async () => {
-    if (!previewUrl) return;
-    try {
-      const uploadedImageUrl = await uploadToS3Mutation.mutateAsync(previewUrl);
-      console.log(uploadedImageUrl);
-      await updateProfileMutation.mutateAsync(uploadedImageUrl);
-    } catch (err) {
-      console.error("전체 실패", err);
-    }
-  };
-
-  const isLoading = uploadToS3Mutation.isPending || updateProfileMutation.isPending;
+  const { previewUrl, handleImageSelect } = useImagePreview();
+  const { handleSave, isLoading } = useUploadProfileImage(onClose);
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -74,22 +32,13 @@ export default function ProfileModal({ isOpen, onClose }: Props) {
           </DialogTitle>
         </DialogHeader>
 
-        {/* 이미지 영역 */}
         <div className="h-[340px] p-2.5 w-full flex flex-col items-center gap-2.5">
           <div className="flex flex-col gap-2.5">
             <div className="w-50 h-50 bg-white rounded-[20px] relative overflow-hidden">
               {previewUrl ? (
-                <img
-                  className="w-full h-full object-cover rounded-[20px]"
-                  src={previewUrl}
-                  alt="미리보기"
-                />
+                <img className="w-full h-full object-cover rounded-[20px]" src={previewUrl} />
               ) : profile.photo ? (
-                <img
-                  className="w-full h-full object-cover rounded-[20px]"
-                  src={profile.photo}
-                  alt="기존 프로필"
-                />
+                <img className="w-full h-full object-cover rounded-[20px]" src={profile.photo} />
               ) : null}
 
               <input
@@ -108,7 +57,6 @@ export default function ProfileModal({ isOpen, onClose }: Props) {
                 +
               </Button>
             </div>
-
             <div className="flex w-50 h-[50px] items-center justify-center text-sm text-gray-600">
               {profile.email}
             </div>
@@ -129,7 +77,7 @@ export default function ProfileModal({ isOpen, onClose }: Props) {
           <Button
             variant="mint"
             size="lg"
-            onClick={handleSave}
+            onClick={() => previewUrl && handleSave(previewUrl)}
             className="w-[100px] h-[35px] text-black"
             disabled={isLoading}
           >

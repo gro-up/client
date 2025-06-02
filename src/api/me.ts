@@ -53,7 +53,7 @@ export async function uploadImage(imageUrl: string) {
   const cookies = new Cookies();
   const token = cookies.get(ON_STEP_TOKEN_NAME);
   const url = `${BASE_URL}/api/users`;
-  console.log(imageUrl);
+
   const res = await fetch(url, {
     method: "POST",
     headers: {

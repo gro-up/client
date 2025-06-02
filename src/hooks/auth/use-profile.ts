@@ -41,11 +41,11 @@ export const useProfile = () => {
     queryFn: getMe,
     enabled: isFirebaseReady && !isFirebaseUser,
     retry: false,
-    staleTime: 1000 * 60 * 5,
   });
 
   useEffect(() => {
     if (meData && !isFirebaseUser) {
+      console.log(meData);
       setProfile({
         photo: meData.data.imageUrl || "",
         displayName: meData.data.userId || "",

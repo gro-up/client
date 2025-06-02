@@ -29,6 +29,7 @@ export default function SchedulePage() {
           <ScheduleSelectedDatePanel
             isAddPanelOpen={isAddPanelOpen}
             setIsAddPanelOpen={setIsAddPanelOpen}
+            setEditingScheduleId={setEditingScheduleId}
             onSelectSchedule={(id) => {
               setSelectedScheduleId(id);
               setIsAddPanelOpen(false);
@@ -51,6 +52,7 @@ export default function SchedulePage() {
               setEditingScheduleId(id);
               setIsAddPanelOpen(false);
             }}
+            onClose={() => setIsAddPanelOpen(false)}
           />
         ) : selectedScheduleId ? (
           <ScheduleDetailPanel

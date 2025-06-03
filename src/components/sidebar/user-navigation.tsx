@@ -69,20 +69,34 @@ const Content = () => {
               <div>
                 {path.children && (
                   <>
-                    {path.children.map((child) => (
-                      <div key={child.title} className="list-none cursor-pointer">
-                        <div className="flex items-center gap-2 text-gray-500 text-sm">
-                          <span className="flex justify-center items-center w-5 h-5 ms-1 my-2">
-                            {child.icon && <child.icon />}
-                          </span>
-                          {child.type === "event" ? (
-                            <span onClick={() => handleEvent(child.title)}>{child.title}</span>
-                          ) : (
-                            <Link to={child.to ?? ""}>{child.title}</Link>
-                          )}
+                    {path.children.map((child) => {
+                      const isEvent = child.type === "event";
+                      return (
+                        <div
+                          key={child.title}
+                          className="list-none cursor-pointer"
+                          onClick={() => {
+                            if (isEvent) handleEvent(child.title);
+                          }}
+                        >
+                          <div className="flex items-center gap-2 text-gray-500 text-sm">
+                            <span className="flex justify-center items-center w-5 h-5 ms-1 my-2">
+                              {child.icon && <child.icon />}
+                            </span>
+                            {isEvent ? (
+                              <span>{child.title}</span>
+                            ) : (
+                              <Link
+                                to={child.to ?? ""}
+                                onClick={(e) => e.stopPropagation()} // 상위 클릭 방지
+                              >
+                                {child.title}
+                              </Link>
+                            )}
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </>
                 )}
               </div>

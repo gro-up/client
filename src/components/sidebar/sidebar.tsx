@@ -6,7 +6,7 @@ import { linkHandler } from "@/utils/navigation/link-handler";
 
 export const Sidebar = () => {
   return (
-    <aside className="flex flex-row-reverse items-end p-5 lg:p-0 justify-center lg:items-start lg:justify-start lg:flex-col gap-2 lg:gap-4 w-full lg:w-[300px] max-h-[750px] h-full rounded-md">
+    <aside className="flex flex-1 flex-row-reverse items-end lg:p-0 justify-center lg:items-start lg:justify-start lg:flex-col gap-2 lg:gap-4 w-full lg:w-[300px] max-h-[750px]  lg:h-full rounded-md">
       <UserNavigation />
 
       <nav className="flex lg:flex-col gap-1 sm:gap-3 lg:gap-6 pl-4">

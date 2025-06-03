@@ -20,9 +20,9 @@ export default function SchedulePage() {
     !isMobile || (!editingScheduleId && !isAddPanelOpen && !selectedScheduleId);
   return (
     <>
-      <Container as="main" className="w-full lg:w-6/12 p-4 bg-neutral-900 flex flex-col">
+      <Container as="main" className="w-full h-full lg:w-6/12 p-4 bg-neutral-900 flex flex-col">
         {shouldShowMainContent ? (
-          <>
+          <div className="flex flex-col h-full items-center sm:items-start justify-center lg:justify-start gap-4 w-full">
             <DateTimePicker
               date={selectedDate}
               onDate={(newDate) => {
@@ -42,7 +42,7 @@ export default function SchedulePage() {
               }}
               date={selectedDate}
             />
-          </>
+          </div>
         ) : (
           <>
             {editingScheduleId && (

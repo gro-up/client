@@ -81,7 +81,7 @@ export default function ScheduleAddPanel({ onEditClick, onClose }: Props) {
     <>
       {isPending && <FullScreenLoader />}
       <div className="flex flex-col gap-2.5 h-full w-full ">
-        <PastSchedule onEditClick={onEditClick} />
+        <PastSchedule onEditClick={onEditClick} onClose={onClose} />
 
         <form className="flex flex-col gap-2.5 h-full">
           <ScheduleAddInputFields

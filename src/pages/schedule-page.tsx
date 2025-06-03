@@ -48,7 +48,7 @@ export default function SchedulePage() {
             {editingScheduleId && (
               <ScheduleEditPanel
                 scheduleId={editingScheduleId}
-                onCancel={() => setEditingScheduleId(null)}
+                onClose={() => setEditingScheduleId(null)}
                 onSubmit={() => setEditingScheduleId(null)}
               />
             )}
@@ -81,7 +81,7 @@ export default function SchedulePage() {
         {editingScheduleId && (
           <ScheduleEditPanel
             scheduleId={editingScheduleId}
-            onCancel={() => setEditingScheduleId(null)}
+            onClose={() => setEditingScheduleId(null)}
             onSubmit={() => setEditingScheduleId(null)}
           />
         )}

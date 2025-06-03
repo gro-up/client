@@ -1,4 +1,4 @@
-import { CalendarPlus } from "lucide-react";
+import { CalendarPlus, ArrowLeft } from "lucide-react";
 
 import ScheduleModalDateTime from "./schedule-date-time-modal";
 import {
@@ -18,10 +18,10 @@ import { useScheduleById } from "@/hooks/schedule/use-schedule-by-id";
 import FullScreenLoader from "../ui/full-screen-loader";
 interface ScheduleEditPanelProps {
   scheduleId: number;
-  onCancel: () => void;
+  onClose: () => void;
   onSubmit: () => void;
 }
-const ScheduleEditPanel = ({ scheduleId, onCancel, onSubmit }: ScheduleEditPanelProps) => {
+const ScheduleEditPanel = ({ scheduleId, onClose, onSubmit }: ScheduleEditPanelProps) => {
   const { data } = useScheduleById(scheduleId);
   const {
     selectedDate,
@@ -107,7 +107,12 @@ const ScheduleEditPanel = ({ scheduleId, onCancel, onSubmit }: ScheduleEditPanel
   return (
     <>
       {isPending && <FullScreenLoader />}
-      <header className="h-10 flex items-center">일정 수정</header>
+      <header className="h-10 flex items-center gap-2 lg:gap-0">
+        <button onClick={onClose} className="lg:hidden cursor-pointer">
+          <ArrowLeft />
+        </button>
+        <span>일정 수정</span>
+      </header>
       <div className="flex flex-col gap-2.5 h-full w-full ">
         <form className="flex flex-col gap-2.5 h-full">
           <ScheduleAddInputFields
@@ -146,7 +151,7 @@ const ScheduleEditPanel = ({ scheduleId, onCancel, onSubmit }: ScheduleEditPanel
           {/* 수정 버튼 영역 */}
           <div className="flex justify-end gap-2 absolute bottom-0 right-0 py-[10px] px-[10px]">
             <Button
-              onClick={onCancel}
+              onClick={onClose}
               size="lg"
               className="bg-neutral-900 hover:bg-neutral-700 text-white cursor-pointer"
               type="button"

@@ -24,7 +24,7 @@ export const UserNavigation = () => {
         asChild
         className="cursor-pointer hover:bg-transparent focus:border-transparent focus:focus:ring-0"
       >
-        <Button variant="ghost" className="w-full flex justify-between items-center mt-3 ">
+        <Button variant="ghost" className="lg:w-full flex justify-between items-center mt-3 ">
           <Avatar className="w-8 h-8 mr-1">
             <AvatarImage src={profile.photo || undefined} />
           </Avatar>

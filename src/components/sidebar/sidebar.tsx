@@ -6,10 +6,10 @@ import { linkHandler } from "@/utils/navigation/link-handler";
 
 export const Sidebar = () => {
   return (
-    <aside className="flex flex-col gap-4 w-[300px] max-h-[750px] h-full rounded-md">
+    <aside className="flex flex-row-reverse items-center justify-center lg:items-start lg:justify-start lg:flex-col gap-4 w-full lg:w-[300px] max-h-[750px] h-full rounded-md">
       <UserNavigation />
 
-      <nav className="flex flex-col gap-6 pl-4">
+      <nav className="flex lg:flex-col gap-6 pl-4">
         {SIDEBAR_PATHS.map((navigation) => {
           return (
             <NavLink
@@ -19,7 +19,8 @@ export const Sidebar = () => {
                 linkHandler({
                   isActive,
                   activeCSS: "border-l-2 border-blue-400 pl-2",
-                  defaultCSS: "font-semibold transition-all duration-300 flex items-center gap-2",
+                  defaultCSS:
+                    "h-10 lg:h-auto font-semibold transition-all duration-300 flex items-center gap-2 ",
                 })
               }
             >

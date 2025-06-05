@@ -9,6 +9,7 @@ import {
 } from "../shadcn";
 import { Edit, MoreHorizontal, Trash } from "lucide-react";
 import { useEditReview } from "@/hooks/review/use-edit-review";
+import { useDeleteReview } from "@/hooks/review/use-delete-review";
 
 export const ReviewDetail = ({ selectedReview }: { selectedReview: number }) => {
   const { data } = useGetReviewDetail(selectedReview);
@@ -16,7 +17,8 @@ export const ReviewDetail = ({ selectedReview }: { selectedReview: number }) => 
   const [isEdit, setIsEdit] = useState(false);
   const [memo, setMemo] = useState("");
 
-  const { mutate } = useEditReview(memo, String(selectedReview));
+  const editReviewMutation = useEditReview(memo, String(selectedReview));
+  const deleteReviewMutation = useDeleteReview(String(selectedReview));
 
   useEffect(() => {
     if (data?.data?.memo) {
@@ -30,6 +32,7 @@ export const ReviewDetail = ({ selectedReview }: { selectedReview: number }) => 
 
   const handleDelete = () => {
     setIsEdit(false);
+    deleteReviewMutation.mutate();
   };
 
   return (
@@ -68,7 +71,11 @@ export const ReviewDetail = ({ selectedReview }: { selectedReview: number }) => 
             <Button variant="outline" onClick={handleEdit}>
               취소
             </Button>
-            <Button variant="mint" className="text-black" onClick={() => mutate()}>
+            <Button
+              variant="mint"
+              className="text-black"
+              onClick={() => editReviewMutation.mutate()}
+            >
               저장
             </Button>
           </div>

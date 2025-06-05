@@ -2,6 +2,7 @@ import { BASE_URL } from "@/api/base";
 import { useQuery } from "@tanstack/react-query";
 import { ON_STEP_TOKEN_NAME } from "../auth";
 import { Cookies } from "react-cookie";
+import { QUERY_KEY } from "@/query";
 
 const getReviewList = async () => {
   const cookies = new Cookies();
@@ -17,6 +18,6 @@ const getReviewList = async () => {
 
 export const useGetReviewList = () =>
   useQuery({
-    queryKey: ["reviewList"],
+    queryKey: [QUERY_KEY.Reviews],
     queryFn: () => getReviewList(),
   });

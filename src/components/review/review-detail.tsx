@@ -1,5 +1,5 @@
 import { useGetReviewDetail } from "@/hooks/review/use-get-review-detail";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -8,11 +8,21 @@ import {
   Button,
 } from "../shadcn";
 import { Edit, MoreHorizontal, Trash } from "lucide-react";
+import { useEditReview } from "@/hooks/review/use-edit-review";
 
 export const ReviewDetail = ({ selectedReview }: { selectedReview: number }) => {
   const { data } = useGetReviewDetail(selectedReview);
 
   const [isEdit, setIsEdit] = useState(false);
+  const [memo, setMemo] = useState("");
+
+  const { mutate } = useEditReview(memo, String(selectedReview));
+
+  useEffect(() => {
+    if (data?.data?.memo) {
+      setMemo(data.data.memo);
+    }
+  }, [data]);
 
   const handleEdit = () => {
     setIsEdit((prev) => !prev);
@@ -46,16 +56,19 @@ export const ReviewDetail = ({ selectedReview }: { selectedReview: number }) => 
       <hr className="mb-4" />
 
       <div className="w-full h-full relative">
-        <textarea disabled={!isEdit} className="w-full h-full">
-          {data?.data?.memo}
-        </textarea>
+        <textarea
+          disabled={!isEdit}
+          className="w-full h-full"
+          value={memo}
+          onChange={(e) => setMemo(e.target.value)}
+        />
 
         {isEdit && (
           <div className="absolute bottom-0 right-0 flex gap-2">
             <Button variant="outline" onClick={handleEdit}>
               취소
             </Button>
-            <Button variant="mint" className="text-black">
+            <Button variant="mint" className="text-black" onClick={() => mutate()}>
               저장
             </Button>
           </div>

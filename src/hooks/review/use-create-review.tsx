@@ -29,7 +29,7 @@ const createCompany = async (reviewFormValue: ReviewFormValue) => {
 };
 
 const createCompanySuccess = () => {
-  queryClient.invalidateQueries({ queryKey: [QUERY_KEY.Companies] });
+  queryClient.invalidateQueries({ queryKey: [QUERY_KEY.Reviews] });
   toast.success("리뷰를 추가했습니다.");
 };
 

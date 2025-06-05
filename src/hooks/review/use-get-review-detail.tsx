@@ -2,6 +2,7 @@ import { BASE_URL } from "@/api/base";
 import { useQuery } from "@tanstack/react-query";
 import { ON_STEP_TOKEN_NAME } from "../auth";
 import { Cookies } from "react-cookie";
+import { QUERY_KEY } from "@/query";
 
 const getReviewDetail = async (scheduleId: number) => {
   const cookies = new Cookies();
@@ -17,6 +18,6 @@ const getReviewDetail = async (scheduleId: number) => {
 
 export const useGetReviewDetail = (scheduleId: number) =>
   useQuery({
-    queryKey: ["reviewDetail", scheduleId],
+    queryKey: [QUERY_KEY.Reviews, scheduleId],
     queryFn: () => getReviewDetail(scheduleId),
   });

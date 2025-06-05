@@ -1,12 +1,15 @@
 import { ReviewList, ReviewForm } from "@/components/review";
 import { NotDetailReview } from "@/components/review/not-detail-review";
 import { ReviewDetail } from "@/components/review/review-detail";
+import { QUERY_KEY, queryClient } from "@/query";
 import { useState } from "react";
 
 export default function ReviewPage() {
   const [selectedReview, setSelectedReview] = useState<number | null>(null);
 
   const handleReviewClick = (scheduleId: number) => {
+    queryClient.invalidateQueries({ queryKey: [QUERY_KEY.Reviews, scheduleId] });
+
     setSelectedReview(scheduleId + 1);
   };
 

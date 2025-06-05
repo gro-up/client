@@ -8,12 +8,13 @@ import {
   DialogTrigger,
   DialogFooter,
   DialogClose,
+  Textarea,
 } from "@/components/shadcn";
 import { ListPlus } from "lucide-react";
 
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/shadcn";
 import { useScheduleList } from "@/hooks/schedule";
-import Editor from "../editor/editor";
+// import Editor from "../editor/editor";
 import { useCreateReview } from "@/hooks/review/use-create-review";
 import { useState } from "react";
 
@@ -33,7 +34,7 @@ interface Schedule {
 
 export const ReviewForm = () => {
   const [scheduleId, setScheduleId] = useState<string>("");
-  const [reviewContentState] = useState("");
+  const [reviewContentState, setReviewContentState] = useState("");
 
   const { isOpen, setIsOpen, handleCreateCompany } = useCreateReview(
     scheduleId,
@@ -81,7 +82,11 @@ export const ReviewForm = () => {
             </div>
 
             <div className="grid-cols-4 items-center gap-4 mb-5">
-              <Editor />
+              <Textarea
+                className="outline-1 w-full rounded-md "
+                value={reviewContentState}
+                onChange={(e) => setReviewContentState(e.target.value)}
+              />
             </div>
           </div>
           <DialogFooter>

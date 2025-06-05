@@ -1,5 +1,4 @@
-import Editor from "@/components/editor/editor";
-import { PastScheduleList, ReviewForm } from "@/components/review";
+import { ReviewList, ReviewForm } from "@/components/review";
 
 export default function ReviewPage() {
   return (
@@ -11,7 +10,7 @@ export default function ReviewPage() {
 
         <hr />
 
-        <PastScheduleList />
+        <ReviewList />
 
         <ReviewForm />
       </main>

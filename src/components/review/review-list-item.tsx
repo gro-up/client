@@ -1,6 +1,6 @@
 import { MoreHorizontal } from "lucide-react";
 
-export const PastScheduleListItem = () => {
+export const ReviewListItem = () => {
   return (
     <li className="flex justify-between items-center h-16 border-b border-neutral-700 p-2">
       <div>

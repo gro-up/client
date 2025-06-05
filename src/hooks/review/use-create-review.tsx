@@ -16,7 +16,7 @@ const createCompany = async (reviewFormValue: ReviewFormValue) => {
   const cookies = new Cookies();
   const token = cookies.get(ON_STEP_TOKEN_NAME);
 
-  const response = await fetch(`${BASE_URL}/api/companies`, {
+  const response = await fetch(`${BASE_URL}/api/retrospects`, {
     method: "POST",
     body: JSON.stringify(reviewFormValue),
     headers: {

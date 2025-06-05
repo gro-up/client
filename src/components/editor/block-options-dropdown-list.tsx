@@ -177,7 +177,7 @@ export const BlockOptionsDropdownList = ({
       ref={dropDownRef}
     >
       <DropdownMenuCheckboxItem
-        className="flex justify-start items-center gap-2 p-1 cursor-pointer"
+        className="flex justify-start items-center gap-2 p-1 cursor-pointer hover:bg-gray-200 rounded-md"
         onClick={formatParagraph}
       >
         <Pilcrow className="w-4 h-4" />
@@ -185,7 +185,7 @@ export const BlockOptionsDropdownList = ({
         {blockType === "paragraph" && <span className="active" />}
       </DropdownMenuCheckboxItem>
       <DropdownMenuCheckboxItem
-        className="flex justify-start items-center gap-2 p-1 cursor-pointer"
+        className="flex justify-start items-center gap-2 p-1 cursor-pointer hover:bg-gray-200 rounded-md"
         onClick={formatLargeHeading}
       >
         <Heading1 className="w-4 h-4" />
@@ -193,7 +193,7 @@ export const BlockOptionsDropdownList = ({
         {blockType === "h1" && <span className="active" />}
       </DropdownMenuCheckboxItem>
       <DropdownMenuCheckboxItem
-        className="flex justify-start items-center gap-2 p-1 cursor-pointer"
+        className="flex justify-start items-center gap-2 p-1 cursor-pointer hover:bg-gray-200 rounded-md"
         onClick={formatHeading2}
       >
         <Heading2 className="w-4 h-4" />
@@ -202,7 +202,7 @@ export const BlockOptionsDropdownList = ({
       </DropdownMenuCheckboxItem>
 
       <DropdownMenuCheckboxItem
-        className="flex justify-start items-center gap-2 p-1 cursor-pointer"
+        className="flex justify-start items-center gap-2 p-1 cursor-pointer hover:bg-gray-200 rounded-md"
         onClick={formatHeading3}
       >
         <Heading3 className="w-4 h-4" />
@@ -211,7 +211,7 @@ export const BlockOptionsDropdownList = ({
       </DropdownMenuCheckboxItem>
 
       <DropdownMenuCheckboxItem
-        className="flex justify-start items-center gap-2 p-1 cursor-pointer"
+        className="flex justify-start items-center gap-2 p-1 cursor-pointer hover:bg-gray-200 rounded-md"
         onClick={formatBulletList}
       >
         <List className="w-4 h-4" />
@@ -219,7 +219,7 @@ export const BlockOptionsDropdownList = ({
         {blockType === "ul" && <span className="active" />}
       </DropdownMenuCheckboxItem>
       <DropdownMenuCheckboxItem
-        className="flex justify-start items-center gap-2 p-1 cursor-pointer"
+        className="flex justify-start items-center gap-2 p-1 cursor-pointer hover:bg-gray-200 rounded-md"
         onClick={formatNumberedList}
       >
         <ListOrdered className="w-4 h-4" />
@@ -227,7 +227,7 @@ export const BlockOptionsDropdownList = ({
         {blockType === "ol" && <span className="active" />}
       </DropdownMenuCheckboxItem>
       <DropdownMenuCheckboxItem
-        className="flex justify-start items-center gap-2 p-1 cursor-pointer"
+        className="flex justify-start items-center gap-2 p-1 cursor-pointer hover:bg-gray-200 rounded-md"
         onClick={formatQuote}
       >
         <Quote className="w-4 h-4" />
@@ -235,7 +235,7 @@ export const BlockOptionsDropdownList = ({
         {blockType === "quote" && <span className="active" />}
       </DropdownMenuCheckboxItem>
       <DropdownMenuCheckboxItem
-        className="flex justify-start items-center gap-2 p-1 cursor-pointer"
+        className="flex justify-start items-center gap-2 p-1 cursor-pointer hover:bg-gray-200 rounded-md"
         onClick={formatCode}
       >
         <Code className="w-4 h-4" />

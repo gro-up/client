@@ -1,9 +1,10 @@
-import { PastScheduleList } from "@/components/review";
+import Editor from "@/components/editor/editor";
+import { PastScheduleList, ReviewForm } from "@/components/review";
 
 export default function ReviewPage() {
   return (
     <div className="flex gap-4 w-full h-full max-h-[850px] rounded-md p-4 relative ">
-      <main className="w-6/12 ">
+      <main className="w-6/12 relative">
         <header className="flex justify-center items-center">
           <h2 className="text-sm font-bold text-white">회고</h2>
         </header>
@@ -11,6 +12,8 @@ export default function ReviewPage() {
         <hr />
 
         <PastScheduleList />
+
+        <ReviewForm />
       </main>
 
       <section className="flex flex-col gap-4 w-6/12 justify-center items-center ">

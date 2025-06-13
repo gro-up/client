@@ -20,3 +20,4 @@ export * from "./textarea";
 export * from "./menubar";
 export * from "./checkbox";
 export * from "./carousel";
+export * from "./select";

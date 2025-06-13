@@ -167,6 +167,7 @@ export default function ToolbarPlugin() {
       ) : (
         <>
           <button
+            type="button"
             onClick={() => {
               editor.dispatchCommand(FORMAT_TEXT_COMMAND, "bold");
             }}
@@ -176,6 +177,7 @@ export default function ToolbarPlugin() {
             <Bold className="w-4 h-4" />
           </button>
           <button
+            type="button"
             onClick={() => {
               editor.dispatchCommand(FORMAT_TEXT_COMMAND, "italic");
             }}
@@ -185,6 +187,7 @@ export default function ToolbarPlugin() {
             <Italic className="w-4 h-4" />
           </button>
           <button
+            type="button"
             onClick={() => {
               editor.dispatchCommand(FORMAT_TEXT_COMMAND, "underline");
             }}
@@ -194,6 +197,7 @@ export default function ToolbarPlugin() {
             <Underline className="w-4 h-4" />
           </button>
           <button
+            type="button"
             onClick={() => {
               editor.dispatchCommand(FORMAT_TEXT_COMMAND, "strikethrough");
             }}
@@ -203,6 +207,7 @@ export default function ToolbarPlugin() {
             <Strikethrough className="w-4 h-4" />
           </button>
           <button
+            type="button"
             onClick={() => {
               editor.dispatchCommand(FORMAT_TEXT_COMMAND, "code");
             }}
@@ -212,6 +217,7 @@ export default function ToolbarPlugin() {
             <Code className="w-4 h-4" />
           </button>
           <button
+            type="button"
             onClick={insertLink}
             className={"toolbar-item spaced " + (isLink ? "active" : "")}
             aria-label="Insert Link"

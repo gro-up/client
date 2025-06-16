@@ -70,8 +70,7 @@ export default function ProfileModal({ isOpen, onClose }: Props) {
         <DialogFooter>
           <Button
             onClick={onClose}
-            size="lg"
-            className="w-[100px] h-[35px] bg-neutral-900 hover:bg-neutral-700 text-white cursor-pointer"
+            className="h-[35px] bg-neutral-900 hover:bg-neutral-700 text-white cursor-pointer"
             type="button"
             disabled={isLoading}
           >
@@ -80,9 +79,8 @@ export default function ProfileModal({ isOpen, onClose }: Props) {
 
           <Button
             variant="mint"
-            size="lg"
             onClick={() => previewUrl && handleSave(previewUrl)}
-            className="w-[100px] h-[35px] text-black"
+            className="h-[35px] text-black"
             disabled={isLoading}
           >
             {isLoading ? (

@@ -3,6 +3,7 @@ import { MoreActions } from "../ui";
 
 import ScheduleMapRender from "./schedule-map-render";
 import { useScheduleById } from "@/hooks/schedule/use-schedule-by-id";
+import { ArrowLeft } from "lucide-react";
 interface Props {
   selectedDate: Date | null;
   onEditClick: (id: number) => void;
@@ -21,7 +22,12 @@ const ScheduleDetailPanel = ({ onEditClick, scheduleId, onClose }: Props) => {
   return (
     <>
       <div>
-        <section></section>
+        <header className="h-10 flex items-center gap-2 mb-2 lg:mb-0 lg:gap-0">
+          <button onClick={onClose} className="lg:hidden cursor-pointer">
+            <ArrowLeft />
+          </button>
+          <span>상세 일정</span>
+        </header>
         <section className="flex justify-between">
           <h2 className="flex gap-5">
             <span className="flex items-center text-sm text-neutral-500">{schedule.position}</span>

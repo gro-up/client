@@ -3,10 +3,12 @@ import { PastScheduleCarouselItem } from "./past-schedule-carousel-item";
 import { useScheduleList } from "@/hooks/schedule";
 import { Schedule } from "@/types";
 import { isBefore, parseISO, compareDesc } from "date-fns";
+import { ArrowLeft } from "lucide-react";
 interface Props {
   onEditClick: (id: number) => void;
+  onClose: () => void;
 }
-export const PastSchedule = ({ onEditClick }: Props) => {
+export const PastSchedule = ({ onEditClick, onClose }: Props) => {
   const { data, isLoading } = useScheduleList();
   if (isLoading || !data || !data.data) return <div>로딩 중...</div>;
 
@@ -23,8 +25,11 @@ export const PastSchedule = ({ onEditClick }: Props) => {
 
   return (
     <section>
-      <header className="mb-5">
-        <h2>지난 일정</h2>
+      <header className="h-10 flex items-center gap-2 mb-2 lg:mb-0 lg:gap-0">
+        <button onClick={onClose} className="lg:hidden cursor-pointer">
+          <ArrowLeft />
+        </button>
+        <span>일정 추가</span>
       </header>
       <Carousel>
         <CarouselContent>

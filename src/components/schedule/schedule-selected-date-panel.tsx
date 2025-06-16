@@ -24,7 +24,7 @@ export const ScheduleSelectedDatePanel = ({
   if (isLoading) return <div>로딩중...</div>;
 
   return (
-    <div className="flex flex-col gap-6 p-3 pl-3 flex-1 overflow-y-auto ">
+    <div className="flex w-full max-w-[448px]  lg:w-full flex-col gap-6 p-3 pl-3 flex-1 overflow-y-auto ">
       {/* 선택된날 일정 */}
       <div>
         <p className="text-sm font-bold mb-2">{baseLabel}</p>

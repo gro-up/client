@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { ScheduleTodayTomorrowPanel } from "@/components/schedule";
+
 import { Container, DateTimePicker } from "@/components/ui";
 
 export default function DashboardPage() {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-  const [isAddPanelOpen, setIsAddPanelOpen] = useState(false); //
+
   return (
     <>
       <Container as="main" className="w-6/12 p-4 bg-neutral-900">

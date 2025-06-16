@@ -24,17 +24,20 @@ export const UserNavigation = () => {
         asChild
         className="cursor-pointer hover:bg-transparent focus:border-transparent focus:focus:ring-0"
       >
-        <Button variant="ghost" className="w-full flex justify-between items-center mt-3 ">
-          <Avatar className="w-8 h-8 mr-1">
+        <Button
+          variant="ghost"
+          className="w-7 h-7 sm:w-8 sm:h-8 lg-w-auto lg-h-auto lg:w-full flex justify-center lg:justify-between items-center lg:mt-3 "
+        >
+          <Avatar className="w-7 h-7 lg:w-8 lg:h-8 lg:mr-1">
             <AvatarImage src={profile.photo || undefined} />
           </Avatar>
 
           <div className="flex justify-between items-center w-full">
             <div className="flex flex-col text-left">
-              <span className="text-xs text-gray-500">{profile.email}</span>
+              <span className="text-xs text-gray-500 hidden lg:block">{profile.email}</span>
             </div>
 
-            <ChevronDown />
+            <ChevronDown className="hidden lg:block" />
           </div>
         </Button>
       </DropdownMenuTrigger>

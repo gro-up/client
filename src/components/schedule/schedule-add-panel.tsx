@@ -81,7 +81,7 @@ export default function ScheduleAddPanel({ onEditClick, onClose }: Props) {
     <>
       {isPending && <FullScreenLoader />}
       <div className="flex flex-col gap-2.5 h-full w-full ">
-        <PastSchedule onEditClick={onEditClick} />
+        <PastSchedule onEditClick={onEditClick} onClose={onClose} />
 
         <form className="flex flex-col gap-2.5 h-full">
           <ScheduleAddInputFields
@@ -113,7 +113,7 @@ export default function ScheduleAddPanel({ onEditClick, onClose }: Props) {
 
           {/* 마크다운 노트 입력 */}
           <Textarea
-            className="w-full h-[163px]"
+            className="w-full max-h-[163px]"
             placeholder="메모를 작성하세요 "
             value={memo}
             onChange={(e) => setMemo(e.target.value)}

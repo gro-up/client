@@ -25,7 +25,7 @@ import { useDeleteSchedule } from "@/hooks/schedule/use-delete-schedule";
 interface MoreActionsProps {
   scheduleId: number;
   onEditClick: (id: number) => void;
-  onClose: () => void;
+  onClose?: () => void;
 }
 
 export const MoreActions = ({ scheduleId, onEditClick, onClose }: MoreActionsProps) => {
@@ -94,7 +94,7 @@ export const MoreActions = ({ scheduleId, onEditClick, onClose }: MoreActionsPro
           <MenubarItem
             onClick={() => {
               handleDelete();
-              onClose();
+              onClose?.();
             }}
           >
             <Trash className="w-4 h-4 text-red-500" />

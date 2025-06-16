@@ -42,7 +42,7 @@ export default function ScheduleAddInputFields({
     <div>
       <Input
         placeholder="회사명을 입력해주세요."
-        className="w-full h-[50px] p-[10px] placeholder:text-white rounded-b-none"
+        className="w-full max-h-[50px] p-[10px] placeholder:text-white rounded-b-none"
         value={companyName}
         onChange={(e) => setCompanyName(e.target.value)}
         onKeyDown={(e) => handleKeyDown(e, 0)}
@@ -58,7 +58,7 @@ export default function ScheduleAddInputFields({
               readOnly
               value={STEP_OPTIONS.find((steped) => steped.value === step)?.label || ""}
               placeholder="채용 단계를 선택해주세요."
-              className="w-full h-[50px] p-[10px] placeholder:text-white rounded-t-none cursor-pointer"
+              className="w-full max-h-[50px] p-[10px] placeholder:text-white rounded-t-none cursor-pointer"
               ref={(el) => {
                 inputRefs.current[1] = el;
               }}
@@ -79,7 +79,7 @@ export default function ScheduleAddInputFields({
         placeholder="직무를 입력해주세요."
         value={position}
         onChange={(e) => setPosition(e.target.value)}
-        className="w-full h-[50px] p-[10px] mt-[10px]  placeholder:text-white "
+        className="w-full max-h-[50px] p-[10px] mt-[10px]  placeholder:text-white "
         onKeyDown={(e) => handleKeyDown(e, 2)}
         ref={(el) => {
           inputRefs.current[2] = el;
@@ -88,7 +88,7 @@ export default function ScheduleAddInputFields({
       <Input
         readOnly
         placeholder="주소를 입력해주세요."
-        className="w-full h-[50px] p-[10px] mt-[10px] rounded-b-none placeholder:text-white cursor-pointer"
+        className="w-full min-h-[50px] max-h-[50px] p-[10px] mt-[10px] rounded-b-none placeholder:text-white cursor-pointer"
         onClick={handleAddressClick}
         value={address}
         ref={(el) => {

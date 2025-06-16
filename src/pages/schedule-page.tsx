@@ -10,19 +10,20 @@ import ScheduleEditPanel from "@/components/schedule/schedule-edit-panel";
 import { useIsMobile } from "@/hooks/shadcn";
 
 export default function SchedulePage() {
-  const isMobile = useIsMobile();
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
 
   const [isAddPanelOpen, setIsAddPanelOpen] = useState(false); // 추가 패널 열림 여부
   const [editingScheduleId, setEditingScheduleId] = useState<number | null>(null); // 수정할 스케줄 ID
   const [selectedScheduleId, setSelectedScheduleId] = useState<number | null>(null);
+  const isMobile = useIsMobile();
   const shouldShowMainContent =
     !isMobile || (!editingScheduleId && !isAddPanelOpen && !selectedScheduleId);
+
   return (
     <>
       <Container as="main" className="w-full h-full lg:w-6/12 p-4 bg-neutral-900 flex flex-col">
         {shouldShowMainContent ? (
-          <div className="flex flex-col h-full items-center sm:items-start justify-center lg:justify-start gap-4 w-full">
+          <div className="flex flex-col h-full items-center sm:items-center lg:items-start  lg:justify-start gap-4 w-full">
             <DateTimePicker
               date={selectedDate}
               onDate={(newDate) => {

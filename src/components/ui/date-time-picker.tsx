@@ -30,19 +30,19 @@ export const DateTimePicker = ({
   className,
 }: DateTimePickerProps) => {
   return (
-    <>
+    <div className="w-full flex justify-center lg:justify-start">
       <DayPicker
         locale={ko}
         mode="single"
         selected={date ?? undefined}
         classNames={{
-          month: `w-full ${className?.month} `,
+          month: `w-full sm:auto ${className?.month} `,
           months: `w-full ${className?.months}`,
           caption: `relative h-10 flex items-center justify-start pl-5 ${className?.caption}`,
           nav_button_next: `absolute bg-transparent top-1/2 -translate-y-1/2 right-5 text-gray-400 cursor-pointer ${className?.nav_button_next}`,
           nav_button_previous: `absolute bg-transparent top-1/2 -translate-y-1/2 right-15 text-gray-400 cursor-pointer ${className?.nav_button_previous}`,
           head: `w-full ${className?.head}`,
-          cell: `w-15 h-15 ${className?.cell} first:text-red-500 last:text-red-500 `,
+          cell: `w-16  h-15 ${className?.cell} first:text-red-500 last:text-red-500`,
           day_selected: `bg-gray-200 text-black rounded-md ${className?.day_selected}`, // 선택됐을시 날짜의 배경색 gray-200 및 텍스트색깔 black으로 변경
           day_today: `${
             date
@@ -54,7 +54,6 @@ export const DateTimePicker = ({
         onSelect={(day) => {
           if (day) {
             onDate(day);
-            console.log(day);
           }
         }}
         components={{
@@ -87,6 +86,6 @@ export const DateTimePicker = ({
           }}
         />
       )}
-    </>
+    </div>
   );
 };

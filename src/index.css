@@ -175,7 +175,9 @@
     --chart-5: 340 75% 55%;
   }
 }
-
+@theme {
+  --breakpoint-mb: 360px;
+}
 input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   display: none;
   -webkit-appearance: none;
